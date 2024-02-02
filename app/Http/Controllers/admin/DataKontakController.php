@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
-use App\Models\Kontak;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class KontakController extends Controller
+class DataKontakController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -35,7 +34,7 @@ class KontakController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Kontak $kontak)
+    public function show(string $id)
     {
         //
     }
@@ -43,7 +42,7 @@ class KontakController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Kontak $kontak)
+    public function edit(string $id)
     {
         //
     }
@@ -51,7 +50,7 @@ class KontakController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Kontak $kontak)
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -59,7 +58,7 @@ class KontakController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Kontak $kontak)
+    public function destroy(string $id)
     {
         //
     }

@@ -14,7 +14,9 @@ return new class extends Migration
         Schema::create('akuns', function (Blueprint $table) {
             $table->increments('Kode_Akun');
             $table->string('Nama_Akun', 50);
+            $table->string('Kategori', 50);
             $table->string('Tipe_Transaksi', 50);
+            $table->timestamps();
         });
     }
 

@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
-use App\Models\Akun;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class AkunController extends Controller
+class DataMasterController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -35,7 +34,7 @@ class AkunController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Akun $akun)
+    public function show(string $id)
     {
         //
     }
@@ -43,7 +42,7 @@ class AkunController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Akun $akun)
+    public function edit(string $id)
     {
         //
     }
@@ -51,7 +50,7 @@ class AkunController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Akun $akun)
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -59,7 +58,7 @@ class AkunController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Akun $akun)
+    public function destroy(string $id)
     {
         //
     }

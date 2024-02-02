@@ -17,7 +17,7 @@
 </head>
 
 <body class="font-sans antialiased">
-    <div class="min-h-screen bg-gray-100 dark:bg-gray-800 pattern-topography-gray-500/100 pattern-topography-scale-[0.2]">
+    <div class="min-h-screen bg-gray-100 dark:bg-gray-800 pattern-topography-gray-500/100 pattern-topography-scale-[0.2] flex flex-col">
         @include('layouts.navigation')
 
         <!-- Page Heading -->

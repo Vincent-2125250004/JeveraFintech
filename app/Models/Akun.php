@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\TipeTransaksiAkun;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,9 +11,16 @@ class Akun extends Model
 
     use HasFactory;
     protected $fillable = [
-        'Kode_Akun',
         'Nama_Akun',
+        'Kategori',
         'Tipe_Transaksi',
     ];
-    
+
+    protected $casts = [
+        'Tipe_Transaksi' => TipeTransaksiAkun::class,
+    ];
+
+    protected $primaryKey = 'Kode_Akun';
+
+
 }

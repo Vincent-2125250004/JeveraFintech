@@ -1,9 +1,11 @@
 <?php
 
-use App\Http\Controllers\DataMasterController;
+use App\Http\Controllers\admin\DataKontakController;
+use App\Http\Controllers\admin\DataMobilController;
+use App\Http\Controllers\admin\DataRuteController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\admin\DataAkunController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,16 +21,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/datamaster', function (Request $request) {
-    return view('admin.datamaster');
+    return view('frontend.datamaster');
 })->name('datamaster');
 
 Route::get('/kas', function (Request $request) {
-    return view('admin.kas');
+    return view('frontend.kas');
 })->name('kas');
 
 Route::get('/deliveryorder', function (Request $request) {
-    return view('admin.do');
+    return view('frontend.do');
 })->name('do');
+
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -40,9 +44,12 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-
-
-//CRUD
-
+//DataMaster
+Route::middleware('auth')->name('datamaster.')->prefix('datamaster')->group(function () {
+    Route::resource('/akun', DataAkunController::class);
+    Route::resource('/rute', DataRuteController::class);
+    Route::resource('/kontak', DataKontakController::class);
+    Route::resource('/mobil', DataMobilController::class);
+});
 
 require __DIR__.'/auth.php';
