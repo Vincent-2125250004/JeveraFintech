@@ -50,9 +50,7 @@
                                     <div class="md:col-span-3">
                                         <label for="tipe_transaksi" class="text-gray-100">Tipe Transaksi</label>
                                         <div class="mt-1">
-                                            <select id="tipe_transaksi" name="tipe_transaksi"
-                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-100 dark:border-gray-100 dark:placeholder-gray-400 dark:text-dark dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                multiple>
+                                            <select id="tipe_transaksi" name="tipe_transaksi" class="bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-200 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                                 @foreach (App\Enums\TipeTransaksiAkun::cases() as $TipeTransaksiAkun)
                                                     <option value="{{ $TipeTransaksiAkun->value }}">
                                                         {{ $TipeTransaksiAkun->name }}</option>

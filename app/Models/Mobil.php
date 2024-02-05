@@ -4,13 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Berkas_Pendukung;
 
 class Mobil extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'ID_Mobil',
         'Nomor_Polisi',
         'Nomor_Lambung',
         'Pemilik',
@@ -22,18 +22,9 @@ class Mobil extends Model
         'Berkas_Pendukung',
     ];
 
-    protected $dates = [
-        'Tanggal_Masuk',
-        'Tanggal_Keluar',
-    ];
-
-    public function getTanggalMasukAttribute($value)
-    {
-        return \Carbon\Carbon::parse($value)->format('d-m-Y');
+    public function berkas()  {
+        return $this->hasMany(BerkasPendukung::class);
     }
 
-    public function getTanggalKeluarAttribute($value)
-    {
-        return \Carbon\Carbon::parse($value)->format('d-m-Y');
-    }
+    protected $primaryKey = 'ID_Mobil';
 }

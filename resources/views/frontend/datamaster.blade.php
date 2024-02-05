@@ -34,6 +34,7 @@
             </div>
         </a>
 
+        <a href="{{ route('datamaster.kontak.index') }}" type="button">
         <div
             class="flex group relative cursor-pointer overflow-hidden bg-gray-800 dark:bg-gray-800 px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl sm:mx-auto sm:max-w-sm sm:rounded-lg sm:px-10">
             <span
@@ -59,7 +60,9 @@
 
             </div>
         </div>
+        </a>
 
+        <a href="{{ route('datamaster.mobil.index') }}" type="button">
         <div
             class="group relative cursor-pointer overflow-hidden bg-gray-800 dark:bg-gray-800 px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl sm:mx-auto sm:max-w-sm sm:rounded-lg sm:px-10">
             <span
@@ -85,7 +88,8 @@
 
             </div>
         </div>
-
+        </a>
+        <a href="{{ route('datamaster.rute.index') }}" type="button">
         <div
             class="group relative cursor-pointer overflow-hidden bg-gray-800 dark:bg-gray-800 px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl sm:mx-auto sm:max-w-sm sm:rounded-lg sm:px-10">
             <span
@@ -108,8 +112,8 @@
                     <p>Kumpulan Data Mobil, Anda bisa melakukan aksi seperti menambahkan Informasi, Berkas Mobil, dan
                         menyuntingnya.</p>
                 </div>
-
             </div>
         </div>
+        </a>
     </div>
 </x-app-layout>

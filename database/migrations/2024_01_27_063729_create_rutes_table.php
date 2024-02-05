@@ -15,6 +15,7 @@ return new class extends Migration
             $table->increments('ID_Rute');
             $table->string('Asal_Rute', 50);
             $table->string('Tujuan_Rute', 50);
+            $table->timestamps();
         });
     }
 

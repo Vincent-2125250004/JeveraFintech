@@ -37,7 +37,7 @@ class DataAkunController extends Controller
             'Tipe_Transaksi'=>$request->tipe_transaksi,
         ]);
         
-        return to_route('datamaster.akun.index')->with('success', 'Data Akun Berhasil Ditambahkan');
+        return redirect()->route('datamaster.akun.index')->with('success', 'Data Akun Berhasil Ditambahkan');
     }
 
     /**
@@ -67,7 +67,7 @@ class DataAkunController extends Controller
             'Tipe_Transaksi' => $request->tipe_transaksi,
         ]);
 
-        return redirect()->route('datamaster.akun.index')->with('success', 'Data Akun Berhasil Diubah');
+        return redirect()->route('datamaster.akun.index')->with('info', 'Data Akun Berhasil Diubah');
     }
 
     /**
@@ -77,6 +77,6 @@ class DataAkunController extends Controller
     {
         $akun->delete();
 
-        return to_route('datamaster.akun.index')->with('danger', 'Data Akun Berhasil Dihapus');
+        return redirect()->route('datamaster.akun.index')->with('danger', 'Data Akun Berhasil Dihapus');
     }
 }

@@ -51,5 +51,13 @@ Route::middleware('auth')->name('datamaster.')->prefix('datamaster')->group(func
     Route::resource('/kontak', DataKontakController::class);
     Route::resource('/mobil', DataMobilController::class);
 });
+Route::get('/datamaster/mobil/images/{id}', [DataMobilController::class, 'images'])->name('datamaster.mobil.images');
+
+//Kas
+Route::middleware('auth')->name('kas.')->prefix('kas')->group(function () {
+    
+});
+
+Route::get('/generatePDFMobil', [App\Http\Controllers\PDF\PDFController::class, 'generatePDFMobil']) ->name('datamaster.mobil.pdf');
 
 require __DIR__.'/auth.php';
