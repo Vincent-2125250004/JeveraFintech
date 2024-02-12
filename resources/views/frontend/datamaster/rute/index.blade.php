@@ -82,4 +82,25 @@
             </div>        
         </div>
     </div>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.13.7/js/dataTables.tailwindcss.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                let table =  $('#myTable').DataTable();
+                $('#myTable_wrapper').addClass('overflow-y-hidden p-1');
+                $('#myTable_filter').addClass('text-white dark:text-white');
+                $('#myTable_filter input').addClass(
+                    'dark:text-white dark:bg-gray-800 border border-gray-300 dark:border-gray-500 rounded-md px-2 py-1 ms-4'
+                );
+                $('#myTable_length').addClass('text-white dark:text-white');
+                $('#myTable_length select').addClass(
+                    'dark:text-white dark:bg-gray-800 border border-gray-300 dark:border-gray-500 rounded-md px-6 py-1 ms-4'
+                );
+                $('#myTable_info').addClass('text-white dark:text-white text-sm');
+                $('#myTable_paginate').addClass('text-white dark:text-white mt-4');
+                $('#myTable_next').addClass('text-white dark:text-white ms-4');
+                $('#myTable_previous').addClass('text-white dark:text-white me-4');
+
+            });
+        </script>
 </x-app-layout>

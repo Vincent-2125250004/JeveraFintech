@@ -18,15 +18,13 @@
                     <x-nav-link :href="route('datamaster')" :active="request()->routeIs('datamaster')">
                         {{ __('Data Master') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('kas')" :active="request()->routeIs('kas')">
-                        {{ __('Kas') }}
+                    <x-nav-link :href="route('pencatatan')" :active="request()->routeIs('pencatatan')">
+                        {{ __('Pencatatan') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('do')" :active="request()->routeIs('do')">
-                        {{ __('Delivery Order') }}
-                    </x-nav-link>
-                    {{-- <x-nav-link :href="route('')" :active="request()->routeIs('laporan')">
+                    <x-nav-link :href="route('laporan')" :active="request()->routeIs('laporan')">
                         {{ __('Laporan') }}
-                    </x-nav-link> --}}
+                    </x-nav-link>
+                    
 
                 </div>
             </div>

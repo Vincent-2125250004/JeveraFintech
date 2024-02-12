@@ -27,4 +27,18 @@ class DataKontakStoreRequest extends FormRequest
             'tipe_kontak'=>['required'],
         ];
     }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array<string, string>
+     */
+    public function messages(): array
+    {
+        return [
+            'nama_kontak.required' => 'Kolom Nama Kontak harus diisi.',
+            'nomor_telepon.required' => 'Kolom Nomor Telepon harus diisi.',
+            'tipe_kontak.required' => 'Kolom Tipe Kontak harus diisi.',
+        ];
+    }
 }

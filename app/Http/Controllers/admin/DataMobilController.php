@@ -93,6 +93,8 @@ class DataMobilController extends Controller
             'Tanggal_Keluar' => Carbon::parse($request->tanggal_keluar)->format('Y-m-d'),
         ]);
 
+        
+
         return redirect()->route('datamaster.mobil.index')->with('info', 'Data Mobil Berhasil Diperbarui');
     }
 

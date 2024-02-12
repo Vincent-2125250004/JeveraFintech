@@ -6,24 +6,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Data Mobil</title>
-    <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.5/dist/flowbite.min.css" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
+    <!-- Menggunakan Bootstrap dari CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
     <style>
         * {
             font-family: monospace;
         }
 
-        .kopPDF {
-            text-align: center;
-            font-weight: bold;
+        .kop-surat {
             padding: 20px;
+            border-bottom: 2px solid #333;
         }
 
-        .kopPDF h1 {
+        .logo {
+            width: 100px;
+            height: auto;
+        }
+
+        .judul {
+            font-size: 20px;
             font-weight: bold;
-            font-size: 24px;
-            margin: 0;
+            margin: 10px 0;
+        }
+
+        .alamat {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .info-kontak {
+            font-size: 14px;
         }
 
         hr {
@@ -75,9 +88,15 @@
 </head>
 
 <body>
-    <div class="kopPDF">
-        <h1>{{ $title }}</h1>
-        <h1>{{ $date }}</h1>
+
+
+    <div class="kop-surat">
+        <img class="logo" src="{{$image}}" alt="Logo Perusahaan">
+        <div class="info-perusahaan">
+            <div class="judul">{{$title}}</div>
+            <div class="alamat">{{$alamat}}</div>
+            <div class="info-kontak">Email: {{$email}}</div>
+        </div>
     </div>
     <hr class="solid">
     <div class="datamobil" style="margin-left: 15px; margin-right: 15px">

@@ -12,12 +12,12 @@ return new class extends Migration {
     {
         Schema::create('mobils', function (Blueprint $table) {
             $table->increments('ID_Mobil');
-            $table->string('Nomor_Polisi', 50);
+            $table->string('Nomor_Polisi', 50)->unique();
             $table->string('Nomor_Lambung', 50)->unique();
             $table->string('Pemilik', 50);
-            $table->string('Nomor_Seri', 50);
-            $table->string('Nomor_Rangka', 50);
-            $table->string('Nomor_Mesin', 50);
+            $table->string('Nomor_Seri', 50)->unique();
+            $table->string('Nomor_Rangka', 50)->unique();
+            $table->string('Nomor_Mesin', 50)->unique();
             $table->date('Tanggal_Masuk');
             $table->string('Tanggal_Keluar', 50);
             $table->timestamps();

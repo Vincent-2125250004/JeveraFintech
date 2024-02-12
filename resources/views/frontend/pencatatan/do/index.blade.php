@@ -1,10 +1,9 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-md text-gray-800 leading-tight text-white">
-            {{ __('Data Master/Data Mobil') }}
+            {{ __('Delivery Order/Data Delivery Order') }}
         </h2>
     </x-slot>
-
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -35,22 +34,21 @@
             </script>
 
             <div class="flex justify-end m-2 p-2">
-                <a href="{{ route('datamaster.mobil.create') }}"
+                <a href="{{ route('pencatatan.do.create') }}"
                     class="'inline-flex items-center px-4 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-500 rounded-md font-semibold text-xs text-gray-700 dark:text-gray-300 uppercase tracking-widest shadow-sm hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 disabled:opacity-25 transition ease-in-out duration-150'">
-                    Tambah Mobil
-                </a>
-                <a href="{{ route('datamaster.mobil.pdf') }}" target="_blank"
-                    class="'inline-flex items-center ms-4 px-4 py-2 bg-sky-400 dark:bg-sky-600 border border-gray-300 dark:border-gray-500 rounded-md font-semibold text-xs text-white dark:text-white uppercase tracking-widest shadow-sm hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 disabled:opacity-25 transition ease-in-out duration-150'">
-                    Unduh Data Mobil
+                    Tambah Delivery Order
                 </a>
             </div>
-            <div class="relative overflow-x-auto " >
+            <div class="relative overflow-x-auto">
                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400" id="myTable">
                     <thead
                         class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-300 rounded-lg">
                         <tr>
                             <th scope="col" class="px-6 py-3">
-                                Kode Mobil
+                                No. DO
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Tanggal
                             </th>
                             <th scope="col" class="px-6 py-3">
                                 Nomor Polisi
@@ -59,86 +57,71 @@
                                 Nomor Lambung
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Pemilik
+                                SJB Muat
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Nomor Seri
+                                SJB Bongkar
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Nomor Rangka
+                                Rute
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Nomor Mesin
+                                Tonase
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Tanggal Masuk
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Tanggal Keluar
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Berkas Pendukung
+                                Status
                             </th>
                             <th scope="col" class="px-6 py-3">
                             </th>
                         </tr>
                     </thead>
                     <tbody>
-
-                        @foreach ($mobil->sortBy('ID_Mobil') as $mobils)
+                        @foreach ($do as $dos)
                             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                 <td scope="row"
                                     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    {{ $mobils->ID_Mobil }}
+                                    {{ $dos->NO_Do }}
                                 </td>
                                 <td scope="row"
                                     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    {{ $mobils->Nomor_Polisi }}
+                                    {{ $dos->Tanggal_Do }}
                                 </td>
                                 <td scope="row"
                                     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    {{ $mobils->Nomor_Lambung }}
+                                    {{ $dos->Nomor_Polisi }}
                                 </td>
                                 <td scope="row"
                                     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    {{ $mobils->Pemilik }}
+                                    {{ $dos->Nomor_Lambung }}
                                 </td>
                                 <td scope="row"
                                     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    {{ $mobils->Nomor_Seri }}
+                                    {{ $dos->SJB_Muat }}
                                 </td>
                                 <td scope="row"
                                     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    {{ $mobils->Nomor_Rangka }}
+                                    {{ $dos->SJB_Bongkar }}
                                 </td>
                                 <td scope="row"
                                     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    {{ $mobils->Nomor_Mesin }}
+                                    {{ $dos->ID_Rute }}
                                 </td>
                                 <td scope="row"
                                     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    {{ $mobils->Tanggal_Masuk }}
+                                    {{ $dos->Tonase }}
                                 </td>
                                 <td scope="row"
                                     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    {{ $mobils->Tanggal_Keluar }}
-                                </td>
-                                <td scope="row"
-                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    {{ $mobils->berkas->count() }}
+                                    {{ $dos->Status }}
                                 </td>
 
                                 <td class="py-4 px-6 text-sm font-medium text-right whitespace-nowrap">
                                     <div class="flex space-x-2">
-                                        <a href="{{ route('datamaster.mobil.edit', $mobils->ID_Mobil) }}"
+                                        <a href="{{ route('pencatatan.do.edit', $dos->id) }}"
                                             class="inline-flex items-center px-4 py-2 bg-green-500 dark:bg-green-500 border border-gray-300 dark:border-gray-500 rounded-md font-semibold text-xs text-white dark:text-white uppercase tracking-widest shadow-sm hover:bg-emerald-600 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 disabled:opacity-25 transition ease-in-out duration-150">Edit</a>
-                                        <a href="{{ route('datamaster.mobil.images', $mobils->ID_Mobil) }}"
-                                            class="inline-flex items-center px-4 py-2 bg-yellow-500 dark:bg-yellow-500 border border-gray-300 dark:border-gray-500 rounded-md font-semibold text-xs text-white dark:text-white uppercase tracking-widest shadow-sm hover:bg-emerald-600 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 disabled:opacity-25 transition ease-in-out duration-150">View
-                                            Berkas</a>
                                         <form
-                                            class="px-4 py-2 bg-red-500 hover :bg-red-700 rounded-lg text-white inline-flex items-center px-4 py-2 bg-red-500 dark:bg-red-500 border border-gray-300 dark:border-gray-500 rounded-md font-semibold text-xs text-white dark:text-white uppercase tracking-widest shadow-sm hover:bg-emerald-600 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 disabled:opacity-25 transition ease-in-out duration-150"
-                                            method="POST"
-                                            action="{{ route('datamaster.mobil.destroy', $mobils->ID_Mobil) }}"
+                                            class="inline-flex items-center px-4 py-2 bg-red-500 hover:bg-red-700 rounded-lg text-white"
+                                            method="POST" action="{{ route('pencatatan.do.destroy', $dos->id) }}"
                                             onsubmit="return confirm('Are You Sure?')">
                                             @csrf
                                             @method('DELETE')
@@ -148,32 +131,30 @@
                                 </td>
                             </tr>
                         @endforeach
-
                     </tbody>
                 </table>
             </div>
-
         </div>
     </div>
     <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
-        <script src="https://cdn.datatables.net/1.13.7/js/dataTables.tailwindcss.min.js"></script>
-        <script>
-            $(document).ready(function() {
-                let table =  $('#myTable').DataTable();
-                $('#myTable_wrapper').addClass('overflow-y-hidden p-1');
-                $('#myTable_filter').addClass('text-white dark:text-white');
-                $('#myTable_filter input').addClass(
-                    'dark:text-white dark:bg-gray-800 border border-gray-300 dark:border-gray-500 rounded-md px-2 py-1 ms-4'
-                );
-                $('#myTable_length').addClass('text-white dark:text-white');
-                $('#myTable_length select').addClass(
-                    'dark:text-white dark:bg-gray-800 border border-gray-300 dark:border-gray-500 rounded-md px-6 py-1 ms-4'
-                );
-                $('#myTable_info').addClass('text-white dark:text-white text-sm');
-                $('#myTable_paginate').addClass('text-white dark:text-white mt-4');
-                $('#myTable_next').addClass('text-white dark:text-white ms-4');
-                $('#myTable_previous').addClass('text-white dark:text-white me-4');
+    <script src="https://cdn.datatables.net/1.13.7/js/dataTables.tailwindcss.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            let table = $('#myTable').DataTable();
+            $('#myTable_wrapper').addClass('overflow-y-hidden p-1');
+            $('#myTable_filter').addClass('text-white dark:text-white');
+            $('#myTable_filter input').addClass(
+                'dark:text-white dark:bg-gray-800 border border-gray-300 dark:border-gray-500 rounded-md px-2 py-1 ms-4'
+            );
+            $('#myTable_length').addClass('text-white dark:text-white');
+            $('#myTable_length select').addClass(
+                'dark:text-white dark:bg-gray-800 border border-gray-300 dark:border-gray-500 rounded-md px-6 py-1 ms-4'
+            );
+            $('#myTable_info').addClass('text-white dark:text-white text-sm');
+            $('#myTable_paginate').addClass('text-white dark:text-white mt-4');
+            $('#myTable_next').addClass('text-white dark:text-white ms-4');
+            $('#myTable_previous').addClass('text-white dark:text-white me-4');
 
-            });
-        </script>
+        });
+    </script>
 </x-app-layout>

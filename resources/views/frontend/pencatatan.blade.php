@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-md text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Pengelolaan Kas') }}
+            {{ __('Pencatatan') }}
         </h2>
     </x-slot>
 
@@ -55,5 +55,33 @@
 
             </div>
         </div>
+
+        <a href="{{ route('pencatatan.do.index') }}" type="button">
+        <div
+            class="group relative cursor-pointer overflow-hidden bg-gray-800 dark:bg-gray-800 px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl sm:mx-auto sm:max-w-sm sm:rounded-lg sm:px-10">
+            <span
+                class="absolute top-10 z-0 h-20 w-20 rounded-full bg-lime-800 transition-all duration-300 group-hover:scale-[15]"></span>
+            <div class="relative z-10 mx-auto max-w-md">
+                <span
+                    class="grid h-20 w-20 place-items-center rounded-full bg-lime-500 transition-all duration-300 group-hover:bg-lime-400">
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 640 512" class="w-10 h-10 fill-white">
+                        <path
+                            d="M640 0V400c0 61.9-50.1 112-112 112c-61 0-110.5-48.7-112-109.3L48.4 502.9c-17.1 4.6-34.6-5.4-39.3-22.5s5.4-34.6 22.5-39.3L352 353.8V64c0-35.3 28.7-64 64-64H640zM576 400a48 48 0 1 0 -96 0 48 48 0 1 0 96 0zM23.1 207.7c-4.6-17.1 5.6-34.6 22.6-39.2l46.4-12.4 20.7 77.3c2.3 8.5 11.1 13.6 19.6 11.3l30.9-8.3c8.5-2.3 13.6-11.1 11.3-19.6l-20.7-77.3 46.4-12.4c17.1-4.6 34.6 5.6 39.2 22.6l41.4 154.5c4.6 17.1-5.6 34.6-22.6 39.2L103.7 384.9c-17.1 4.6-34.6-5.6-39.2-22.6L23.1 207.7z" />
+                    </svg>
+                </span>
+                <div
+                    class="space-y-6 pt-5 text-base leading-7 text-gray-200 transition-all duration-300 group-hover:text-white/90">
+                    <h1 class="text-2xl font-semibold leading-7 text-white dark:text-white sm:text-3xl sm:truncate">
+                        Delivery Order</h1>
+                </div>
+                <div
+                    class="space-y-6 pt-5 text-base leading-7 text-gray-200 transition-all duration-300 group-hover:text-white/90">
+                    <p>Kontrol semua berkas Delivery Order didalam satu sistem</p>
+                </div>
+
+            </div>
+        </div>
+        </a>
     </div>
 </x-app-layout>

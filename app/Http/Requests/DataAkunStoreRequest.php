@@ -27,4 +27,17 @@ class DataAkunStoreRequest extends FormRequest
             'tipe_transaksi'=>['required'],
         ];
     }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array<string, string>
+     */
+    public function messages(): array
+    {
+        return [
+            'nama_akun.required' => 'Kolom Nama Akun harus diisi.',
+            'kategori_akun.required' => 'Kolom Kategori Akun harus diisi.',
+        ];
+    }
 }

@@ -6,6 +6,7 @@ use App\Http\Controllers\admin\DataRuteController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\DataAkunController;
+use App\Http\Controllers\admin\DeliveryOrderController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,13 +25,13 @@ Route::get('/datamaster', function (Request $request) {
     return view('frontend.datamaster');
 })->name('datamaster');
 
-Route::get('/kas', function (Request $request) {
-    return view('frontend.kas');
-})->name('kas');
+Route::get('/pencatatan', function (Request $request) {
+    return view('frontend.pencatatan');
+})->name('pencatatan');
 
-Route::get('/deliveryorder', function (Request $request) {
-    return view('frontend.do');
-})->name('do');
+Route::get('/laporan', function (Request $request) {
+    return view('frontend.laporan');
+})->name('laporan');
 
 
 
@@ -51,13 +52,14 @@ Route::middleware('auth')->name('datamaster.')->prefix('datamaster')->group(func
     Route::resource('/kontak', DataKontakController::class);
     Route::resource('/mobil', DataMobilController::class);
 });
-Route::get('/datamaster/mobil/images/{id}', [DataMobilController::class, 'images'])->name('datamaster.mobil.images');
+Route::middleware('auth')->get('/datamaster/mobil/images/{id}', [DataMobilController::class, 'images'])->name('datamaster.mobil.images');
+Route::middleware('auth')->get('generatePDFMobil', [App\Http\Controllers\PDF\PDFController::class, 'generatePDFMobil']) ->name('datamaster.mobil.pdf');
 
-//Kas
-Route::middleware('auth')->name('kas.')->prefix('kas')->group(function () {
-    
+//Pencatatan
+Route::middleware('auth')->name('pencatatan.')->prefix('pencatatan')->group(function () {
+    Route::resource('/do', DeliveryOrderController::class);
 });
 
-Route::get('/generatePDFMobil', [App\Http\Controllers\PDF\PDFController::class, 'generatePDFMobil']) ->name('datamaster.mobil.pdf');
+
 
 require __DIR__.'/auth.php';

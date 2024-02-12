@@ -26,4 +26,17 @@ class DataRuteStoreRequest extends FormRequest
             'tujuan_rute'=>['required'],
         ];
     }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array<string, string>
+     */
+    public function messages(): array
+    {
+        return [
+            'asal_rute.required' => 'Kolom Asal Rute harus diisi.',
+            'tujuan_rute.required' => 'Kolom Tujuan Rute harus diisi.',
+        ];
+    }
 }
