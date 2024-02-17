@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Mobil;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
+use App\Models\DeliveryOrder;
 
 
 class PDFController extends Controller
@@ -29,6 +30,19 @@ class PDFController extends Controller
     }
 
     public function generatePDFDeliveryOrder() {
-        
+        $do = DeliveryOrder::get();
+
+        $data = [
+            'title' => 'Data Delivery Order CV. Jevera',
+            'date' => date('m/d/Y'),
+            'image' => public_path('logo/JVRBLUEKOP.png'),
+            'alamat' => 'Jl. Rawa Jaya RT 012, RW 004, Kelurahan Pahlawan, Kecamatan Kemuning, Kota Palembang, Sumatera Selatan, Indonesia',
+            'email' => 'cvjevera@gmail.com',
+            'do' => $do
+        ];
+
+        $pdf = Pdf::loadView('pdf.deliveryOrderPDF', $data);
+        $pdf->setPaper('a4', 'landscape');
+        return $pdf->stream('DataSeluruhDeliveryOrder.pdf');
     }
 }

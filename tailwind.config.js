@@ -18,7 +18,13 @@ export default {
     },
 
     plugins: [
+        require('flowbite/plugin')({
+            charts: true,
+        }),
         require('tailwindcss-patterns'),
         forms
     ],
+
+    darkMode: 'class',
+    
 };

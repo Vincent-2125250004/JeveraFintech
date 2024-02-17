@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-md text-gray-800 leading-tight text-white">
+        <h2 class="font-semibold text-md text-gray-800 leading-tight dark:text-white">
             {{ __('Delivery Order/Data Delivery Order') }}
         </h2>
     </x-slot>
@@ -37,6 +37,10 @@
                 <a href="{{ route('pencatatan.do.create') }}"
                     class="'inline-flex items-center px-4 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-500 rounded-md font-semibold text-xs text-gray-700 dark:text-gray-300 uppercase tracking-widest shadow-sm hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 disabled:opacity-25 transition ease-in-out duration-150'">
                     Tambah Delivery Order
+                </a>
+                <a href="{{ route('pencatatan.do.pdf') }}" target="_blank"
+                    class="'inline-flex items-center ms-4 px-4 py-2 bg-sky-400 dark:bg-sky-600 border border-gray-300 dark:border-gray-500 rounded-md font-semibold text-xs text-white dark:text-white uppercase tracking-widest shadow-sm hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 disabled:opacity-25 transition ease-in-out duration-150'">
+                    Unduh Data Delivery Order
                 </a>
             </div>
             <div class="relative overflow-x-auto">
@@ -104,7 +108,7 @@
                                 </td>
                                 <td scope="row"
                                     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    {{ $dos->ID_Rute }}
+                                    {{ $dos->rute->Asal_Rute }} - {{ $dos->rute->Tujuan_Rute }}
                                 </td>
                                 <td scope="row"
                                     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
@@ -120,7 +124,7 @@
                                         <a href="{{ route('pencatatan.do.edit', $dos->id) }}"
                                             class="inline-flex items-center px-4 py-2 bg-green-500 dark:bg-green-500 border border-gray-300 dark:border-gray-500 rounded-md font-semibold text-xs text-white dark:text-white uppercase tracking-widest shadow-sm hover:bg-emerald-600 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 disabled:opacity-25 transition ease-in-out duration-150">Edit</a>
                                         <form
-                                            class="inline-flex items-center px-4 py-2 bg-red-500 hover:bg-red-700 rounded-lg text-white"
+                                            class="px-4 py-2 bg-red-500 hover:bg-red-700 rounded-lg text-white inline-flex items-center px-4 py-2 bg-red-500 dark:bg-red-500 border border-gray-300 dark:border-gray-500 rounded-md font-semibold text-xs text-white dark:text-white uppercase tracking-widest shadow-sm hover:bg-emerald-600 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 disabled:opacity-25 transition ease-in-out duration-150"
                                             method="POST" action="{{ route('pencatatan.do.destroy', $dos->id) }}"
                                             onsubmit="return confirm('Are You Sure?')">
                                             @csrf
@@ -142,18 +146,18 @@
         $(document).ready(function() {
             let table = $('#myTable').DataTable();
             $('#myTable_wrapper').addClass('overflow-y-hidden p-1');
-            $('#myTable_filter').addClass('text-white dark:text-white');
+            $('#myTable_filter').addClass('text-black font-semibold dark:text-white');
             $('#myTable_filter input').addClass(
-                'dark:text-white dark:bg-gray-800 border border-gray-300 dark:border-gray-500 rounded-md px-2 py-1 ms-4'
+                'text-black font-semibold mt-2 mb-2 dark:text-white dark:bg-gray-800 border border-gray-300 dark:border-gray-500 rounded-md px-2 py-1 ms-4'
             );
-            $('#myTable_length').addClass('text-white dark:text-white');
+            $('#myTable_length').addClass('text-black font-semibold dark:text-white');
             $('#myTable_length select').addClass(
-                'dark:text-white dark:bg-gray-800 border border-gray-300 dark:border-gray-500 rounded-md px-6 py-1 ms-4'
+                'text-black font-semibold dark:text-white dark:bg-gray-800 border border-gray-300 dark:border-gray-500 rounded-md px-6 py-1 ms-4'
             );
-            $('#myTable_info').addClass('text-white dark:text-white text-sm');
-            $('#myTable_paginate').addClass('text-white dark:text-white mt-4');
-            $('#myTable_next').addClass('text-white dark:text-white ms-4');
-            $('#myTable_previous').addClass('text-white dark:text-white me-4');
+            $('#myTable_info').addClass('text-black font-semibold dark:text-white text-sm');
+            $('#myTable_paginate').addClass('text-black font-semibold dark:text-white mt-4');
+            $('#myTable_next').addClass('text-black font-semibold dark:text-white ms-4');
+            $('#myTable_previous').addClass('text-black font-semibold dark:text-white me-4');
 
         });
     </script>

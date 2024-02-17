@@ -16,8 +16,12 @@ class DeliveryOrder extends Model
         'Nomor_Lambung',
         'SJB_Muat',
         'SJB_Bongkar',
-        'ID_Rute',
+        'Rute',
         'Tonase',
         'Status',
     ];
+
+    public function rute() {
+        return $this->belongsTo(Rute::class, 'Rute');
+    }
 }

@@ -22,11 +22,11 @@
         <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; ">
             <a href="/" style="text-align: center; display: flex; align-items: center;">
                 <x-application-logo class="w-40 h-40 fill-current text-gray-500" style="filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 1));"/>
-                <h2 class="italic text-4xl text-white font-semibold uppercase tracking-tighter" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 1); margin-left: 2px;">Jevera Fintech</h2>
+                <h2 class="italic text-4xl text-white dark:text-black font-semibold uppercase tracking-tighter" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 1); margin-left: 2px;">Jevera Fintech</h2>
             </a>
         </div>
         <div
-            class="display-flex w-full sm:max-w-md mt-6 px-6 py-4 bg-white dark:bg-gray-600 shadow-md overflow-hidden sm:rounded-lg ">
+            class="display-flex w-full sm:max-w-md mt-6 px-6 py-4 bg-white dark:bg-gray-600 text-black dark:text-white shadow-md overflow-hidden sm:rounded-lg ">
             {{ $slot }}
         </div>
     </div>

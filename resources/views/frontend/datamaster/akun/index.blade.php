@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-md text-gray-800 leading-tight text-white">
+        <h2 class="font-semibold text-md text-gray-800 leading-tight dark:text-white">
             {{ __('Data Master/Data Akun') }}
         </h2>
     </x-slot>
@@ -62,10 +62,10 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($akun->sortBy('Kode_Akun') as $akuns)
+                        @foreach ($akun->sortBy('id') as $akuns)
                             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                 <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    {{ $akuns->Kode_Akun }}
+                                    {{ $akuns->id }}
                                 </td>
                                 <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                     {{ $akuns->Nama_Akun }}
@@ -79,11 +79,11 @@
 
                                 <td class="py-4 px-6 text-sm font-medium text-right whitespace-nowrap">
                                     <div class="flex space-x-2">
-                                        <a href="{{ route('datamaster.akun.edit', $akuns->Kode_Akun) }}"
+                                        <a href="{{ route('datamaster.akun.edit', $akuns->id) }}"
                                             class="inline-flex items-center px-4 py-2 bg-green-500 dark:bg-green-500 border border-gray-300 dark:border-gray-500 rounded-md font-semibold text-xs text-white dark:text-white uppercase tracking-widest shadow-sm hover:bg-emerald-600 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 disabled:opacity-25 transition ease-in-out duration-150">Edit</a>
                                         <form
-                                            class="px-4 py-2 bg-red-500 hover :bg-red-700 rounded-lg text-white inline-flex items-center px-4 py-2 bg-red-500 dark:bg-red-500 border border-gray-300 dark:border-gray-500 rounded-md font-semibold text-xs text-white dark:text-white uppercase tracking-widest shadow-sm hover:bg-emerald-600 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 disabled:opacity-25 transition ease-in-out duration-150"
-                                            method="POST" action="{{ route('datamaster.akun.destroy', $akuns->Kode_Akun) }}"
+                                            class="px-4 py-2 bg-red-500 hover:bg-red-700 rounded-lg text-white inline-flex items-center px-4 py-2 bg-red-500 dark:bg-red-500 border border-gray-300 dark:border-gray-500 rounded-md font-semibold text-xs text-white dark:text-white uppercase tracking-widest shadow-sm hover:bg-emerald-600 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 disabled:opacity-25 transition ease-in-out duration-150"
+                                            method="POST" action="{{ route('datamaster.akun.destroy', $akuns->id) }}"
                                             onsubmit="return confirm('Are You Sure?')">
                                             @csrf
                                             @method('DELETE')
@@ -104,18 +104,18 @@
             $(document).ready(function() {
                 let table =  $('#myTable').DataTable();
                 $('#myTable_wrapper').addClass('overflow-y-hidden p-1');
-                $('#myTable_filter').addClass('text-white dark:text-white');
+                $('#myTable_filter').addClass('text-black font-semibold dark:text-white');
                 $('#myTable_filter input').addClass(
-                    'dark:text-white dark:bg-gray-800 border border-gray-300 dark:border-gray-500 rounded-md px-2 py-1 ms-4'
+                    'text-black font-semibold mt-2 mb-2 dark:text-white dark:bg-gray-800 border border-gray-300 dark:border-gray-500 rounded-md px-2 py-1 ms-4'
                 );
-                $('#myTable_length').addClass('text-white dark:text-white');
+                $('#myTable_length').addClass('text-black font-semibold dark:text-white');
                 $('#myTable_length select').addClass(
-                    'dark:text-white dark:bg-gray-800 border border-gray-300 dark:border-gray-500 rounded-md px-6 py-1 ms-4'
+                    'text-black font-semibold dark:text-white dark:bg-gray-800 border border-gray-300 dark:border-gray-500 rounded-md px-6 py-1 ms-4'
                 );
-                $('#myTable_info').addClass('text-white dark:text-white text-sm');
-                $('#myTable_paginate').addClass('text-white dark:text-white mt-4');
-                $('#myTable_next').addClass('text-white dark:text-white ms-4');
-                $('#myTable_previous').addClass('text-white dark:text-white me-4');
+                $('#myTable_info').addClass('text-black font-semibold dark:text-white text-sm');
+                $('#myTable_paginate').addClass('text-black font-semibold dark:text-white mt-4');
+                $('#myTable_next').addClass('text-black font-semibold dark:text-white ms-4');
+                $('#myTable_previous').addClass('text-black font-semibold dark:text-white me-4');
 
             });
         </script>

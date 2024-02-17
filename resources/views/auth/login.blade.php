@@ -2,7 +2,7 @@
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
     <div class="m-4" style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
-        <h2 class="text-3xl text-white font-semibold justify-center">Login Admin</h2>
+        <h2 class="text-3xl text-dark dark:text-white font-semibold justify-center">Login Admin</h2>
     </div>
 
     <form method="POST" action="{{ route('login') }}">
@@ -29,10 +29,10 @@
                 <input id="remember_me" type="checkbox"
                     class="rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800"
                     name="remember">
-                <span class="ms-2 text-sm text-white dark:text-white">{{ __('Remember me') }}</span>
+                <span class="ms-2 text-sm text-dark dark:text-white">{{ __('Remember me') }}</span>
             </label>
             @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-white dark:hover:text-white rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800 text-right"
+                <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-sky-600 dark:hover:text-sky-600 hover:underline rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800 text-right"
                     href="{{ route('password.request') }}">
                     {{ __('Forgot your password?') }}
                 </a>
@@ -50,7 +50,7 @@
             <p class="text-sm font-light text-gray-500 dark:text-gray-400 justify-center items-center ">
                 Don’t have an account yet?
                 <a href="{{ route('register') }}"
-                    class="underline font-medium text-primary-600 hover:underline dark:text-primary-500 dark:hover:text-white">Sign up</a>
+                    class="font-medium text-primary-600 hover:underline hover:text-sky-600 dark:hover:text-sky-600 dark:text-primary-500 dark:hover:text-white">Sign up</a>
             </p>
         </div>
     </form>

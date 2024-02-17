@@ -11,7 +11,7 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('mobils', function (Blueprint $table) {
-            $table->increments('ID_Mobil');
+            $table->id();
             $table->string('Nomor_Polisi', 50)->unique();
             $table->string('Nomor_Lambung', 50)->unique();
             $table->string('Pemilik', 50);

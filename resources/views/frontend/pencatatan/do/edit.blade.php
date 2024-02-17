@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-md text-gray-800 leading-tight text-white">
+        <h2 class="font-semibold text-md text-gray-800 leading-tight dark:text-white">
             {{ __('Delivery Order/Data Delivery Order/Edit Delivery Order') }}
         </h2>
     </x-slot>
@@ -16,9 +16,9 @@
 
 
             <div class="relative overflow-x-auto">
-                <div class="bg-gray-700 rounded shadow-lg p-4 px-4 md:p-8 mb-6">
+                <div class="bg-white dark:bg-gray-700 rounded shadow-lg p-4 px-4 md:p-8 mb-6">
                     <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3">
-                        <div class="text-gray-100">
+                        <div class="text-black dark:text-white">
                             <p class="font-medium text-lg">Edit Delivery Order</p>
                             <p>Mohon pastikan semua form telah terisi dengan lengkap.</p>
                         </div>
@@ -29,7 +29,7 @@
                                 @csrf
                                 <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-6">
                                     <div class="md:col-span-3">
-                                        <label for="no_do" class="text-gray-100">Nomor Delivery Order</label>
+                                        <label for="no_do" class="text-black dark:text-white">Nomor Delivery Order</label>
                                         <input type="text" name="no_do" id="no_do"
                                             class="h-10 border mt-1 rounded px-4 w-full bg-gray-100"
                                             value="{{ $do->NO_Do }}" readonly />
@@ -39,7 +39,7 @@
                                     </div>
 
                                     <div class="md:col-span-3">
-                                        <label for="tanggal_do" class="text-gray-100">Tanggal</label>
+                                        <label for="tanggal_do" class="text-black dark:text-white">Tanggal</label>
                                         <input type="date" name="tanggal_do" id="tanggal_do"
                                             class="h-10 border mt-1 rounded px-4 w-full bg-gray-100"
                                             value="{{ $do->Tanggal_Do }}" placeholder="" />
@@ -49,7 +49,7 @@
                                     </div>
 
                                     <div class="md:col-span-3">
-                                        <label for="nomor_polisi" class="text-gray-100">Nomor Polisi</label>
+                                        <label for="nomor_polisi" class="text-black dark:text-white">Nomor Polisi</label>
                                         <select id="nomor_polisi" name="nomor_polisi"
                                             class="bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-200 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-1"
                                             onchange="updateNomorLambung(this)">
@@ -67,37 +67,37 @@
                                     </div>
 
                                     <div class="md:col-span-3">
-                                        <label for="nomor_lambung" class="text-gray-100">Nomor Lambung</label>
+                                        <label for="nomor_lambung" class="text-black dark:text-white">Nomor Lambung</label>
                                         <input type="text" name="nomor_lambung" id="nomor_lambung"
                                             class="h-10 border mt-1 rounded px-4 w-full bg-gray-100" value="{{ $do->Nomor_Lambung }}"
-                                            placeholder="" readonly />
+                                            placeholder="Nomor Lambung" readonly />
                                         @error('nomor_lambung')
                                             <div class="text-sm text-red-400">{{ $message }}</div>
                                         @enderror
                                     </div>
 
                                     <div class="md:col-span-3">
-                                        <label for="sjb_muat" class="text-gray-100">SJB Muat</label>
+                                        <label for="sjb_muat" class="text-black dark:text-white">SJB Muat</label>
                                         <input type="text" name="sjb_muat" id="sjb_muat"
                                             class="h-10 border mt-1 rounded px-4 w-full bg-gray-100"
-                                            value="{{ $do->SJB_Muat }}" placeholder="" />
+                                            value="{{ $do->SJB_Muat }}" placeholder="SJB Muat" />
                                         @error('sjb_muat')
                                             <div class="text-sm text-red-400">{{ $message }}</div>
                                         @enderror
                                     </div>
 
                                     <div class="md:col-span-3">
-                                        <label for="sjb_bongkar" class="text-gray-100">SJB Bongkar</label>
+                                        <label for="sjb_bongkar" class="text-black dark:text-white">SJB Bongkar</label>
                                         <input type="text" name="sjb_bongkar" id="sjb_bongkar"
                                             class="h-10 border mt-1 rounded px-4 w-full bg-gray-100"
-                                            value="{{ $do->SJB_Bongkar }}" placeholder="" />
+                                            value="{{ $do->SJB_Bongkar }}" placeholder="SJB Bongkar" />
                                         @error('sjb_bongkar')
                                             <div class="text-sm text-red-400">{{ $message }}</div>
                                         @enderror
                                     </div>
 
                                     <div class="md:col-span-3">
-                                        <label for="rute" class="text-gray-100">Rute</label>
+                                        <label for="rute" class="text-black dark:text-white">Rute</label>
                                         <select id="rute" name="rute"
                                             class="bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-200 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-1">
                                             <option value="" disabled selected>Silahkan dipilih</option>
@@ -113,17 +113,17 @@
                                     </div>
 
                                     <div class="md:col-span-3">
-                                        <label for="tonase" class="text-gray-100">Tonase</label>
+                                        <label for="tonase" class="text-black dark:text-white">Tonase</label>
                                         <input type="text" name="tonase" id="tonase"
                                             class="h-10 border mt-1 rounded px-4 w-full bg-gray-100"
-                                            value="{{ $do->Tonase }}" placeholder="" />
+                                            value="{{ $do->Tonase }}" placeholder="Tonase" />
                                         @error('tonase')
                                             <div class="text-sm text-red-400">{{ $message }}</div>
                                         @enderror
                                     </div>
 
                                     <div class="md:col-span-3">
-                                        <label for="status" class="text-gray-100">Status</label>
+                                        <label for="status" class="text-black dark:text-white">Status</label>
                                         <select id="status" name="status"
                                             class="bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-200 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                             @foreach (App\Enums\StatusDO::cases() as $status)

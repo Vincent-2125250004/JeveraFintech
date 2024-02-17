@@ -1,7 +1,7 @@
 <x-guest-layout>
     <div class="m-6"
                 style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
-                <h2 class="text-3xl text-white font-semibold justify-center">Register Admin</h2>
+                <h2 class="text-3xl text-dark dark:text-white font-semibold justify-center">Register Admin</h2>
             </div>
     <form method="POST" action="{{ route('register') }}">
         @csrf
@@ -50,7 +50,7 @@
         </div>
 
         <div class="flex items-center justify-center mt-4 text-center">
-            <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-white dark:hover:text-white rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('login') }}">
+            <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-sky-600 dark:hover:text-sky-600 hover:underline rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('login') }}">
                 {{ __('Already registered?') }}
             </a>
         </div>

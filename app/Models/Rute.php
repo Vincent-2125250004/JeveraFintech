@@ -10,7 +10,6 @@ class Rute extends Model
     use HasFactory;
 
     protected $fillable = [
-        'ID_Rute',
         'Asal_Rute',
         'Tujuan_Rute',
     ];
@@ -19,7 +18,6 @@ class Rute extends Model
         return $this->hasMany(DeliveryOrder::class);
     }
 
-    protected $primaryKey = 'ID_Rute';
 
 
 }

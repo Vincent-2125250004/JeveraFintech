@@ -50,7 +50,7 @@ class DataMobilController extends Controller
                 $imageName = $request->nomor_lambung .'-berkas'.$i.'.'.$image->getClientOriginalExtension();
                 $image->move(public_path('berkas-images'), $imageName);
                 BerkasPendukung::create([
-                    'mobil_ID_Mobil' => $newMobil->ID_Mobil,
+                    'ID_Mobil' => $newMobil->id,
                     'images' => $imageName
                 ]);
                 $i++;
@@ -92,8 +92,6 @@ class DataMobilController extends Controller
             'Tanggal_Masuk' => Carbon::parse($request->tanggal_masuk)->format('Y-m-d'),
             'Tanggal_Keluar' => Carbon::parse($request->tanggal_keluar)->format('Y-m-d'),
         ]);
-
-        
 
         return redirect()->route('datamaster.mobil.index')->with('info', 'Data Mobil Berhasil Diperbarui');
     }

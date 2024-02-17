@@ -11,7 +11,6 @@ class Kontak extends Model
     use HasFactory;
 
     protected $fillable = [
-        'Kode_Kontak',
         'Nama_Kontak',
         'Nomor_Telepon',
         'Tipe_Kontak',
@@ -20,5 +19,9 @@ class Kontak extends Model
     protected $casts = [
         'Tipe_Kontak' => TipeKontak::class,
     ];
-    protected $primaryKey = 'Kode_Kontak';
+
+
+    public function kontak() {
+        return $this->hasMany(Pengeluaran::class);
+    }
 }

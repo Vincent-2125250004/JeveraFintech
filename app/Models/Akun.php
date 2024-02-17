@@ -20,7 +20,8 @@ class Akun extends Model
         'Tipe_Transaksi' => TipeTransaksiAkun::class,
     ];
 
-    protected $primaryKey = 'Kode_Akun';
-
+    public function akun() {
+        return $this->hasMany(Pengeluaran::class);
+    }
 
 }

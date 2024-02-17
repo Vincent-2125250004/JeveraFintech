@@ -16,10 +16,13 @@ return new class extends Migration
             $table->string('NO_Do')->unique();
             $table->date('Tanggal_Do');
             $table->string('Nomor_Polisi');
+            $table->foreign('Nomor_Polisi')->references('Nomor_Polisi')->on('mobils')->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('Nomor_Lambung');
+            $table->foreign('Nomor_Lambung')->references('Nomor_Lambung')->on('mobils')->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('SJB_Muat');
             $table->string('SJB_Bongkar');
-            $table->string('ID_Rute');
+            $table->unsignedBigInteger('Rute');
+            $table->foreign('Rute')->references('id')->on('rutes')->cascadeOnDelete()->cascadeOnUpdate();
             $table->double('Tonase');
             $table->string('Status');
             $table->timestamps();

@@ -23,12 +23,12 @@ class Mobil extends Model
     ];
 
     public function berkas()  {
-        return $this->hasMany(BerkasPendukung::class);
+        return $this->hasMany(BerkasPendukung::class,'ID_Mobil');
     }
 
     public function mobil() {
         return $this->hasMany(DeliveryOrder::class);
     }
 
-    protected $primaryKey = 'ID_Mobil';
+
 }

@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::create('berkas_pendukungs', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Mobil::class);
+            $table->unsignedBigInteger('ID_Mobil');
+            $table->foreign('ID_Mobil')->references('id')->on('mobils')->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('images');
             $table->timestamps();
         });

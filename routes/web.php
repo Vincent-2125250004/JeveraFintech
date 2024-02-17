@@ -3,6 +3,8 @@
 use App\Http\Controllers\admin\DataKontakController;
 use App\Http\Controllers\admin\DataMobilController;
 use App\Http\Controllers\admin\DataRuteController;
+use App\Http\Controllers\admin\PengeluaranController;
+use App\Http\Controllers\admin\PemasukanController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\DataAkunController;
@@ -34,10 +36,10 @@ Route::get('/laporan', function (Request $request) {
 })->name('laporan');
 
 
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [App\Http\Controllers\DashboardGraphController::class, 'indexGraph'])->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -58,7 +60,11 @@ Route::middleware('auth')->get('generatePDFMobil', [App\Http\Controllers\PDF\PDF
 //Pencatatan
 Route::middleware('auth')->name('pencatatan.')->prefix('pencatatan')->group(function () {
     Route::resource('/do', DeliveryOrderController::class);
+    Route::resource('/pengeluaran', PengeluaranController::class);
+    Route::resource('/pemasukan', PemasukanController::class);
 });
+
+Route::middleware('auth')->get('generatePDFDo', [App\Http\Controllers\PDF\PDFController::class, 'generatePDFDeliveryOrder']) ->name('pencatatan.do.pdf');
 
 
 

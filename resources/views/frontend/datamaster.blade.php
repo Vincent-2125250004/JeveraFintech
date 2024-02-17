@@ -8,7 +8,7 @@
     <div class="container-fluid auto-rows-max m-10 p-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 sm:gap-4 gap-3">
         <a href="{{ route('datamaster.akun.index') }}" type="button">
             <div
-                class="group relative cursor-pointer overflow-hidden bg-gray-800 dark:bg-gray-800 px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl sm:mx-auto sm:max-w-sm sm:rounded-lg sm:px-10">
+                class="group relative cursor-pointer overflow-hidden bg-gray-100 dark:bg-gray-800 px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl sm:mx-auto sm:max-w-sm sm:rounded-lg sm:px-10">
                 <span
                     class="absolute top-10 z-0 h-20 w-20 rounded-full bg-sky-800 transition-all duration-300 group-hover:scale-[15]"></span>
                 <div class="relative z-10 mx-auto max-w-md">
@@ -20,12 +20,12 @@
                         </svg>
                     </span>
                     <div
-                        class="space-y-6 pt-5 text-base leading-7 text-gray-200 transition-all duration-300 group-hover:text-white/90">
-                        <h1 class="text-2xl font-semibold leading-7 text-white dark:text-white sm:text-3xl sm:truncate">
+                        class="space-y-6 pt-5 text-base leading-7 text-gray-400 transition-all duration-300 group-hover:text-white/90">
+                        <h1 class="text-2xl font-semibold leading-7 text-sky-500 dark:text-white sm:text-3xl sm:truncate">
                             Data Akun</h1>
                     </div>
                     <div
-                        class="space-y-6 pt-5 text-base leading-7 text-gray-200 transition-all duration-300 group-hover:text-white/90">
+                        class="space-y-6 pt-5 text-base leading-7 text-gray-500 dark:text-white transition-all duration-300 group-hover:text-white/90">
                         <p>Kumpulan Akun transaksi, Anda bisa melakukan aksi seperti menambahkan akun, dan menyunting
                             Akun.
                         </p>
@@ -36,7 +36,7 @@
 
         <a href="{{ route('datamaster.kontak.index') }}" type="button">
         <div
-            class="flex group relative cursor-pointer overflow-hidden bg-gray-800 dark:bg-gray-800 px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl sm:mx-auto sm:max-w-sm sm:rounded-lg sm:px-10">
+            class="flex group relative cursor-pointer overflow-hidden bg-gray-100 dark:bg-gray-800 px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl sm:mx-auto sm:max-w-sm sm:rounded-lg sm:px-10">
             <span
                 class="absolute top-10 z-0 h-20 w-20 rounded-full bg-red-800 transition-all duration-300 group-hover:scale-[15]"></span>
             <div class="relative z-10 mx-auto max-w-md">
@@ -49,11 +49,11 @@
                 </span>
                 <div
                     class="space-y-6 pt-5 text-base leading-7 text-gray-200 transition-all duration-300 group-hover:text-white/90">
-                    <h1 class="text-2xl font-semibold leading-7 text-white dark:text-white sm:text-3xl sm:truncate">
+                    <h1 class="text-2xl font-semibold leading-7 text-red-500 dark:text-white sm:text-3xl sm:truncate">
                         Data Kontak</h1>
                 </div>
                 <div
-                    class="space-y-6 pt-5 text-base leading-7 text-gray-200 transition-all duration-300 group-hover:text-white/90">
+                    class="space-y-6 pt-5 text-base leading-7 text-gray-500 dark:text-white transition-all duration-300 group-hover:text-white/90">
                     <p>Kumpulan Kontak, Anda bisa melakukan aksi seperti menambahkan Kontak Pegawai, Vendor, Pelanggan,
                         dan menyuntingnya.</p>
                 </div>
@@ -64,7 +64,7 @@
 
         <a href="{{ route('datamaster.mobil.index') }}" type="button">
         <div
-            class="group relative cursor-pointer overflow-hidden bg-gray-800 dark:bg-gray-800 px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl sm:mx-auto sm:max-w-sm sm:rounded-lg sm:px-10">
+            class="group relative cursor-pointer overflow-hidden bg-white dark:bg-gray-800 px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl sm:mx-auto sm:max-w-sm sm:rounded-lg sm:px-10">
             <span
                 class="absolute top-10 z-0 h-20 w-20 rounded-full bg-yellow-800 transition-all duration-300 group-hover:scale-[15]"></span>
             <div class="relative z-10 mx-auto max-w-md">
@@ -77,11 +77,11 @@
                 </span>
                 <div
                     class="space-y-6 pt-5 text-base leading-7 text-gray-200 transition-all duration-300 group-hover:text-white/90">
-                    <h1 class="text-2xl font-semibold leading-7 text-white dark:text-white sm:text-3xl sm:truncate">
+                    <h1 class="text-2xl font-semibold leading-7 text-yellow-500 dark:text-white sm:text-3xl sm:truncate">
                         Data Mobil</h1>
                 </div>
                 <div
-                    class="space-y-6 pt-5 text-base leading-7 text-gray-200 transition-all duration-300 group-hover:text-white/90">
+                    class="space-y-6 pt-5 text-base leading-7 text-gray-500 dark:text-white transition-all duration-300 group-hover:text-white/90">
                     <p>Kumpulan Data Mobil, Anda bisa melakukan aksi seperti menambahkan Informasi, Berkas Mobil, dan
                         menyuntingnya.</p>
                 </div>
@@ -91,7 +91,7 @@
         </a>
         <a href="{{ route('datamaster.rute.index') }}" type="button">
         <div
-            class="group relative cursor-pointer overflow-hidden bg-gray-800 dark:bg-gray-800 px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl sm:mx-auto sm:max-w-sm sm:rounded-lg sm:px-10">
+            class="group relative cursor-pointer overflow-hidden bg-white dark:bg-gray-800 px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl sm:mx-auto sm:max-w-sm sm:rounded-lg sm:px-10">
             <span
                 class="absolute top-10 z-0 h-20 w-20 rounded-full bg-emerald-800 transition-all duration-300 group-hover:scale-[15]"></span>
             <div class="relative z-10 mx-auto max-w-md">
@@ -104,11 +104,11 @@
                 </span>
                 <div
                     class="space-y-6 pt-5 text-base leading-7 text-gray-200 transition-all duration-300 group-hover:text-white/90">
-                    <h1 class="text-2xl font-semibold leading-7 text-white dark:text-white sm:text-3xl sm:truncate">
+                    <h1 class="text-2xl font-semibold leading-7 text-emerald-500 dark:text-white sm:text-3xl sm:truncate">
                         Data Rute</h1>
                 </div>
                 <div
-                    class="space-y-6 pt-5 text-base leading-7 text-gray-200 transition-all duration-300 group-hover:text-white/90">
+                    class="space-y-6 pt-5 text-base leading-7 text-gray-500 dark:text-white transition-all duration-300 group-hover:text-white/90">
                     <p>Kumpulan Data Mobil, Anda bisa melakukan aksi seperti menambahkan Informasi, Berkas Mobil, dan
                         menyuntingnya.</p>
                 </div>

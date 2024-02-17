@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Pemasukan;
+use App\Models\Pengeluaran;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -11,11 +13,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('akuns', function (Blueprint $table) {
+        Schema::create('saldos', function (Blueprint $table) {
             $table->id();
-            $table->string('Nama_Akun')->unique();
-            $table->string('Kategori', 50);
-            $table->string('Tipe_Transaksi', 50);
+            $table->foreignIdFor(Pengeluaran::class);
+            $table->foreignIdFor(Pemasukan::class);
+            $table->string('Transaksi');
+            $table->string('Nomor_Referensi');
+            $table->bigInteger('Sisa_Saldo');
             $table->timestamps();
         });
     }
@@ -25,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('akuns');
+        Schema::dropIfExists('saldos');
     }
 };

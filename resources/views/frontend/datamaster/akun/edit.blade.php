@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-md text-gray-800 leading-tight text-white">
+        <h2 class="font-semibold text-md text-gray-800 leading-tight dark:text-white">
             {{ __('Data Master/Data Akun/Edit Akun') }}
         </h2>
     </x-slot>
@@ -15,9 +15,9 @@
             </div>
 
             <div class="relative overflow-x-auto">
-                <div class="bg-gray-700 rounded shadow-lg p-4 px-4 md:p-8 mb-6">
+                <div class="bg-white dark:bg-gray-700 rounded shadow-lg p-4 px-4 md:p-8 mb-6">
                     <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3">
-                        <div class="text-gray-100">
+                        <div class="text-black dark:text-white">
                             <p class="font-medium text-lg">Edit Akun</p>
                             <p>Mohon pastikan semua form telah terisi dengan lengkap.</p>
                         </div>
@@ -28,9 +28,9 @@
                                 @csrf
                                 <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-3">
                                     <div class="md:col-span-3">
-                                        <label for="nama_akun" class="text-gray-100">Nama Akun</label>
+                                        <label for="nama_akun" class="text-black dark:text-white">Nama Akun</label>
                                         <input type="text" name="nama_akun" id="nama_akun"
-                                            class="h-10 border mt-1 rounded px-4 w-full bg-gray-100"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-400 focus:border-primary-400 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-200 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                             value="{{ $akun->Nama_Akun }}" />
                                         @error('nama_akun')
                                             <div class="text-sm text-red-400">{{ $message }}</div>
@@ -38,9 +38,9 @@
                                     </div>
 
                                     <div class="md:col-span-3">
-                                        <label for="kategori_akun" class="text-gray-100">Kategori Akun</label>
+                                        <label for="kategori_akun" class="text-black dark:text-white">Kategori Akun</label>
                                         <input type="text" name="kategori_akun" id="kategori_akun"
-                                            class="h-10 border mt-1 rounded px-4 w-full bg-gray-100"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-400 focus:border-primary-400 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-200 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                             value="{{ $akun->Kategori }}" placeholder="" />
                                         @error('kategori_akun')
                                             <div class="text-sm text-red-400">{{ $message }}</div>
@@ -48,7 +48,7 @@
                                     </div>
 
                                     <div class="md:col-span-3">
-                                        <label for="tipe_transaksi" class="text-gray-100">Tipe Transaksi</label>
+                                        <label for="tipe_transaksi" class="text-black dark:text-white">Tipe Transaksi</label>
                                         <div class="mt-1">
                                             <select id="tipe_transaksi" name="tipe_transaksi" class="bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-200 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                                 @foreach (App\Enums\TipeTransaksiAkun::cases() as $TipeTransaksiAkun)

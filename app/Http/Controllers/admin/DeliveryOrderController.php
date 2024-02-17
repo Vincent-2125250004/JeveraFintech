@@ -43,7 +43,7 @@ class DeliveryOrderController extends Controller
             'Nomor_Lambung' => $request->nomor_lambung,
             'SJB_Muat' => $request->sjb_muat,
             'SJB_Bongkar' => $request->sjb_bongkar,
-            'ID_Rute' => $request->rute,
+            'Rute' => $request->rute,
             'Tonase' => $request->tonase,
             'Status' => $request->status,
         ]);
