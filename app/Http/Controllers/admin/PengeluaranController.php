@@ -55,7 +55,7 @@ class PengeluaranController extends Controller
 
         Saldo::create([
             'pengeluaran_id' => $pengeluaran->id,
-            'pemasukan_id' => '0',
+            'pemasukan_id' => null,
             'Transaksi' => 'Pengeluaran',
             'Nomor_Referensi' => $request->nomor_referensi,
             'Sisa_Saldo' => $newSaldo
@@ -126,7 +126,7 @@ class PengeluaranController extends Controller
             // If there is no related Saldo record, create a new one
             $pengeluaran->saldo()->create([
                 'pengeluaran_id' => $pengeluaran->id,
-                'pemasukan_id' => '0',
+                'pemasukan_id' => null,
                 'Transaksi' => 'Pengeluaran',
                 'Nomor_Referensi' => $request->nomor_referensi,
                 'Sisa_Saldo' => $newSisaSaldo

@@ -54,7 +54,7 @@ class PemasukanController extends Controller
         ]);
 
         Saldo::create([
-            'pengeluaran_id' => '0',
+            'pengeluaran_id' => null,
             'pemasukan_id' => $pemasukan->id,
             'Transaksi' => 'Pemasukan',
             'Nomor_Referensi' => $request->nomor_referensi,

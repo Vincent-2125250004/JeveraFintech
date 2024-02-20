@@ -19,7 +19,8 @@
                             {{ number_format($totalPemasukanToday, 0, ',', '.') }}
                         </h5>
                         <p class="text-base font-normal text-gray-500 dark:text-gray-400">Pemasukan Hari Ini</p>
-                        <a href="{{ route('pencatatan.pemasukan.index')}}" class="inline-flex font-medium items-center text-sm text-blue-600 hover:underline">
+                        <a href="{{ route('pencatatan.pemasukan.index') }}"
+                            class="inline-flex font-medium items-center text-sm text-blue-600 hover:underline">
                             Lihat Pemasukan
                             <svg class="w-3 h-3 ms-2.5 rtl:rotate-[270deg]" aria-hidden="true"
                                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
@@ -29,9 +30,8 @@
                             </svg>
                         </a>
                     </div>
-
-
-                    <div class="w-full md:w-1/2 bg-white rounded-lg shadow dark:bg-gray-800 p-4 md:p-6 ms-4 ">
+                    <div class="m-1"></div>
+                    <div class="w-full md:w-1/2 bg-white rounded-lg shadow dark:bg-gray-800 p-4 md:p-6">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="w-10 h-10 fill-red-600">
                             <path
                                 d="M384 352c-17.7 0-32 14.3-32 32s14.3 32 32 32H544c17.7 0 32-14.3 32-32V224c0-17.7-14.3-32-32-32s-32 14.3-32 32v82.7L342.6 137.4c-12.5-12.5-32.8-12.5-45.3 0L192 242.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0L320 205.3 466.7 352H384z" />
@@ -41,7 +41,8 @@
                                 {{ number_format($totalPengeluaranToday, 0, ',', '.') }}
                             </h5>
                             <p class="text-base font-normal text-gray-500 dark:text-gray-400">Pengeluaran Hari Ini</p>
-                            <a href="{{ route('pencatatan.pengeluaran.index')}}" class="inline-flex font-medium items-center text-sm text-blue-600 hover:underline">
+                            <a href="{{ route('pencatatan.pengeluaran.index') }}"
+                                class="inline-flex font-medium items-center text-sm text-blue-600 hover:underline">
                                 Lihat Pengeluaran
                                 <svg class="w-3 h-3 ms-2.5 rtl:rotate-[270deg]" aria-hidden="true"
                                     xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
@@ -64,7 +65,7 @@
                         <p class="text-base font-normal text-gray-500 dark:text-gray-400">Sisa Saldo</p>
                     </div>
                 </div>
-                <div id="legend-chart"></div>
+                <div id="legend-chart" class="responsive-chart"></div>
             </div>
 
             <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
@@ -92,7 +93,7 @@
                         ],
                         chart: {
                             height: "100%",
-                            maxWidth: "100%",
+                            width: "100%",
                             type: "area",
                             fontFamily: "Inter, sans-serif",
                             dropShadow: {
@@ -158,8 +159,15 @@
                             show: false,
                             labels: {
                                 formatter: function(value) {
-                                    return 'IDR ' + value.toLocaleString();
+                                    if (typeof value === 'number' && !isNaN(value)) {
+                                        return 'IDR ' + value.toLocaleString(
+                                            'id-ID'); // 'id-ID' represents the locale for Indonesian
+                                    } else {
+                                        // Handle the case where value is not a valid number
+                                        return 'N/A';
+                                    }
                                 }
+
                             }
                         },
                     }

@@ -37,9 +37,6 @@ Route::get('/laporan', function (Request $request) {
 
 
 Route::get('/dashboard', [App\Http\Controllers\DashboardGraphController::class, 'indexGraph'])->middleware(['auth', 'verified'])->name('dashboard');
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -63,7 +60,8 @@ Route::middleware('auth')->name('pencatatan.')->prefix('pencatatan')->group(func
     Route::resource('/pengeluaran', PengeluaranController::class);
     Route::resource('/pemasukan', PemasukanController::class);
 });
-
+Route::middleware('auth')->get('generateJVPengeluaran/{id}', [App\Http\Controllers\PDF\PDFController::class, 'generatePDFJournalVoucherPengeluaran']) ->name('pencatatan.pengeluaran.journalVoucher');
+Route::middleware('auth')->get('generatePDFPemasukan/{id}', [App\Http\Controllers\PDF\PDFController::class, 'generatePDFJournalVoucherPemasukan']) ->name('pencatatan.pemasukan.journalVoucher');
 Route::middleware('auth')->get('generatePDFDo', [App\Http\Controllers\PDF\PDFController::class, 'generatePDFDeliveryOrder']) ->name('pencatatan.do.pdf');
 
 

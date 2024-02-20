@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('pemasukans', function (Blueprint $table) {
             $table->id();
             $table->string('Nomor_Referensi')->unique();
-            $table->string('Nama_Kontak')->unique();
+            $table->string('Nama_Kontak');
             $table->foreign('Nama_Kontak')->references('Nama_Kontak')->on('kontaks')->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('Dari_Akun');
             $table->foreign('Dari_Akun')->references('Nama_Akun')->on('akuns')->cascadeOnDelete()->cascadeOnUpdate();

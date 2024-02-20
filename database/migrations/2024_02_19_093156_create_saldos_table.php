@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('saldos', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Pengeluaran::class);
-            $table->foreignIdFor(Pemasukan::class);
+            $table->foreignIdFor(Pengeluaran::class)->nullable()->default(null)->references('id')->on('pengeluarans')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignIdFor(Pemasukan::class)->nullable()->default(null)->references('id')->on('pemasukans')->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('Transaksi');
             $table->string('Nomor_Referensi');
             $table->bigInteger('Sisa_Saldo');
