@@ -23,7 +23,6 @@ class DataPemasukanRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nomor_referensi' => ['required', Rule::unique('pemasukans', 'Nomor_Referensi')->ignore($this->route('pemasukan'))],
             'nama_kontak' => ['required'],
             'dari_akun' => ['required'],
             'ke_akun' => ['required'],
@@ -41,8 +40,6 @@ class DataPemasukanRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'nomor_referensi.required' => 'Nomor Referensi tidak boleh kosong',
-            'nomor_referensi.unique' => 'Nomor Referensi sudah ada',
             'nama_kontak.required' => 'Nama Kontak tidak boleh kosong',
             'dari_akun.required' => 'Dari Akun tidak boleh kosong',
             'ke_akun.required' => 'Ke Akun tidak boleh kosong',

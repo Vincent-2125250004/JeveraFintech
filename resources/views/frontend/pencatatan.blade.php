@@ -21,7 +21,8 @@
                     </span>
                     <div
                         class="space-y-6 pt-5 text-base leading-7 text-gray-200 transition-all duration-300 group-hover:text-white/90">
-                        <h1 class="text-2xl font-semibold leading-7 text-violet-500 dark:text-white sm:text-3xl sm:truncate">
+                        <h1
+                            class="text-2xl font-semibold leading-7 text-violet-500 dark:text-white sm:text-3xl sm:truncate">
                             Pengeluaran</h1>
                     </div>
                     <div
@@ -47,7 +48,8 @@
                     </span>
                     <div
                         class="space-y-6 pt-5 text-base leading-7 text-gray-200 transition-all duration-300 group-hover:text-white/90">
-                        <h1 class="text-2xl font-semibold leading-7 text-pink-500 dark:text-white sm:text-3xl sm:truncate">
+                        <h1
+                            class="text-2xl font-semibold leading-7 text-pink-500 dark:text-white sm:text-3xl sm:truncate">
                             Pemasukan</h1>
                     </div>
                     <div
@@ -73,12 +75,41 @@
                     </span>
                     <div
                         class="space-y-6 pt-5 text-base leading-7 text-gray-200 transition-all duration-300 group-hover:text-white/90">
-                        <h1 class="text-2xl font-semibold leading-7 text-lime-500 dark:text-white sm:text-3xl sm:truncate">
+                        <h1
+                            class="text-2xl font-semibold leading-7 text-lime-500 dark:text-white sm:text-3xl sm:truncate">
                             Delivery Order</h1>
                     </div>
                     <div
                         class="space-y-6 pt-5 text-base leading-7 text-gray-500 dark:text-white transition-all duration-300 group-hover:text-white/90">
                         <p>Kontrol semua berkas Delivery Order didalam satu sistem</p>
+                    </div>
+
+                </div>
+            </div>
+        </a>
+
+        <a href="{{ route('pencatatan.do.index') }}" type="button">
+            <div
+                class="group relative cursor-pointer overflow-hidden bg-white dark:bg-gray-800 px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl sm:mx-auto sm:max-w-sm sm:rounded-lg sm:px-10">
+                <span
+                    class="absolute top-10 z-0 h-20 w-20 rounded-full bg-emerald-800 transition-all duration-300 group-hover:scale-[15]"></span>
+                <div class="relative z-10 mx-auto max-w-md">
+                    <span
+                        class="grid h-20 w-20 place-items-center rounded-full bg-emerald-500 transition-all duration-300 group-hover:bg-emerald-400">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-10 h-10 fill-white">
+                            <path
+                                d="M0 416c0 17.7 14.3 32 32 32l54.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48L480 448c17.7 0 32-14.3 32-32s-14.3-32-32-32l-246.7 0c-12.3-28.3-40.5-48-73.3-48s-61 19.7-73.3 48L32 384c-17.7 0-32 14.3-32 32zm128 0a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zM320 256a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zm32-80c-32.8 0-61 19.7-73.3 48L32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l246.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48l54.7 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-54.7 0c-12.3-28.3-40.5-48-73.3-48zM192 128a32 32 0 1 1 0-64 32 32 0 1 1 0 64zm73.3-64C253 35.7 224.8 16 192 16s-61 19.7-73.3 48L32 64C14.3 64 0 78.3 0 96s14.3 32 32 32l86.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48L480 128c17.7 0 32-14.3 32-32s-14.3-32-32-32L265.3 64z" />
+                        </svg>
+                    </span>
+                    <div
+                        class="space-y-6 pt-5 text-base leading-7 text-gray-200 transition-all duration-300 group-hover:text-white/90">
+                        <h1
+                            class="text-2xl font-semibold leading-7 text-emerald-500 dark:text-white sm:text-3xl sm:truncate">
+                            Adjetiva</h1>
+                    </div>
+                    <div
+                        class="space-y-6 pt-5 text-base leading-7 text-gray-500 dark:text-white transition-all duration-300 group-hover:text-white/90">
+                        <p>Pencatatan Akun Adjetiva secara langsung dari perusahaan</p>
                     </div>
 
                 </div>

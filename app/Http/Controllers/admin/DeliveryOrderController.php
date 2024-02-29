@@ -45,7 +45,7 @@ class DeliveryOrderController extends Controller
             'SJB_Bongkar' => $request->sjb_bongkar,
             'Rute' => $request->rute,
             'Tonase' => $request->tonase,
-            'Status' => $request->status,
+            'Status' => 'Selesai',
         ]);
 
         return redirect()->route('pencatatan.do.index')->with('success', 'Data Delivery Order Berhasil ditambahkan');
@@ -81,9 +81,8 @@ class DeliveryOrderController extends Controller
             'Nomor_Lambung' => $request->nomor_lambung,
             'SJB_Muat' => $request->sjb_muat,
             'SJB_Bongkar' => $request->sjb_bongkar,
-            'ID_Rute' => $request->rute,
+            'Rute' => $request->rute,
             'Tonase' => $request->tonase,
-            'Status' => $request->status,
         ]);
 
         return redirect()->route('pencatatan.do.index')->with('info', 'Data Delivery Order Berhasil diubah');

@@ -31,7 +31,6 @@ class DataDeliveryOrderStoreRequest extends FormRequest
             'sjb_bongkar'=>['required'],
             'rute'=>['required'],
             'tonase'=>['required'],
-            'status'=>['required'],
         ];
     }
 
@@ -44,6 +43,7 @@ class DataDeliveryOrderStoreRequest extends FormRequest
     {
         return [
             'no_do.required' => 'Kolom Nomor DO harus diisi.',
+            'no_do.unique' => 'Nomor DO sudah terdaftar.',
             'tanggal_do.required' => 'Kolom Tanggal DO harus diisi.',
             'tanggal_do.date' => 'Kolom Tanggal DO harus berupa tanggal.',
             'nomor_polisi.required' => 'Kolom Nomor Polisi harus diisi.',
@@ -52,7 +52,6 @@ class DataDeliveryOrderStoreRequest extends FormRequest
             'sjb_bongkar.required' => 'Kolom SJB Bongkar harus diisi.',
             'rute.required' => 'Kolom Rute harus diisi.',
             'tonase.required' => 'Kolom Tonase harus diisi.',
-            'status.required' => 'Kolom Status harus diisi.',
         ];
     }
 }

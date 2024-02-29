@@ -12,6 +12,9 @@ class Rute extends Model
     protected $fillable = [
         'Asal_Rute',
         'Tujuan_Rute',
+        'Gerbang',
+        'Kilometer_Rute',
+        'Harga_Rute'
     ];
 
     public function rute() {

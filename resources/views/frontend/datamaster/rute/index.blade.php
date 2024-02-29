@@ -8,83 +8,48 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-            @if (session()->has('success'))
+            @if (session()->has('success') || session()->has('danger') || session()->has('warning') || session()->has('info'))
                 <script>
-                    const Toast = Swal.mixin({
-                        toast: true,
-                        position: "top-end",
-                        showConfirmButton: false,
-                        timer: 3000,
-                        timerProgressBar: true,
-                        didOpen: (toast) => {
-                            toast.onmouseenter = Swal.stopTimer;
-                            toast.onmouseleave = Swal.resumeTimer;
-                        }
-                    });
-                    Toast.fire({
-                        icon: "success",
-                        title: "{{ session()->get('success') }}!"
-                    });
-                </script>
-            @endif
+                    function showToast(icon, message) {
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: "top-end",
+                            showConfirmButton: false,
+                            timer: 3000,
+                            timerProgressBar: true,
+                            didOpen: (toast) => {
+                                toast.onmouseenter = Swal.stopTimer;
+                                toast.onmouseleave = Swal.resumeTimer;
+                            },
+                            willClose: (toast) => {
+                                if (toast.getAttribute('aria-live') === 'polite') {
+                                    toast.style.transition = 'opacity 1s ease-out';
+                                    toast.style.opacity = 0;
+                                }
+                            }
+                        });
 
-            @if (session()->has('danger'))
-                <script>
-                    const Toast = Swal.mixin({
-                        toast: true,
-                        position: "top-end",
-                        showConfirmButton: false,
-                        timer: 3000,
-                        timerProgressBar: true,
-                        didOpen: (toast) => {
-                            toast.onmouseenter = Swal.stopTimer;
-                            toast.onmouseleave = Swal.resumeTimer;
-                        }
-                    });
-                    Toast.fire({
-                        icon: "error",
-                        title: "{{ session()->get('danger') }}!"
-                    });
-                </script>
-            @endif
+                        Toast.fire({
+                            icon: icon,
+                            title: message
+                        });
+                    }
 
-            @if (session()->has('warning'))
-                <script>
-                    const Toast = Swal.mixin({
-                        toast: true,
-                        position: "top-end",
-                        showConfirmButton: false,
-                        timer: 3000,
-                        timerProgressBar: true,
-                        didOpen: (toast) => {
-                            toast.onmouseenter = Swal.stopTimer;
-                            toast.onmouseleave = Swal.resumeTimer;
-                        }
-                    });
-                    Toast.fire({
-                        icon: "warning",
-                        title: "{{ session()->get('warning') }}!"
-                    });
-                </script>
-            @endif
+                    @if (session()->has('success'))
+                        showToast('success', "{{ session()->get('success') }}!");
+                    @endif
 
-            @if (session()->has('info'))
-                <script>
-                    const Toast = Swal.mixin({
-                        toast: true,
-                        position: "top-end",
-                        showConfirmButton: false,
-                        timer: 3000,
-                        timerProgressBar: true,
-                        didOpen: (toast) => {
-                            toast.onmouseenter = Swal.stopTimer;
-                            toast.onmouseleave = Swal.resumeTimer;
-                        }
-                    });
-                    Toast.fire({
-                        icon: "info",
-                        title: "{{ session()->get('info') }}!"
-                    });
+                    @if (session()->has('danger'))
+                        showToast('error', "{{ session()->get('danger') }}!");
+                    @endif
+
+                    @if (session()->has('warning'))
+                        showToast('warning', "{{ session()->get('warning') }}!");
+                    @endif
+
+                    @if (session()->has('info'))
+                        showToast('info', "{{ session()->get('info') }}!");
+                    @endif
                 </script>
             @endif
 
@@ -109,6 +74,15 @@
                                 Tujuan Rute
                             </th>
                             <th scope="col" class="px-6 py-3">
+                                Gerbang
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Kilometer
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Harga
+                            </th>
+                            <th scope="col" class="px-6 py-3">
                             </th>
                         </tr>
                     </thead>
@@ -126,6 +100,18 @@
                                 <td scope="row"
                                     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                     {{ $rutes->Tujuan_Rute }}
+                                </td>
+                                <td scope="row"
+                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    {{ $rutes->Gerbang }}
+                                </td>
+                                <td scope="row"
+                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    {{ $rutes->Kilometer_Rute }} KM
+                                </td>
+                                <td scope="row"
+                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    IDR {{ number_format($rutes->Harga_Rute, 0, ',', '.') }}
                                 </td>
                                 <td class="py-4 px-6 text-sm font-medium text-right whitespace-nowrap">
                                     <div class="flex space-x-2">

@@ -23,7 +23,7 @@
                         </div>
 
                         <div class="lg:col-span-2">
-                            <form method="POST" action="{{ route('datamaster.rute.update', $rute->ID_Rute) }}">
+                            <form method="POST" action="{{ route('datamaster.rute.update', $rute->id) }}">
                                 @method('PUT')
                                 @csrf
                                 <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-3">
@@ -46,6 +46,41 @@
                                             <div class="text-sm text-red-400">{{ $message }}</div>
                                         @enderror
                                     </div>
+
+                                    <div class="md:col-span-3">
+                                        <label for="gerbang" class="text-black dark:text-white">Gerbang</label>
+                                        <input type="text" name="gerbang" id="gerbang"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-400 focus:border-primary-400 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-200 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                            value="{{ $rute->Gerbang }}" required="" placeholder="Rute Tujuan"
+                                            placeholder="" />
+                                        @error('gerbang')
+                                            <div class="text-sm text-red-400">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
+                                    <div class="md:col-span-3">
+                                        <label for="kilometer_rute" class="text-black dark:text-white">Kilometer
+                                            Rute</label>
+                                        <input type="text" name="kilometer_rute" id="kilometer_rute"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-400 focus:border-primary-400 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-200 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                            value="{{ $rute->Kilometer_Rute }}" required="" placeholder="Rute Tujuan"
+                                            placeholder="" />
+                                        @error('kilometer_rute')
+                                            <div class="text-sm text-red-400">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
+                                    <div class="md:col-span-3">
+                                        <label for="harga_rute" class="text-black dark:text-white">Harga Rute</label>
+                                        <input type="number" name="harga_rute" id="harga_rute"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-400 focus:border-primary-400 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-200 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                            value="{{ $rute->Harga_Rute }}" required="" placeholder="Rute Tujuan"
+                                            placeholder="" />
+                                        @error('harga_rute')
+                                            <div class="text-sm text-red-400">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
                                     <div class="md:col-span-5 text-right mt-10">
                                         <div class="inline-flex items-end">
                                             <button type="submit"

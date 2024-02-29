@@ -6,11 +6,11 @@
     </x-slot>
 
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 ">
 
-            <div class="mt-1">
-                <div class="flex flex-col md:flex-row md:justify-between ">
-                    <div class="w-full md:w-1/2 bg-white rounded-lg shadow dark:bg-gray-800 p-4 md:p-6 mb-4 md:mb-0">
+            
+                <div class="flex flex-col md:flex-row md:justify-between m-4 lg:mb-0 sm:m-4">
+                    <div class="w-full md:w-1/2 bg-white rounded-lg shadow dark:bg-gray-800 p-4 md:p-6 mb-1 md:mb-0">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 fill-green-400" viewBox="0 0 576 512">
                             <path
                                 d="M384 160c-17.7 0-32-14.3-32-32s14.3-32 32-32H544c17.7 0 32 14.3 32 32V288c0 17.7-14.3 32-32 32s-32-14.3-32-32V205.3L342.6 374.6c-12.5 12.5-32.8 12.5-45.3 0L192 269.3 54.6 406.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l160-160c12.5-12.5 32.8-12.5 45.3 0L320 306.7 466.7 160H384z" />
@@ -54,9 +54,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="max-w-sm w-full bg-white rounded-lg shadow dark:bg-gray-800 p-4 md:p-6 mt-10">
+            <div class="max-w-sm w-full bg-white rounded-lg shadow dark:bg-gray-800 p-6 m-4 ">
                 <div class="flex justify-between mb-5">
                     <div>
                         <h5 class="leading-none text-3xl font-bold text-gray-900 dark:text-white pb-2">IDR

@@ -8,89 +8,55 @@
     <div class="py-12">
         <div class="mx-20 mx-auto sm:px-6 lg:px-8">
             <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-            @if (session()->has('success'))
-                <script>
-                    const Toast = Swal.mixin({
-                        toast: true,
-                        position: "top-end",
-                        showConfirmButton: false,
-                        timer: 3000,
-                        timerProgressBar: true,
-                        didOpen: (toast) => {
-                            toast.onmouseenter = Swal.stopTimer;
-                            toast.onmouseleave = Swal.resumeTimer;
-                        }
-                    });
-                    Toast.fire({
-                        icon: "success",
-                        title: "{{ session()->get('success') }}!"
-                    });
-                </script>
-            @endif
 
-            @if (session()->has('danger'))
+            @if (session()->has('success') || session()->has('danger') || session()->has('warning') || session()->has('info'))
                 <script>
-                    const Toast = Swal.mixin({
-                        toast: true,
-                        position: "top-end",
-                        showConfirmButton: false,
-                        timer: 3000,
-                        timerProgressBar: true,
-                        didOpen: (toast) => {
-                            toast.onmouseenter = Swal.stopTimer;
-                            toast.onmouseleave = Swal.resumeTimer;
-                        }
-                    });
-                    Toast.fire({
-                        icon: "error",
-                        title: "{{ session()->get('danger') }}!"
-                    });
-                </script>
-            @endif
+                    function showToast(icon, message) {
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: "top-end",
+                            showConfirmButton: false,
+                            timer: 3000,
+                            timerProgressBar: true,
+                            didOpen: (toast) => {
+                                toast.onmouseenter = Swal.stopTimer;
+                                toast.onmouseleave = Swal.resumeTimer;
+                            },
+                            willClose: (toast) => {
+                                if (toast.getAttribute('aria-live') === 'polite') {
+                                    toast.style.transition = 'opacity 1s ease-out';
+                                    toast.style.opacity = 0;
+                                }
+                            }
+                        });
 
-            @if (session()->has('warning'))
-                <script>
-                    const Toast = Swal.mixin({
-                        toast: true,
-                        position: "top-end",
-                        showConfirmButton: false,
-                        timer: 3000,
-                        timerProgressBar: true,
-                        didOpen: (toast) => {
-                            toast.onmouseenter = Swal.stopTimer;
-                            toast.onmouseleave = Swal.resumeTimer;
-                        }
-                    });
-                    Toast.fire({
-                        icon: "warning",
-                        title: "{{ session()->get('warning') }}!"
-                    });
-                </script>
-            @endif
+                        Toast.fire({
+                            icon: icon,
+                            title: message
+                        });
+                    }
 
-            @if (session()->has('info'))
-                <script>
-                    const Toast = Swal.mixin({
-                        toast: true,
-                        position: "top-end",
-                        showConfirmButton: false,
-                        timer: 3000,
-                        timerProgressBar: true,
-                        didOpen: (toast) => {
-                            toast.onmouseenter = Swal.stopTimer;
-                            toast.onmouseleave = Swal.resumeTimer;
-                        }
-                    });
-                    Toast.fire({
-                        icon: "info",
-                        title: "{{ session()->get('info') }}!"
-                    });
+                    @if (session()->has('success'))
+                        showToast('success', "{{ session()->get('success') }}!");
+                    @endif
+
+                    @if (session()->has('danger'))
+                        showToast('error', "{{ session()->get('danger') }}!");
+                    @endif
+
+                    @if (session()->has('warning'))
+                        showToast('warning', "{{ session()->get('warning') }}!");
+                    @endif
+
+                    @if (session()->has('info'))
+                        showToast('info', "{{ session()->get('info') }}!");
+                    @endif
                 </script>
             @endif
 
             <div class="flex justify-end m-2 p-2">
                 <a href="{{ route('pencatatan.pemasukan.create') }}"
-                    class="'inline-flex items-center px-4 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-500 rounded-md font-semibold text-xs text-gray-700 dark:text-gray-300 uppercase tracking-widest shadow-sm hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 disabled:opacity-25 transition ease-in-out duration-150'">
+                    class="inline-flex items-center px-4 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-500 rounded-md font-semibold text-xs text-gray-700 dark:text-gray-300 uppercase tracking-widest shadow-sm hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 disabled:opacity-25 transition ease-in-out duration-150">
                     Tambah Pemasukan
                 </a>
             </div>

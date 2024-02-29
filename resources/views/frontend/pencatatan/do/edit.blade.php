@@ -9,7 +9,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="flex justify-end m-2 p-2">
                 <a href="{{ route('pencatatan.do.index') }}"
-                    class="inline-flex items-center px-4 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-500 rounded-md font-semibold text-xs text-gray-700 dark:text-gray-300 uppercase tracking-widest shadow-sm hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 disabled:opacity-25 transition ease-in-out duration-150">
+                    class="inline-flex items-center px-4 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-500 rounded-md font-semibold text-xs text-gray-700 dark:text-gray-300 uppercase tracking-widest shadow-sm hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 disabled:opacity-25 transition ease-in-out duration-150">
                     Data Delivery Order
                 </a>
             </div>
@@ -29,7 +29,8 @@
                                 @csrf
                                 <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-6">
                                     <div class="md:col-span-3">
-                                        <label for="no_do" class="text-black dark:text-white">Nomor Delivery Order</label>
+                                        <label for="no_do" class="text-black dark:text-white">Nomor Delivery
+                                            Order</label>
                                         <input type="text" name="no_do" id="no_do"
                                             class="h-10 border mt-1 rounded px-4 w-full bg-gray-100"
                                             value="{{ $do->NO_Do }}" readonly />
@@ -49,29 +50,31 @@
                                     </div>
 
                                     <div class="md:col-span-3">
-                                        <label for="nomor_polisi" class="text-black dark:text-white">Nomor Polisi</label>
-                                        <select id="nomor_polisi" name="nomor_polisi"
-                                            class="bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-200 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-1"
-                                            onchange="updateNomorLambung(this)">
+                                        <label for="nomor_lambung" class="text-black dark:text-white">Nomor
+                                            Lambung</label>
+                                        <select id="nomor_lambung" name="nomor_lambung"
+                                            class="js-example-basic-single bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-200 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-1"
+                                            onchange="updateNomorPolisi(this)">
                                             <option value="" disabled selected>Silahkan dipilih</option>
                                             @foreach ($mobil as $mobils)
-                                                <option value="{{ $mobils->Nomor_Polisi }}"
-                                                    data-nomor-lambung="{{ $mobils->Nomor_Lambung }}"
-                                                    @selected($do->Nomor_Polisi == $mobils->Nomor_Polisi)>
-                                                    {{ $mobils->Nomor_Polisi }}</option>
+                                                <option value="{{ $mobils->Nomor_Lambung }}"
+                                                    data-nomor-polisi="{{ $mobils->Nomor_Polisi }}"
+                                                    @selected($do->Nomor_Lambung == $mobils->Nomor_Lambung)>
+                                                    {{ $mobils->Nomor_Lambung }}</option>
                                             @endforeach
                                         </select>
-                                        @error('nomor_polisi')
+                                        @error('nomor_lambung')
                                             <div class="text-sm text-red-400">{{ $message }}</div>
                                         @enderror
                                     </div>
 
                                     <div class="md:col-span-3">
-                                        <label for="nomor_lambung" class="text-black dark:text-white">Nomor Lambung</label>
-                                        <input type="text" name="nomor_lambung" id="nomor_lambung"
-                                            class="h-10 border mt-1 rounded px-4 w-full bg-gray-100" value="{{ $do->Nomor_Lambung }}"
-                                            placeholder="Nomor Lambung" readonly />
-                                        @error('nomor_lambung')
+                                        <label for="nomor_polisi" class="text-black dark:text-white">Nomor
+                                            Polisi</label>
+                                        <input type="text" name="nomor_polisi" id="nomor_polisi"
+                                            class="h-10 border mt-1 rounded px-4 w-full bg-gray-100"
+                                            value="{{ $do->Nomor_Polisi }}" placeholder="Nomor Lambung" readonly />
+                                        @error('nomor_polisi')
                                             <div class="text-sm text-red-400">{{ $message }}</div>
                                         @enderror
                                     </div>
@@ -103,7 +106,7 @@
                                             <option value="" disabled selected>Silahkan dipilih</option>
                                             @foreach ($rute as $rutes)
                                                 <option value="{{ $rutes->Asal_Rute }} - {{ $rutes->Tujuan_Rute }}"
-                                                    @selected($do->ID_Rute == $rutes->Asal_Rute.' - '.$rutes->Tujuan_Rute)> {{ $rutes->ID_Rute }} ::
+                                                    @selected($do->Rute == $rutes->id)> {{ $rutes->id }} ::
                                                     {{ $rutes->Asal_Rute }} - {{ $rutes->Tujuan_Rute }}</option>
                                             @endforeach
                                         </select>
@@ -117,20 +120,6 @@
                                         <input type="text" name="tonase" id="tonase"
                                             class="h-10 border mt-1 rounded px-4 w-full bg-gray-100"
                                             value="{{ $do->Tonase }}" placeholder="Tonase" />
-                                        @error('tonase')
-                                            <div class="text-sm text-red-400">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-
-                                    <div class="md:col-span-3">
-                                        <label for="status" class="text-black dark:text-white">Status</label>
-                                        <select id="status" name="status"
-                                            class="bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-200 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                            @foreach (App\Enums\StatusDO::cases() as $status)
-                                                <option value="{{ $status->value }}" @selected($do->Status == $status->value)>
-                                                    {{ $status->value }}</option>
-                                            @endforeach
-                                        </select>
                                         @error('tonase')
                                             <div class="text-sm text-red-400">{{ $message }}</div>
                                         @enderror
@@ -152,13 +141,19 @@
             </div>
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
     <script>
-        function updateNomorLambung(selectElement) {
+        function updateNomorPolisi(selectElement) {
             const selectedOption = selectElement.options[selectElement.selectedIndex];
-            const nomorLambungInput = document.getElementById('nomor_lambung');
-            nomorLambungInput.value = selectedOption.getAttribute('data-nomor-lambung');
+            const nomorPolisiInput = document.getElementById('nomor_polisi');
+            nomorPolisiInput.value = selectedOption.getAttribute('data-nomor-polisi');
         }
+
+        $(document).ready(function() {
+            $('.js-example-basic-single').select2();
+        });
     </script>
 
 </x-app-layout>

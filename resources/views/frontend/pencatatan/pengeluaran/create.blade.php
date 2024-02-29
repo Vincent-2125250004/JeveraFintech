@@ -8,7 +8,7 @@
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="flex justify-end m-2 p-2">
             <a href="{{ route('pencatatan.pengeluaran.index') }}"
-                class="inline-flex items-center px-4 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-500 rounded-md font-semibold text-xs text-gray-700 dark:text-gray-300 uppercase tracking-widest shadow-sm hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 disabled:opacity-25 transition ease-in-out duration-150">
+                class="inline-flex items-center px-4 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-500 rounded-md font-semibold text-xs text-gray-700 dark:text-gray-300 uppercase tracking-widest shadow-sm hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 disabled:opacity-25 transition ease-in-out duration-150">
                 Data Pengeluaran
             </a>
         </div>
@@ -19,20 +19,10 @@
             @csrf
             <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
                 <div class="sm:col-span-2">
-                    <label for="nomor_referensi"
-                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nomor Referensi</label>
-                    <input type="text" name="nomor_referensi" id="nomor_referensi"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-400 focus:border-primary-400 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-200 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        placeholder="Nomor Referensi Pengeluaran" required="">
-                    @error('nomor_referensi')
-                        <div class="text-sm text-red-400">{{ $message }}</div>
-                    @enderror
-                </div>
-                <div class="sm:col-span-2">
                     <label for="nama_kontak" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama
                         Kontak </label>
                     <select id="nama_kontak" name="nama_kontak"
-                        class="bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-200 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-1">
+                        class="js-example-basic-single bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-200 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-1">
                         <option value="" disabled selected>Silahkan dipilih</option>
                         @foreach ($kontak as $kontaks)
                             <option value="{{ $kontaks->Nama_Kontak }}">
@@ -47,7 +37,7 @@
                     <label for="dari_akun" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Dari
                         Akun</label>
                     <select id="dari_akun" name="dari_akun"
-                        class="bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-200 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-1">
+                        class="js-example-basic-single bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-200 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-1">
                         <option value="" disabled selected>Silahkan dipilih</option>
                         @foreach ($akun as $akuns)
                             <option value="{{ $akuns->Nama_Akun }}">
@@ -62,7 +52,7 @@
                     <label for="ke_akun" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Ke
                         Akun</label>
                     <select id="ke_akun" name="ke_akun"
-                        class="bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-200 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-1">
+                        class="js-example-basic-single bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-200 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-1">
                         <option value="" disabled selected>Silahkan dipilih</option>
                         @foreach ($akun as $akuns)
                             <option value="{{ $akuns->Nama_Akun }}">
@@ -109,6 +99,15 @@
             </button>
         </form>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+        <script>
+            $(document).ready(function() {
+                $('.js-example-basic-single').select2();
+            });
+        </script>
 
 
 </x-app-layout>

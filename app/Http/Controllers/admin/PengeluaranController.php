@@ -43,8 +43,13 @@ class PengeluaranController extends Controller
 
         $newSaldo -= $request->nominal_pengeluaran;
 
+        $lastPengeluaran = Pengeluaran::latest()->first();
+        $lastReferenceNumber = $lastPengeluaran ? $lastPengeluaran->Nomor_Referensi : 'UL-000';
+
+        $referenceNumber = 'UL-' . str_pad((intval(substr($lastReferenceNumber, 3)) + 1), 3, '0', STR_PAD_LEFT);
+
         $pengeluaran = Pengeluaran::create([
-            'Nomor_Referensi' => $request->nomor_referensi,
+            'Nomor_Referensi' => $referenceNumber,
             'Nama_Kontak' => $request->nama_kontak,
             'Dari_Akun' => $request->dari_akun,
             'Ke_Akun' => $request->ke_akun,
@@ -57,7 +62,7 @@ class PengeluaranController extends Controller
             'pengeluaran_id' => $pengeluaran->id,
             'pemasukan_id' => null,
             'Transaksi' => 'Pengeluaran',
-            'Nomor_Referensi' => $request->nomor_referensi,
+            'Nomor_Referensi' => $referenceNumber,
             'Sisa_Saldo' => $newSaldo
         ]);
 
@@ -88,23 +93,17 @@ class PengeluaranController extends Controller
      */
     public function update(DataPengeluaranRequest $request, Pengeluaran $pengeluaran)
     {
-        // Get the latest Saldo record
         $saldo = Saldo::latest()->first();
-
-        // Calculate the original and updated nominal values
         $originalNominal = $pengeluaran->Nominal_Pengeluaran;
         $updatedNominal = $request->nominal_pengeluaran;
 
-        // Calculate the difference in nominal values
         $nominalDifference = $originalNominal - $updatedNominal;
 
-        // Calculate the new Sisa_Saldo
         $newSisaSaldo = $saldo ? $saldo->Sisa_Saldo : 0;
         $newSisaSaldo += $nominalDifference;
 
-        // Update the Pengeluaran record
         $pengeluaran->update([
-            'Nomor_Referensi' => $request->nomor_referensi,
+            // 'Nomor_Referensi' => $request->nomor_referensi,
             'Nama_Kontak' => $request->nama_kontak,
             'Dari_Akun' => $request->dari_akun,
             'Ke_Akun' => $request->ke_akun,
@@ -113,22 +112,20 @@ class PengeluaranController extends Controller
             'Deskripsi' => $request->deskripsi
         ]);
 
-        // Retrieve the related Saldo record and update it
         $saldo = $pengeluaran->saldo;
         if ($saldo) {
             $saldo->update([
                 'pengeluaran_id' => $pengeluaran->id,
                 'Transaksi' => 'Pengeluaran',
-                'Nomor_Referensi' => $request->nomor_referensi,
+                // 'Nomor_Referensi' => $request->nomor_referensi,
                 'Sisa_Saldo' => $newSisaSaldo
             ]);
         } else {
-            // If there is no related Saldo record, create a new one
             $pengeluaran->saldo()->create([
                 'pengeluaran_id' => $pengeluaran->id,
                 'pemasukan_id' => null,
                 'Transaksi' => 'Pengeluaran',
-                'Nomor_Referensi' => $request->nomor_referensi,
+                // 'Nomor_Referensi' => $request->nomor_referensi,
                 'Sisa_Saldo' => $newSisaSaldo
             ]);
         }

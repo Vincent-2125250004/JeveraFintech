@@ -13,8 +13,11 @@ return new class extends Migration
     {
         Schema::create('rutes', function (Blueprint $table) {
             $table->id();
-            $table->string('Asal_Rute', 50)->unique();
-            $table->string('Tujuan_Rute', 50)->unique();
+            $table->string('Asal_Rute');
+            $table->string('Tujuan_Rute');
+            $table->string('Gerbang');
+            $table->integer('Kilometer_Rute');
+            $table->integer('Harga_Rute');
             $table->timestamps();
         });
     }

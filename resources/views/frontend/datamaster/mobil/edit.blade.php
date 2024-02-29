@@ -9,7 +9,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="flex justify-end m-2 p-2">
                 <a href="{{ route('datamaster.mobil.index') }}"
-                    class="inline-flex items-center px-4 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-500 rounded-md font-semibold text-xs text-gray-700 dark:text-gray-300 uppercase tracking-widest shadow-sm hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 disabled:opacity-25 transition ease-in-out duration-150">
+                    class="inline-flex items-center px-4 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-500 rounded-md font-semibold text-xs text-gray-700 dark:text-gray-300 uppercase tracking-widest shadow-sm hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 disabled:opacity-25 transition ease-in-out duration-150">
                     Data Mobil
                 </a>
             </div>
@@ -23,7 +23,7 @@
                         </div>
 
                         <div class="lg:col-span-2">
-                            <form method="POST" action="{{ route('datamaster.mobil.update', $mobil->ID_Mobil) }}">
+                            <form method="POST" action="{{ route('datamaster.mobil.update', $mobil->id) }}">
                                 @method('PUT')
                                 @csrf
                                 <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-3">

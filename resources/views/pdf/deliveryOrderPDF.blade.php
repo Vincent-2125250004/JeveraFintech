@@ -89,11 +89,11 @@
 
 <body>
     <div class="kop-surat">
-        <img class="logo" src="{{$image}}" alt="Logo Perusahaan">
+        <img class="logo" src="{{ $image }}" alt="Logo Perusahaan">
         <div class="info-perusahaan">
-            <div class="judul">{{$title}}</div>
-            <div class="alamat">{{$alamat}}</div>
-            <div class="info-kontak">Email: {{$email}}</div>
+            <div class="judul">{{ $title }}</div>
+            <div class="alamat">{{ $alamat }}</div>
+            <div class="info-kontak">Email: {{ $email }}</div>
         </div>
     </div>
     <hr class="solid">
@@ -111,8 +111,7 @@
                     <th>Rute</th>
                     <th>Tonase</th>
                     <th>Status</th>
-                    <th>Data dibuat</th>
-                    <th>Data diperbarui</th>
+
                 </tr>
             </thead>
             <tbody>
@@ -124,11 +123,9 @@
                         <td>{{ $dos->Nomor_Lambung }}</td>
                         <td>{{ $dos->SJB_Muat }}</td>
                         <td>{{ $dos->SJB_Bongkar }}</td>
-                        <td>{{ $dos->ID_Rute }}</td>
+                        <td>{{ $dos->rute->Asal_Rute }} - {{ $dos->rute->Tujuan_Rute }}</td>
                         <td>{{ $dos->Tonase }}</td>
                         <td>{{ $dos->Status }}</td>
-                        <td>{{ $dos->created_at->addHours(7) }}</td>
-                        <td>{{ $dos->updated_at->addHours(7) }}</td>
                     </tr>
                 @endforeach
             </tbody>

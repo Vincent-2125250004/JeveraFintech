@@ -118,9 +118,9 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($mobil->sortBy('ID_Mobil') as $mobils)
+                @foreach ($mobil->sortBy('id') as $mobils)
                     <tr class="tampil">
-                        <td>{{ $mobils->ID_Mobil }}</td>
+                        <td>{{ $mobils->id }}</td>
                         <td>{{ $mobils->Nomor_Polisi }}</td>
                         <td>{{ $mobils->Nomor_Lambung }}</td>
                         <td>{{ $mobils->Pemilik }}</td>

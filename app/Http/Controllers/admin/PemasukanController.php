@@ -43,8 +43,13 @@ class PemasukanController extends Controller
 
         $newSaldo += $request->nominal_pemasukan;
 
+        $lastPemasukan = Pemasukan::latest()->first();
+        $lastReferenceNumber = $lastPemasukan ? $lastPemasukan->Nomor_Referensi : 'UM-000';
+
+        $referenceNumber = 'UM-' . str_pad((intval(substr($lastReferenceNumber, 3)) + 1), 3, '0', STR_PAD_LEFT);
+        
         $pemasukan = Pemasukan::create([
-            'Nomor_Referensi' => $request->nomor_referensi,
+            'Nomor_Referensi' => $referenceNumber,
             'Nama_Kontak' => $request->nama_kontak,
             'Dari_Akun' => $request->dari_akun,
             'Ke_Akun' => $request->ke_akun,
@@ -57,7 +62,7 @@ class PemasukanController extends Controller
             'pengeluaran_id' => null,
             'pemasukan_id' => $pemasukan->id,
             'Transaksi' => 'Pemasukan',
-            'Nomor_Referensi' => $request->nomor_referensi,
+            'Nomor_Referensi' => $referenceNumber,
             'Sisa_Saldo' => $newSaldo
         ]);
 
@@ -87,23 +92,18 @@ class PemasukanController extends Controller
      */
     public function update(DataPemasukanRequest $request, Pemasukan $pemasukan)
     {
-        // Get the latest Saldo record
         $saldo = Saldo::latest()->first();
 
-        // Calculate the original and updated nominal values
         $originalNominal = $pemasukan->Nominal_Pemasukan;
         $updatedNominal = $request->nominal_pemasukan;
 
-        // Calculate the difference in nominal values
         $nominalDifference = $updatedNominal - $originalNominal;
 
-        // Calculate the new Sisa_Saldo
         $newSisaSaldo = $saldo ? $saldo->Sisa_Saldo : 0;
         $newSisaSaldo += $nominalDifference;
 
-        // Update the Pengeluaran record
         $pemasukan->update([
-            'Nomor_Referensi' => $request->nomor_referensi,
+            // 'Nomor_Referensi' => $request->nomor_referensi,
             'Nama_Kontak' => $request->nama_kontak,
             'Dari_Akun' => $request->dari_akun,
             'Ke_Akun' => $request->ke_akun,
@@ -112,17 +112,14 @@ class PemasukanController extends Controller
             'Deskripsi' => $request->deskripsi
         ]);
 
-        // Retrieve the related Saldo record and update it
         $saldo = $pemasukan->saldo;
         if ($saldo) {
             $saldo->update([
-                'Nomor_Referensi' => $request->nomor_referensi,
                 'Sisa_Saldo' => $newSisaSaldo
             ]);
         } else {
-            // If there is no related Saldo record, create a new one
             $pemasukan->saldo()->create([
-                'Transaksi' => 'Pemasukan', // Update the transaction type
+                'Transaksi' => 'Pemasukan', 
                 'Nomor_Referensi' => $request->nomor_referensi,
                 'Sisa_Saldo' => $newSisaSaldo
             ]);

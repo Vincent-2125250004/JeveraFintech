@@ -34,6 +34,9 @@ class DataRuteController extends Controller
         Rute::create([
             'Asal_Rute'=>$request->asal_rute,
             'Tujuan_Rute'=>$request->tujuan_rute,
+            'Gerbang'=>$request->gerbang,
+            'Kilometer_Rute'=>$request->kilometer_rute,
+            'Harga_Rute'=>$request->harga_rute,
         ]);
 
         return redirect()->route('datamaster.rute.index')->with('success', 'Data Rute Berhasil Ditambahkan');
@@ -63,6 +66,9 @@ class DataRuteController extends Controller
         $rute->update([
             'Asal_Rute'=>$request->asal_rute,
             'Tujuan_Rute'=>$request->tujuan_rute,
+            'Gerbang'=>$request->gerbang,
+            'Kilometer_Rute'=>$request->kilometer_rute,
+            'Harga_Rute'=>$request->harga_rute,
         ]);
 
         return redirect()->route('datamaster.rute.index')->with('info', 'Data Rute Berhasil Diubah');

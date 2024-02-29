@@ -105,9 +105,13 @@
             width: 50%;
         }
 
+        .tableInvis .kolom3 {
+            width: 50%;
+        }
+
         .ttd {
             margin-top: 20px;
-            padding-left:  20px;
+            padding-left: 20px;
             text-align: left;
         }
     </style>
@@ -172,16 +176,46 @@
             </tfoot>
         </table>
     </div>
+    <table class="tableInvis">
+        <tbody>
+            <tr>
+                <td class="kolom1">Dicetak pada tanggal {{ $date }}</td>
+                <td class="kolom2"></td>
+                <td class="kolom3"></td>
 
-    <div class="ttd">
-        <p>Dicetak pada tanggal {{$date}}</p>
-        <p>Dicetak oleh :</p>
-        <br>
-        <br>
-        <br>
-        <p>__________________________</p>
-    </div>
-    
+            </tr>
+            <tr>
+                <td class="kolom1">Dicetak oleh : {{ Auth::user()->name }}</td>
+                <td class="kolom2">Diketahui</td>
+                <td class="kolom3">Penerima</td>
+            </tr>
+            <tr>
+                <td class="kolom1"><br></td>
+                <td class="kolom2"><br> </td>
+                <td class="kolom3"><br> </td>
+            </tr>
+            <tr>
+                <td class="kolom1"><br> </td>
+                <td class="kolom2"><br> </td>
+                <td class="kolom3"><br> </td>
+            </tr>
+            <tr>
+                <td class="kolom1"><br> </td>
+                <td class="kolom2"><br> </td>
+                <td class="kolom3"><br> </td>
+            </tr>
+            <tr>
+                <td class="kolom1"><br> </td>
+                <td class="kolom2"><br> </td>
+                <td class="kolom3"><br> </td>
+            </tr>
+            <tr>
+                <td class="kolom1">__________________________</td>
+                <td class="kolom2">__________________________</td>
+                <td class="kolom3">__________________________</td>
+            </tr>
+        </tbody>
+    </table>
 
 </body>
 
