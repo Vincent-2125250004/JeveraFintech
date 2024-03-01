@@ -9,6 +9,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\DataAkunController;
 use App\Http\Controllers\admin\DeliveryOrderController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -50,20 +51,27 @@ Route::middleware('auth')->name('datamaster.')->prefix('datamaster')->group(func
     Route::resource('/rute', DataRuteController::class);
     Route::resource('/kontak', DataKontakController::class);
     Route::resource('/mobil', DataMobilController::class);
+    //PDF
+    Route::get('generatePDFMobil', [App\Http\Controllers\PDF\PDFController::class, 'generatePDFMobil'])->name('mobil.pdf');
+    //Excel
+    Route::get('export_excelMobil', [App\Http\Controllers\excel\ExcelController::class, 'export_excelMobil'])->name('mobil.excel');
+
 });
 Route::middleware('auth')->get('/datamaster/mobil/images/{id}', [DataMobilController::class, 'images'])->name('datamaster.mobil.images');
-Route::middleware('auth')->get('generatePDFMobil', [App\Http\Controllers\PDF\PDFController::class, 'generatePDFMobil']) ->name('datamaster.mobil.pdf');
+
 
 //Pencatatan
 Route::middleware('auth')->name('pencatatan.')->prefix('pencatatan')->group(function () {
     Route::resource('/do', DeliveryOrderController::class);
     Route::resource('/pengeluaran', PengeluaranController::class);
     Route::resource('/pemasukan', PemasukanController::class);
+    //PDF
+    Route::get('generatePDFDo', [App\Http\Controllers\PDF\PDFController::class, 'generatePDFDeliveryOrder'])->name('do.pdf');
+    Route::get('generateJVPengeluaran/{id}', [App\Http\Controllers\PDF\PDFController::class, 'generatePDFJournalVoucherPengeluaran'])->name('pengeluaran.journalVoucher');
+    Route::get('generateJVPemasukan/{id}', [App\Http\Controllers\PDF\PDFController::class, 'generatePDFJournalVoucherPemasukan'])->name('pemasukan.journalVoucher');
+    //Excel
+    Route::get('export_excelDO', [App\Http\Controllers\excel\ExcelController::class, 'export_excelDO'])->name('do.excel');
 });
-Route::middleware('auth')->get('generateJVPengeluaran/{id}', [App\Http\Controllers\PDF\PDFController::class, 'generatePDFJournalVoucherPengeluaran']) ->name('pencatatan.pengeluaran.journalVoucher');
-Route::middleware('auth')->get('generatePDFPemasukan/{id}', [App\Http\Controllers\PDF\PDFController::class, 'generatePDFJournalVoucherPemasukan']) ->name('pencatatan.pemasukan.journalVoucher');
-Route::middleware('auth')->get('generatePDFDo', [App\Http\Controllers\PDF\PDFController::class, 'generatePDFDeliveryOrder']) ->name('pencatatan.do.pdf');
 
 
-
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
