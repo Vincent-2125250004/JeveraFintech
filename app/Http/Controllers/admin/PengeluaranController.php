@@ -59,8 +59,8 @@ class PengeluaranController extends Controller
         ]);
 
         Saldo::create([
-            'pengeluaran_id' => $pengeluaran->id,
-            'pemasukan_id' => null,
+            'Dari_Akun' => $request->dari_akun,
+            'Ke_Akun' => $request->ke_akun,
             'Transaksi' => 'Pengeluaran',
             'Nomor_Referensi' => $referenceNumber,
             'Sisa_Saldo' => $newSaldo
@@ -103,7 +103,6 @@ class PengeluaranController extends Controller
         $newSisaSaldo += $nominalDifference;
 
         $pengeluaran->update([
-            // 'Nomor_Referensi' => $request->nomor_referensi,
             'Nama_Kontak' => $request->nama_kontak,
             'Dari_Akun' => $request->dari_akun,
             'Ke_Akun' => $request->ke_akun,
@@ -111,24 +110,6 @@ class PengeluaranController extends Controller
             'Tanggal_Pengeluaran' => Carbon::parse($request->tanggal_pengeluaran)->format('Y-m-d'),
             'Deskripsi' => $request->deskripsi
         ]);
-
-        $saldo = $pengeluaran->saldo;
-        if ($saldo) {
-            $saldo->update([
-                'pengeluaran_id' => $pengeluaran->id,
-                'Transaksi' => 'Pengeluaran',
-                // 'Nomor_Referensi' => $request->nomor_referensi,
-                'Sisa_Saldo' => $newSisaSaldo
-            ]);
-        } else {
-            $pengeluaran->saldo()->create([
-                'pengeluaran_id' => $pengeluaran->id,
-                'pemasukan_id' => null,
-                'Transaksi' => 'Pengeluaran',
-                // 'Nomor_Referensi' => $request->nomor_referensi,
-                'Sisa_Saldo' => $newSisaSaldo
-            ]);
-        }
 
         return redirect()->route('pencatatan.pengeluaran.index')->with('success', 'Data Pengeluaran Berhasil diperbarui');
     }

@@ -59,12 +59,14 @@ class PemasukanController extends Controller
         ]);
 
         Saldo::create([
-            'pengeluaran_id' => null,
-            'pemasukan_id' => $pemasukan->id,
+            'Dari_Akun' => $request->dari_akun,
+            'Ke_Akun' => $request->ke_akun,
             'Transaksi' => 'Pemasukan',
             'Nomor_Referensi' => $referenceNumber,
             'Sisa_Saldo' => $newSaldo
         ]);
+
+        
 
         return redirect()->route('pencatatan.pemasukan.index')->with('success', 'Data Pemasukan Berhasil ditambahkan');
     }
@@ -103,7 +105,6 @@ class PemasukanController extends Controller
         $newSisaSaldo += $nominalDifference;
 
         $pemasukan->update([
-            // 'Nomor_Referensi' => $request->nomor_referensi,
             'Nama_Kontak' => $request->nama_kontak,
             'Dari_Akun' => $request->dari_akun,
             'Ke_Akun' => $request->ke_akun,
@@ -111,20 +112,6 @@ class PemasukanController extends Controller
             'Tanggal_Pemasukan' => Carbon::parse($request->tanggal_pemasukan)->format('Y-m-d'),
             'Deskripsi' => $request->deskripsi
         ]);
-
-        $saldo = $pemasukan->saldo;
-        if ($saldo) {
-            $saldo->update([
-                'Sisa_Saldo' => $newSisaSaldo
-            ]);
-        } else {
-            $pemasukan->saldo()->create([
-                'Transaksi' => 'Pemasukan', 
-                'Nomor_Referensi' => $request->nomor_referensi,
-                'Sisa_Saldo' => $newSisaSaldo
-            ]);
-        }
-
         return redirect()->route('pencatatan.pemasukan.index')->with('success', 'Data Pemasukan Berhasil diperbarui');
     }
 

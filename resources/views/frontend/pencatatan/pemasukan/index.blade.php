@@ -75,8 +75,12 @@
                                 Nominal Pemasukan
                             </th>
                             <th scope="col" class="px-6 py-3">
+                                Akun Transaksi
+                            </th>
+                            <th scope="col" class="px-6 py-3">
                                 Tanggal Pemasukan
                             </th>
+
                             <th scope="col" class="px-6 py-3">
                                 Sisa Saldo
                             </th>
@@ -102,6 +106,10 @@
                                     @else
                                         No Sisa Saldo Found
                                     @endif
+                                </td>
+                                <td scope="row"
+                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    {{ $pemasukans->DariAkun->Nama_Akun }} - {{ $pemasukans->KeAkun->Nama_Akun }}
                                 </td>
                                 <td scope="row"
                                     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
@@ -175,27 +183,26 @@
             $('#myTable_paginate').addClass('text-black font-semibold dark:text-white mt-4');
             $('#myTable_next').addClass('text-black font-semibold dark:text-white ms-4');
             $('#myTable_previous').addClass('text-black font-semibold dark:text-white me-4');
-
-            function confirmDelete(form) {
-                var link = form.action;
-
-                Swal.fire({
-                    title: "Yakin ingin menghapus data?",
-                    text: "Anda tidak bisa mengembalikan datanya lagi!",
-                    icon: "warning",
-                    showCancelButton: true,
-                    confirmButtonColor: "#3085d6",
-                    cancelButtonColor: "#d33",
-                    confirmButtonText: "Ya, Hapus!"
-                }).then((willDelete) => {
-                    if (willDelete.isConfirmed) {
-                        form.submit();
-                    } else {
-                        Swal.fire("Data Kamu Aman!", "", "info");
-                    }
-                });
-                return false;
-            }
         });
+
+        function confirmDelete(form) {
+            var link = form.action;
+            Swal.fire({
+                title: "Yakin ingin menghapus data?",
+                text: "Anda tidak bisa mengembalikan datanya lagi!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Ya, Hapus!"
+            }).then((willDelete) => {
+                if (willDelete.isConfirmed) {
+                    form.submit();
+                } else {
+                    Swal.fire("Data Kamu Aman!", "", "info");
+                }
+            });
+            return false;
+        }
     </script>
 </x-app-layout>

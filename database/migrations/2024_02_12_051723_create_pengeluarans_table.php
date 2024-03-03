@@ -15,10 +15,10 @@ return new class extends Migration {
             $table->string('Nomor_Referensi')->unique();
             $table->string('Nama_Kontak');
             $table->foreign('Nama_Kontak')->references('Nama_Kontak')->on('kontaks')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->string('Dari_Akun');
-            $table->foreign('Dari_Akun')->references('Nama_Akun')->on('akuns')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->string('Ke_Akun');
-            $table->foreign('Ke_Akun')->references('Nama_Akun')->on('akuns')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->integer('Dari_Akun');
+            $table->foreign('Dari_Akun')->references('id')->on('akuns')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->integer('Ke_Akun');
+            $table->foreign('Ke_Akun')->references('id')->on('akuns')->cascadeOnDelete()->cascadeOnUpdate();
             $table->bigInteger('Nominal_Pengeluaran');
             $table->date('Tanggal_Pengeluaran');
             $table->string('Deskripsi');

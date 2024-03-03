@@ -8,7 +8,7 @@
     <div class="container-fluid auto-rows-max m-10 p-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 sm:gap-4 gap-3">
         <a href="{{ route('datamaster.akun.index') }}" type="button">
             <div
-                class="group relative cursor-pointer overflow-hidden bg-gray-100 dark:bg-gray-800 px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl sm:mx-auto sm:max-w-sm sm:rounded-lg sm:px-10">
+                class="group relative cursor-pointer overflow-hidden bg-white dark:bg-gray-800 px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl sm:mx-auto sm:max-w-sm sm:rounded-lg sm:px-10">
                 <span
                     class="absolute top-10 z-0 h-20 w-20 rounded-full bg-sky-800 transition-all duration-300 group-hover:scale-[15]"></span>
                 <div class="relative z-10 mx-auto max-w-md">
@@ -36,7 +36,7 @@
 
         <a href="{{ route('datamaster.kontak.index') }}" type="button">
         <div
-            class="flex group relative cursor-pointer overflow-hidden bg-gray-100 dark:bg-gray-800 px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl sm:mx-auto sm:max-w-sm sm:rounded-lg sm:px-10">
+            class="flex group relative cursor-pointer overflow-hidden bg-white dark:bg-gray-800 px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl sm:mx-auto sm:max-w-sm sm:rounded-lg sm:px-10">
             <span
                 class="absolute top-10 z-0 h-20 w-20 rounded-full bg-red-800 transition-all duration-300 group-hover:scale-[15]"></span>
             <div class="relative z-10 mx-auto max-w-md">
@@ -64,7 +64,7 @@
 
         <a href="{{ route('datamaster.mobil.index') }}" type="button">
         <div
-            class="group relative cursor-pointer overflow-hidden bg-gray-100 dark:bg-gray-800 px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl sm:mx-auto sm:max-w-sm sm:rounded-lg sm:px-10">
+            class="group relative cursor-pointer overflow-hidden bg-white dark:bg-gray-800 px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl sm:mx-auto sm:max-w-sm sm:rounded-lg sm:px-10">
             <span
                 class="absolute top-10 z-0 h-20 w-20 rounded-full bg-yellow-800 transition-all duration-300 group-hover:scale-[15]"></span>
             <div class="relative z-10 mx-auto max-w-md">
@@ -91,7 +91,7 @@
         </a>
         <a href="{{ route('datamaster.rute.index') }}" type="button">
         <div
-            class="group relative cursor-pointer overflow-hidden bg-gray-100 dark:bg-gray-800 px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl sm:mx-auto sm:max-w-sm sm:rounded-lg sm:px-10">
+            class="group relative cursor-pointer overflow-hidden bg-white dark:bg-gray-800 px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl sm:mx-auto sm:max-w-sm sm:rounded-lg sm:px-10">
             <span
                 class="absolute top-10 z-0 h-20 w-20 rounded-full bg-emerald-800 transition-all duration-300 group-hover:scale-[15]"></span>
             <div class="relative z-10 mx-auto max-w-md">

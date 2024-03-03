@@ -158,15 +158,16 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>{{ $pengeluaran->Dari_Akun }}</td>
+                    <td>{{ $pengeluaran->KeAkun->Nama_Akun }}</td>
                     <td>IDR {{ number_format($pengeluaran->Nominal_Pengeluaran, 0, ',', '.') }}</td>
                     <td>-</td>
                 </tr>
                 <tr>
-                    <td>{{ $pengeluaran->Ke_Akun }}</td>
+                    <td>{{ $pengeluaran->DariAkun->Nama_Akun }}</td>
                     <td>-</td>
                     <td>IDR {{ number_format($pengeluaran->Nominal_Pengeluaran, 0, ',', '.') }}</td>
                 </tr>
+
             </tbody>
             <tfoot>
                 <tr>
@@ -184,7 +185,7 @@
                 <td class="kolom1">Dicetak pada tanggal {{ $date }}</td>
                 <td class="kolom2"></td>
                 <td class="kolom3"></td>
-                
+
             </tr>
             <tr>
                 <td class="kolom1">Dicetak oleh : {{ Auth::user()->name }}</td>

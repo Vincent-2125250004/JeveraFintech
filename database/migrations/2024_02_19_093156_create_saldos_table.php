@@ -6,8 +6,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -15,8 +14,12 @@ return new class extends Migration
     {
         Schema::create('saldos', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Pengeluaran::class)->nullable()->default(null)->references('id')->on('pengeluarans')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignIdFor(Pemasukan::class)->nullable()->default(null)->references('id')->on('pemasukans')->cascadeOnDelete()->cascadeOnUpdate();
+            // $table->foreignIdFor(Pengeluaran::class)->nullable()->default(null)->references('id')->on('pengeluarans')->cascadeOnDelete()->cascadeOnUpdate();
+            // $table->foreignIdFor(Pemasukan::class)->nullable()->default(null)->references('id')->on('pemasukans')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->integer('Dari_Akun');
+            $table->foreign('Dari_Akun')->references('id')->on('akuns')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->integer('Ke_Akun');
+            $table->foreign('Ke_Akun')->references('id')->on('akuns')->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('Transaksi');
             $table->string('Nomor_Referensi');
             $table->bigInteger('Sisa_Saldo');

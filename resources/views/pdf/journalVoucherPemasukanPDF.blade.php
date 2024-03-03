@@ -157,15 +157,16 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>{{ $pemasukan->Dari_Akun }}</td>
+                    <td>{{ $pemasukan->KeAkun->Nama_Akun }}</td>
                     <td>IDR {{ number_format($pemasukan->Nominal_Pemasukan, 0, ',', '.') }}</td>
                     <td>-</td>
                 </tr>
                 <tr>
-                    <td>{{ $pemasukan->Ke_Akun }}</td>
+                    <td>{{ $pemasukan->DariAkun->Nama_Akun }}</td>
                     <td>-</td>
                     <td>IDR {{ number_format($pemasukan->Nominal_Pemasukan, 0, ',', '.') }}</td>
                 </tr>
+
             </tbody>
             <tfoot>
                 <tr>

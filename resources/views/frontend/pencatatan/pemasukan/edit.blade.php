@@ -53,7 +53,7 @@
                             class="js-example-basic-single bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-200 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-1">
                             <option value="" disabled selected>Silahkan dipilih</option>
                             @foreach ($akun as $akuns)
-                                <option value="{{ $akuns->Nama_Akun }}" @selected($pemasukan->Dari_Akun == $akuns->Nama_Akun)>
+                                <option value="{{ $akuns->id }}" @selected($pemasukan->Dari_Akun == $akuns->id)>
                                     {{ $akuns->Nama_Akun }}</option>
                             @endforeach
                         </select>
@@ -68,7 +68,7 @@
                             class="js-example-basic-single bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-200 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-1">
                             <option value="" disabled selected>Silahkan dipilih</option>
                             @foreach ($akun as $akuns)
-                                <option value="{{ $akuns->Nama_Akun }}" @selected($pemasukan->Ke_Akun == $akuns->Nama_Akun)>
+                                <option value="{{ $akuns->id }}" @selected($pemasukan->Ke_Akun == $akuns->id)>
                                     {{ $akuns->Nama_Akun }}</option>
                             @endforeach
                         </select>

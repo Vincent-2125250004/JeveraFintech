@@ -18,6 +18,7 @@
     "dependencies": {
         "apexcharts": "^3.45.2",
         "flowbite": "^2.2.1",
+        "flowbite-datepicker": "^1.2.6",
         "sweetalert": "^2.1.2",
         "sweetalert2": "^11.10.5",
         "tailwindcss-patterns": "^0.1.2"

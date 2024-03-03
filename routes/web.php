@@ -73,5 +73,10 @@ Route::middleware('auth')->name('pencatatan.')->prefix('pencatatan')->group(func
     Route::get('export_excelDO', [App\Http\Controllers\excel\ExcelController::class, 'export_excelDO'])->name('do.excel');
 });
 
+//Pelaporan 
+Route::middleware('auth')->name('laporan.')->prefix('laporan')->group(function () {
+    Route::resource('/bukubesar', App\Http\Controllers\admin\Laporan::class);
+});
+
 
 require __DIR__ . '/auth.php';

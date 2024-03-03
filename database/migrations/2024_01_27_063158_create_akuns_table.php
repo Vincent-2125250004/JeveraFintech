@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('akuns', function (Blueprint $table) {
             $table->id();
-            $table->string('Nama_Akun')->unique();
+            $table->string('Nama_Akun');
             $table->string('Kategori', 50);
             $table->string('Tipe_Transaksi', 50);
             $table->timestamps();

@@ -22,4 +22,11 @@ class Pemasukan extends Model
     {
         return $this->hasOne(Saldo::class, 'Nomor_Referensi', 'Nomor_Referensi');
     }
+    public function DariAkun() {
+        return $this->belongsTo(Akun::class, 'Dari_Akun');
+    }
+
+    public function KeAkun() {
+        return $this->belongsTo(Akun::class, 'Ke_Akun');
+    }
 }

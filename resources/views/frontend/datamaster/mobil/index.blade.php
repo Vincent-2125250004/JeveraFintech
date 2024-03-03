@@ -222,26 +222,28 @@
             $('#myTable_next').addClass('text-black font-semibold dark:text-white ms-4');
             $('#myTable_previous').addClass('text-black font-semibold dark:text-white me-4');
 
-            function confirmDelete(form) {
-                var link = form.action;
 
-                Swal.fire({
-                    title: "Yakin ingin menghapus data?",
-                    text: "Anda tidak bisa mengembalikan datanya lagi!",
-                    icon: "warning",
-                    showCancelButton: true,
-                    confirmButtonColor: "#3085d6",
-                    cancelButtonColor: "#d33",
-                    confirmButtonText: "Ya, Hapus!"
-                }).then((willDelete) => {
-                    if (willDelete.isConfirmed) {
-                        form.submit();
-                    } else {
-                        Swal.fire("Data Kamu Aman!", "", "info");
-                    }
-                });
-                return false;
-            }
         });
+
+        function confirmDelete(form) {
+            var link = form.action;
+
+            Swal.fire({
+                title: "Yakin ingin menghapus data?",
+                text: "Anda tidak bisa mengembalikan datanya lagi!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Ya, Hapus!"
+            }).then((willDelete) => {
+                if (willDelete.isConfirmed) {
+                    form.submit();
+                } else {
+                    Swal.fire("Data Kamu Aman!", "", "info");
+                }
+            });
+            return false;
+        }
     </script>
 </x-app-layout>

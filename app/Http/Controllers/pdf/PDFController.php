@@ -19,7 +19,7 @@ class PDFController extends Controller
 
         $data = [
             'title' => 'Data Mobil CV. Jevera',
-            'date' => date('m/d/Y'),
+            'date' => date('Y-m-d'),
             'image' => public_path('logo/JVRBLUEKOP.png'),
             'alamat' => 'Jl. Rawa Jaya RT 012, RW 004, Kelurahan Pahlawan, Kecamatan Kemuning, Kota Palembang, Sumatera Selatan, Indonesia',
             'email' => 'cvjevera@gmail.com',
@@ -36,7 +36,7 @@ class PDFController extends Controller
 
         $data = [
             'title' => 'Data Delivery Order CV. Jevera',
-            'date' => date('m/d/Y'),
+            'date' => date('Y-m-d'),
             'image' => public_path('logo/JVRBLUEKOP.png'),
             'alamat' => 'Jl. Rawa Jaya RT 012, RW 004, Kelurahan Pahlawan, Kecamatan Kemuning, Kota Palembang, Sumatera Selatan, Indonesia',
             'email' => 'cvjevera@gmail.com',
@@ -54,7 +54,7 @@ class PDFController extends Controller
         
         $data = [
             'title' => 'Journal Voucher CV. Jevera',
-            'date' => date('m/d/Y'),
+            'date' => date('Y-m-d'),
             'image' => public_path('logo/JVRBLUEKOP.png'),
             'alamat' => 'Jl. Rawa Jaya RT 012, RW 004, Kelurahan Pahlawan, Kecamatan Kemuning, Kota Palembang, Sumatera Selatan, Indonesia',
             'email' => 'cvjevera@gmail.com',
@@ -72,7 +72,7 @@ class PDFController extends Controller
         
         $data = [
             'title' => 'Journal Voucher CV. Jevera',
-            'date' => date('m/d/Y'),
+            'date' => date('Y-m-d'),
             'image' => public_path('logo/JVRBLUEKOP.png'),
             'alamat' => 'Jl. Rawa Jaya RT 012, RW 004, Kelurahan Pahlawan, Kecamatan Kemuning, Kota Palembang, Sumatera Selatan, Indonesia',
             'email' => 'cvjevera@gmail.com',
