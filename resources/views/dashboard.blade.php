@@ -89,6 +89,15 @@
                                 ],
                                 color: "#7E3BF2",
                             },
+                            {
+                                name: "Adjetiva",
+                                data: [
+                                    @foreach ($adjetiva as $a)
+                                        {{ $a->Nominal_Adjetiva }},
+                                    @endforeach
+                                ],
+                                color: "#32a852",
+                            },
                         ],
                         chart: {
                             height: "100%",
@@ -142,6 +151,9 @@
                                 @endforeach
                                 @foreach ($pemasukan as $p)
                                     '{{ Carbon\Carbon::parse($p->Tanggal_Pemasukan)->format('d-m-Y') }}',
+                                @endforeach
+                                @foreach ($adjetiva as $a)
+                                    '{{ Carbon\Carbon::parse($a->Tanggal_Adjetiva)->format('d-m-Y') }}',
                                 @endforeach
                             ],
                             labels: {

@@ -2,7 +2,7 @@
 
     <x-slot name="header">
         <h2 class="font-semibold text-md text-gray-800 leading-tight dark:text-white">
-            {{ __('Pencatatan/pemasukan/Tambah pemasukan') }}
+            {{ __('Pencatatan/Pemasukan/Tambah Pemasukan') }}
         </h2>
     </x-slot>
 

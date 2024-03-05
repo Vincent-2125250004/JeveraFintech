@@ -7,54 +7,40 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-            @if (session()->has('success') || session()->has('danger') || session()->has('warning') || session()->has('info'))
-                <script>
-                    function showToast(icon, message) {
-                        const Toast = Swal.mixin({
-                            toast: true,
-                            position: "top-end",
-                            showConfirmButton: false,
-                            timer: 3000,
-                            timerProgressBar: true,
-                            didOpen: (toast) => {
-                                toast.onmouseenter = Swal.stopTimer;
-                                toast.onmouseleave = Swal.resumeTimer;
-                            },
-                            willClose: (toast) => {
-                                if (toast.getAttribute('aria-live') === 'polite') {
-                                    toast.style.transition = 'opacity 1s ease-out';
-                                    toast.style.opacity = 0;
-                                }
-                            }
-                        });
-
-                        Toast.fire({
-                            icon: icon,
-                            title: message
-                        });
-                    }
-
-                    @if (session()->has('success'))
-                        showToast('success', "{{ session()->get('success') }}!");
-                    @endif
-
-                    @if (session()->has('danger'))
-                        showToast('error', "{{ session()->get('danger') }}!");
-                    @endif
-
-                    @if (session()->has('warning'))
-                        showToast('warning', "{{ session()->get('warning') }}!");
-                    @endif
-
-                    @if (session()->has('info'))
-                        showToast('info', "{{ session()->get('info') }}!");
-                    @endif
-                </script>
-            @endif
-            {{-- <div class="lg:col-span-2">
-                
-            </div> --}}
+            <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-6">
+                <div class="md:col-span-2">
+                    <div class="relative">
+                        <label for="search_account"
+                            class="text-sm font-semibold text-black dark:text-white">Search</label>
+                        <select id="search_account" name="search_account"
+                            class="js-example-basic-single bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-200 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-1">
+                            <option value="" disabled selected>Silahkan dipilih</option>
+                            @foreach ($akun as $akuns)
+                                <option value="{{ $akuns->id }}">
+                                    {{ $akuns->Nama_Akun }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="md:col-span-2">
+                    <div class="relative">
+                        <label for="start_date" class="text-sm font-semibold text-black dark:text-white">Tanggal
+                            Awal</label>
+                        <input type="date" id="start_date"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-400 focus:border-primary-400 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-200 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            placeholder="Cari Akun" />
+                    </div>
+                </div>
+                <div class="md:col-span-2">
+                    <div class="relative">
+                        <label for="end_date" class="text-sm font-semibold text-black dark:text-white">Tanggal
+                            Akhir</label>
+                        <input type="date" id="end_date"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-400 focus:border-primary-400 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-200 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            placeholder="Cari Akun" />
+                    </div>
+                </div>
+            </div>
 
             <div class="relative overflow-x-auto">
                 @foreach ($akun->sortBy('id') as $akuns)
@@ -63,6 +49,9 @@
                             ->orWhere('Ke_Akun', $akuns->id)
                             ->get();
                         $valuePengeluaran = App\Models\Pengeluaran::where('Dari_Akun', $akuns->id)
+                            ->orWhere('Ke_Akun', $akuns->id)
+                            ->get();
+                        $valueAdjetiva = App\Models\Adjetiva::where('Dari_Akun', $akuns->id)
                             ->orWhere('Ke_Akun', $akuns->id)
                             ->get();
                     @endphp
@@ -90,6 +79,13 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @if ($value->isEmpty() && $valuePengeluaran->isEmpty() && $valueAdjetiva->isEmpty())
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <td colspan="4"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white text-center">
+                                        Data tidak ditemukan</td>
+                                </tr>
+                            @endif
                             @foreach ($value as $values)
                                 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                     <td scope="row"
@@ -139,6 +135,31 @@
                                     </td>
                                 </tr>
                             @endforeach
+
+                            @foreach ($valueAdjetiva as $values)
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <td scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        {{ $values->Nomor_Referensi }}
+                                    </td>
+                                    <td scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        {{ $values->Deskripsi }}
+                                    </td>
+                                    <td scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        @if ($values->Ke_Akun == $akuns->id)
+                                            IDR {{ number_format($values->Nominal_Adjetiva, 0, ',', '.') }}
+                                        @endif
+                                    </td>
+                                    <td scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        @if ($values->Dari_Akun == $akuns->id)
+                                            IDR {{ number_format($values->Nominal_Adjetiva, 0, ',', '.') }}
+                                        @endif
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                         <tfoot>
                             <tr
@@ -184,6 +205,22 @@
                                     @endif
                                 @endforeach
 
+                                @foreach ($valueAdjetiva as $values)
+                                    @if ($values->Ke_Akun == $akuns->id)
+                                        @php
+                                            $totalDebit += $values->Nominal_Adjetiva;
+                                            $totalSaldo += $values->saldo->Sisa_Saldo;
+                                        @endphp
+                                    @endif
+
+                                    @if ($values->Dari_Akun == $akuns->id)
+                                        @php
+                                            $totalKredit += $values->Nominal_Adjetiva;
+                                            $totalSaldo += $values->saldo->Sisa_Saldo;
+                                        @endphp
+                                    @endif
+                                @endforeach
+
                                 <td scope="col" class="px-6 py-3">IDR
                                     {{ number_format($totalDebit, 0, ',', '.') }}
                                 </td>
@@ -205,7 +242,7 @@
                                     @if ($totalDebit == $totalKredit)
                                         -
                                     @endif
-                                    
+
                                 </td>
                                 <td scope="col" class="px-6 py-3">
                                     @if ($totalKredit > $totalDebit)
@@ -224,8 +261,13 @@
             </div>
         </div>
     </div>
-
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script>
+        $(document).ready(function() {
+            $('.js-example-basic-single').select2();
+        });
+
         function confirmDelete(form) {
             var link = form.action;
 

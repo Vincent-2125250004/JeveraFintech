@@ -88,7 +88,7 @@
             </div>
         </a>
 
-        <a href="{{ route('pencatatan.do.index') }}" type="button">
+        <a href="{{ route('pencatatan.adjetiva.index') }}" type="button">
             <div
                 class="group relative cursor-pointer overflow-hidden bg-white dark:bg-gray-800 px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl sm:mx-auto sm:max-w-sm sm:rounded-lg sm:px-10">
                 <span

@@ -48,7 +48,7 @@ class PemasukanController extends Controller
 
         $referenceNumber = 'UM-' . str_pad((intval(substr($lastReferenceNumber, 3)) + 1), 3, '0', STR_PAD_LEFT);
         
-        $pemasukan = Pemasukan::create([
+        Pemasukan::create([
             'Nomor_Referensi' => $referenceNumber,
             'Nama_Kontak' => $request->nama_kontak,
             'Dari_Akun' => $request->dari_akun,

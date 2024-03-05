@@ -21,7 +21,7 @@ return new class extends Migration
             $table->foreign('Nomor_Lambung')->references('Nomor_Lambung')->on('mobils')->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('SJB_Muat');
             $table->string('SJB_Bongkar');
-            $table->unsignedBigInteger('Rute');
+            $table->integer('Rute');
             $table->foreign('Rute')->references('id')->on('rutes')->cascadeOnDelete()->cascadeOnUpdate();
             $table->double('Tonase');
             $table->string('Status');

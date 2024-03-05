@@ -3,17 +3,21 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Adjetiva;
+use App\Models\Pemasukan;
 use Illuminate\Http\Request;
+use App\Models\Pengeluaran;
 use App\Models\Akun;
+use Carbon\Carbon;
 
 class Laporan extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        $akun  = Akun::all();
+    public function index(Request $request)
+    {   
+        $akun = Akun::all();
         return view('frontend.laporan.bukubesar.index', compact('akun'));
     }
 

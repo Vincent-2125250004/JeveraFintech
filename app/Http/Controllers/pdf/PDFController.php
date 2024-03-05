@@ -9,6 +9,7 @@ use App\Models\Pengeluaran;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use App\Models\DeliveryOrder;
+use App\Models\Adjetiva;
 
 
 class PDFController extends Controller
@@ -82,6 +83,22 @@ class PDFController extends Controller
         $pdf = Pdf::loadView('pdf.journalVoucherPemasukanPDF', $data);
         $pdf->setPaper('a4', 'landscape');
         return $pdf->stream('JournalVoucherPemasukan.pdf');
+    }
+
+    public function generatePDFJournalVoucherAdjetiva($id) {
+        $adjetiva = Adjetiva::find($id);
+
+        $data = [
+            'title' => 'Journal Voucher CV. Jevera',
+            'date' => date('Y-m-d'),
+            'image' => public_path('logo/JVRBLUEKOP.png'),
+            'alamat' => 'Jl. Rawa Jaya RT 012, RW 004, Kelurahan Pahlawan, Kecamatan Kemuning, Kota Palembang, Sumatera Selatan, Indonesia',
+            'email' => 'cvjevera@gmail.com',
+            'adjetiva' => $adjetiva
+        ];
+        $pdf = Pdf::loadView('pdf.journalVoucherAdjetivaPDF', $data);
+        $pdf->setPaper('a4', 'landscape');
+        return $pdf->stream('JournalVoucherAdjetiva.pdf');
     }
 
 }

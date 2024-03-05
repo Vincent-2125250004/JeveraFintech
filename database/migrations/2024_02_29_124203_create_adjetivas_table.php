@@ -13,6 +13,16 @@ return new class extends Migration
     {
         Schema::create('adjetivas', function (Blueprint $table) {
             $table->id();
+            $table->string('Nomor_Referensi')->unique();
+            $table->string('Nama_Kontak');
+            $table->foreign('Nama_Kontak')->references('Nama_Kontak')->on('kontaks')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->integer('Dari_Akun');
+            $table->foreign('Dari_Akun')->references('id')->on('akuns')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->integer('Ke_Akun');
+            $table->foreign('Ke_Akun')->references('id')->on('akuns')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->bigInteger('Nominal_Adjetiva');
+            $table->date('Tanggal_Adjetiva');
+            $table->string('Deskripsi');
             $table->timestamps();
         });
     }

@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-md text-gray-800 leading-tight dark:text-white">
-            {{ __('Delivery Order/Data Delivery Order') }}
+            {{ __('Pencatatan/Adjetiva') }}
         </h2>
     </x-slot>
 
@@ -54,26 +54,9 @@
             @endif
 
             <div class="flex justify-end m-2 p-2">
-                <a href="{{ route('pencatatan.do.create') }}"
+                <a href="{{ route('pencatatan.adjetiva.create') }}"
                     class="inline-flex items-center px-4 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-500 rounded-md font-semibold text-xs text-gray-700 dark:text-gray-300 uppercase tracking-widest shadow-sm hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 disabled:opacity-25 transition ease-in-out duration-150">
-                    Tambah Delivery Order
-                </a>
-                <a href="{{ route('pencatatan.do.pdf') }}" target="_blank"
-                    class="inline-flex items-center px-4 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-500 rounded-md font-semibold text-xs text-gray-700 dark:text-gray-300 uppercase tracking-widest shadow-sm hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 disabled:opacity-25 transition ease-in-out duration-150">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-5 h-5 fill-gray-600 mx-2">
-                        <path
-                            d="M0 64C0 28.7 28.7 0 64 0L224 0l0 128c0 17.7 14.3 32 32 32l128 0 0 144-208 0c-35.3 0-64 28.7-64 64l0 144-48 0c-35.3 0-64-28.7-64-64L0 64zm384 64l-128 0L256 0 384 128zM176 352l32 0c30.9 0 56 25.1 56 56s-25.1 56-56 56l-16 0 0 32c0 8.8-7.2 16-16 16s-16-7.2-16-16l0-48 0-80c0-8.8 7.2-16 16-16zm32 80c13.3 0 24-10.7 24-24s-10.7-24-24-24l-16 0 0 48 16 0zm96-80l32 0c26.5 0 48 21.5 48 48l0 64c0 26.5-21.5 48-48 48l-32 0c-8.8 0-16-7.2-16-16l0-128c0-8.8 7.2-16 16-16zm32 128c8.8 0 16-7.2 16-16l0-64c0-8.8-7.2-16-16-16l-16 0 0 96 16 0zm80-112c0-8.8 7.2-16 16-16l48 0c8.8 0 16 7.2 16 16s-7.2 16-16 16l-32 0 0 32 32 0c8.8 0 16 7.2 16 16s-7.2 16-16 16l-32 0 0 48c0 8.8-7.2 16-16 16s-16-7.2-16-16l0-64 0-64z" />
-                    </svg>
-                    PDF
-                </a>
-                <a href="{{ route('pencatatan.do.pdf') }}" target="_blank"
-                    class="inline-flex items-center px-4 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-500 rounded-md font-semibold text-xs text-gray-700 dark:text-gray-300 uppercase tracking-widest shadow-sm hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 disabled:opacity-25 transition ease-in-out duration-150">
-                    <svg xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 384 512" class="w-5 h-5 fill-gray-600 mx-2">
-                        <path
-                            d="M64 0C28.7 0 0 28.7 0 64V448c0 35.3 28.7 64 64 64H320c35.3 0 64-28.7 64-64V160H256c-17.7 0-32-14.3-32-32V0H64zM256 0V128H384L256 0zM155.7 250.2L192 302.1l36.3-51.9c7.6-10.9 22.6-13.5 33.4-5.9s13.5 22.6 5.9 33.4L221.3 344l46.4 66.2c7.6 10.9 5 25.8-5.9 33.4s-25.8 5-33.4-5.9L192 385.8l-36.3 51.9c-7.6 10.9-22.6 13.5-33.4 5.9s-13.5-22.6-5.9-33.4L162.7 344l-46.4-66.2c-7.6-10.9-5-25.8 5.9-33.4s25.8-5 33.4 5.9z" />
-                    </svg>
-                    Excel
+                    Tambah Adjetiva
                 </a>
             </div>
             <div class="relative overflow-x-auto">
@@ -82,93 +65,85 @@
                         class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-300 rounded-lg">
                         <tr>
                             <th scope="col" class="px-6 py-3">
-                                No. DO
+                                Nomor Referensi
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Tanggal
+                                Nama Kontak
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Nomor Polisi
+                                Nominal Adjetiva
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Nomor Lambung
+                                Akun Transaksi
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                SJB Muat
+                                Tanggal Adjetiva
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                SJB Bongkar
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Rute
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Tonase
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Status
+                                Sisa Saldo
                             </th>
                             <th scope="col" class="px-6 py-3">
                             </th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($do as $dos)
+                        @foreach ($adjetiva as $adjetivas)
                             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                 <td scope="row"
                                     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    {{ $dos->NO_Do }}
+                                    {{ $adjetivas->Nomor_Referensi }}
                                 </td>
                                 <td scope="row"
                                     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    {{ $dos->Tanggal_Do }}
+                                    {{ $adjetivas->Nama_Kontak }}
                                 </td>
                                 <td scope="row"
                                     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    {{ $dos->Nomor_Polisi }}
+                                    IDR {{ number_format($adjetivas->Nominal_Adjetiva, 0, ',', '.') }}
                                 </td>
                                 <td scope="row"
                                     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    {{ $dos->Nomor_Lambung }}
+                                    {{ $adjetivas->DariAkun->Nama_Akun }} - {{ $adjetivas->KeAkun->Nama_Akun }}
                                 </td>
                                 <td scope="row"
                                     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    {{ $dos->SJB_Muat }}
+                                    {{ $adjetivas->Tanggal_Adjetiva }}
                                 </td>
                                 <td scope="row"
                                     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    {{ $dos->SJB_Bongkar }}
+                                    @if ($adjetivas->saldo)
+                                        IDR {{ number_format($adjetivas->saldo->Sisa_Saldo, 0, ',', '.') }}
+                                    @else
+                                        No Sisa Saldo Found
+                                    @endif
                                 </td>
-                                <td scope="row"
-                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    {{ $dos->rute->Asal_Rute }} - {{ $dos->rute->Tujuan_Rute }}
-                                </td>
-                                <td scope="row"
-                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    {{ $dos->Tonase }}
-                                </td>
-                                <td scope="row"
-                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    {{ $dos->Status }}
-                                </td>
+
 
                                 <td class="py-4 px-6 text-sm font-medium text-right whitespace-nowrap">
                                     <div class="flex space-x-2">
-                                        <a href="{{ route('pencatatan.do.edit', $dos->id) }}"
-                                            title="Edit Data Delivery Order"
+                                        <a href="{{ route('pencatatan.adjetiva.edit', $adjetivas->id) }}"
+                                            title="Edit Data Pengeluaran"
                                             class="inline-flex items-center px-4 py-2 bg-green-500 dark:bg-green-500 border border-gray-300 dark:border-gray-500 rounded-md font-semibold text-xs text-white dark:text-white uppercase tracking-widest shadow-sm hover:bg-emerald-600 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 disabled:opacity-25 transition ease-in-out duration-150"><svg
                                                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
                                                 class="w-5 h-5 fill-white">
                                                 <path
                                                     d="M362.7 19.3L314.3 67.7 444.3 197.7l48.4-48.4c25-25 25-65.5 0-90.5L453.3 19.3c-25-25-65.5-25-90.5 0zm-71 71L58.6 323.5c-10.4 10.4-18 23.3-22.2 37.4L1 481.2C-1.5 489.7 .8 498.8 7 505s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L421.7 220.3 291.7 90.3z" />
                                             </svg></a>
-                                        <form title="Hapus Data Delivery Order"
-                                            class="px-4 py-2 bg-red-500 hover:bg-red-700 rounded-lg text-white inline-flex items-center px-4 py-2 bg-red-500 dark:bg-red-500 border border-gray-300 dark:border-gray-500 rounded-md font-semibold text-xs text-white dark:text-white uppercase tracking-widest shadow-sm hover:bg-emerald-600 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 disabled:opacity-25 transition ease-in-out duration-150"
-                                            method="POST" action="{{ route('pencatatan.do.destroy', $dos->id) }}"
+                                        <a href="{{ route('pencatatan.adjetiva.journalVoucher', $adjetivas->id) }}"
+                                            target="_blank"
+                                            class="inline-flex  items-center px-4 py-2 bg-sky-500 dark:bg-sky-500 border border-gray-300 dark:border-gray-500 rounded-md font-semibold text-xs text-white dark:text-white uppercase tracking-widest shadow-sm hover:bg-sky-600 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 disabled:opacity-25 transition ease-in-out duration-150"
+                                            title="Journal Voucher"><svg xmlns="http://www.w3.org/2000/svg"
+                                                viewBox="0 0 640 512" class="w-5 h-5 fill-white">
+                                                <path
+                                                    d="M128 0C110.3 0 96 14.3 96 32V224h96V192c0-35.3 28.7-64 64-64H480V32c0-17.7-14.3-32-32-32H128zM256 160c-17.7 0-32 14.3-32 32v32h96c35.3 0 64 28.7 64 64V416H576c17.7 0 32-14.3 32-32V192c0-17.7-14.3-32-32-32H256zm240 64h32c8.8 0 16 7.2 16 16v32c0 8.8-7.2 16-16 16H496c-8.8 0-16-7.2-16-16V240c0-8.8 7.2-16 16-16zM64 256c-17.7 0-32 14.3-32 32v13L187.1 415.9c1.4 1 3.1 1.6 4.9 1.6s3.5-.6 4.9-1.6L352 301V288c0-17.7-14.3-32-32-32H64zm288 84.8L216 441.6c-6.9 5.1-15.3 7.9-24 7.9s-17-2.8-24-7.9L32 340.8V480c0 17.7 14.3 32 32 32H320c17.7 0 32-14.3 32-32V340.8z" />
+                                            </svg></a>
+                                        <form method="POST" title="Delete Data Pengeluaran"
+                                            action="{{ route('pencatatan.adjetiva.destroy', $adjetivas->id) }}"
                                             onsubmit="return confirmDelete(this)">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="uppercase"><svg
+                                            <button type="submit"
+                                                class="px-4 py-2 bg-red-500 hover:bg-red-700 rounded-lg text-white inline-flex items-center px-4 py-2 bg-red-500 dark:bg-red-500 border border-gray-300 dark:border-gray-500 rounded-md font-semibold text-xs text-white dark:text-white uppercase tracking-widest shadow-sm hover:bg-emerald-600 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 disabled:opacity-25 transition ease-in-out duration-150"><svg
                                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"
                                                     class="w-5 h-5 fill-white">
                                                     <path

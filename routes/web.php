@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admin\AdjetivaController;
 use App\Http\Controllers\admin\DataKontakController;
 use App\Http\Controllers\admin\DataMobilController;
 use App\Http\Controllers\admin\DataRuteController;
@@ -65,10 +66,12 @@ Route::middleware('auth')->name('pencatatan.')->prefix('pencatatan')->group(func
     Route::resource('/do', DeliveryOrderController::class);
     Route::resource('/pengeluaran', PengeluaranController::class);
     Route::resource('/pemasukan', PemasukanController::class);
+    Route::resource('/adjetiva', AdjetivaController::class);
     //PDF
     Route::get('generatePDFDo', [App\Http\Controllers\PDF\PDFController::class, 'generatePDFDeliveryOrder'])->name('do.pdf');
     Route::get('generateJVPengeluaran/{id}', [App\Http\Controllers\PDF\PDFController::class, 'generatePDFJournalVoucherPengeluaran'])->name('pengeluaran.journalVoucher');
     Route::get('generateJVPemasukan/{id}', [App\Http\Controllers\PDF\PDFController::class, 'generatePDFJournalVoucherPemasukan'])->name('pemasukan.journalVoucher');
+    Route::get('generateJVAdjetiva/{id}', [App\Http\Controllers\PDF\PDFController::class, 'generatePDFJournalVoucherAdjetiva'])->name('adjetiva.journalVoucher');
     //Excel
     Route::get('export_excelDO', [App\Http\Controllers\excel\ExcelController::class, 'export_excelDO'])->name('do.excel');
 });
