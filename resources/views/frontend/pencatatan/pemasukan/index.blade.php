@@ -102,7 +102,7 @@
                                 <td scope="row"
                                     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                     @if ($pemasukans->saldo)
-                                        IDR {{ number_format($pemasukans->Nominal_Pemasukan, 0, ',', '.') }}
+                                        Rp.{{ number_format($pemasukans->Nominal_Pemasukan, 0, ',', '.') }}
                                     @else
                                         No Sisa Saldo Found
                                     @endif
@@ -119,7 +119,7 @@
                                 <td scope="row"
                                     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                     @if ($pemasukans->saldo)
-                                        IDR {{ number_format($pemasukans->saldo->Sisa_Saldo, 0, ',', '.') }}
+                                        Rp.{{ number_format($pemasukans->saldo->Sisa_Saldo, 0, ',', '.') }}
                                     @else
                                         No Sisa Saldo Found
                                     @endif

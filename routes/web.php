@@ -68,7 +68,7 @@ Route::middleware('auth')->name('pencatatan.')->prefix('pencatatan')->group(func
     Route::resource('/pemasukan', PemasukanController::class);
     Route::resource('/adjetiva', AdjetivaController::class);
     //PDF
-    Route::get('generatePDFDo', [App\Http\Controllers\PDF\PDFController::class, 'generatePDFDeliveryOrder'])->name('do.pdf');
+    Route::post('generatePDFDo', [App\Http\Controllers\PDF\PDFController::class, 'generatePDFDeliveryOrder'])->name('do.pdf');
     Route::get('generateJVPengeluaran/{id}', [App\Http\Controllers\PDF\PDFController::class, 'generatePDFJournalVoucherPengeluaran'])->name('pengeluaran.journalVoucher');
     Route::get('generateJVPemasukan/{id}', [App\Http\Controllers\PDF\PDFController::class, 'generatePDFJournalVoucherPemasukan'])->name('pemasukan.journalVoucher');
     Route::get('generateJVAdjetiva/{id}', [App\Http\Controllers\PDF\PDFController::class, 'generatePDFJournalVoucherAdjetiva'])->name('adjetiva.journalVoucher');

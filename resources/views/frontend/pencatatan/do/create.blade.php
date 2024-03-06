@@ -105,7 +105,7 @@
                                             @foreach ($rute as $rutes)
                                                 <option value="{{ $rutes->id }}">
                                                     {{ $rutes->id }} ::
-                                                    {{ $rutes->Asal_Rute }} - {{ $rutes->Tujuan_Rute }}</option>
+                                                    {{ $rutes->Asal_Rute }} - {{ $rutes->Tujuan_Rute }} {{ $rutes->Gerbang }}</option>
                                             @endforeach
                                         </select>
                                         @error('rute')

@@ -158,21 +158,21 @@
             <tbody>
                 <tr>
                     <td>{{ $adjetiva->KeAkun->Nama_Akun }}</td>
-                    <td>IDR {{ number_format($adjetiva->Nominal_Adjetiva, 0, ',', '.') }}</td>
+                    <td>Rp.{{ number_format($adjetiva->Nominal_Adjetiva, 0, ',', '.') }}</td>
                     <td>-</td>
                 </tr>
                 <tr>
                     <td>{{ $adjetiva->DariAkun->Nama_Akun }}</td>
                     <td>-</td>
-                    <td>IDR {{ number_format($adjetiva->Nominal_Adjetiva, 0, ',', '.') }}</td>
+                    <td>Rp.{{ number_format($adjetiva->Nominal_Adjetiva, 0, ',', '.') }}</td>
                 </tr>
 
             </tbody>
             <tfoot>
                 <tr>
                     <td>Total</td>
-                    <td>IDR {{ number_format($adjetiva->Nominal_Adjetiva, 0, ',', '.') }}</td>
-                    <td>IDR {{ number_format($adjetiva->Nominal_Adjetiva, 0, ',', '.') }}</td>
+                    <td>Rp.{{ number_format($adjetiva->Nominal_Adjetiva, 0, ',', '.') }}</td>
+                    <td>Rp.{{ number_format($adjetiva->Nominal_Adjetiva, 0, ',', '.') }}</td>
                 </tr>
             </tfoot>
         </table>

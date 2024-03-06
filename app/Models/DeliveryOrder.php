@@ -18,7 +18,7 @@ class DeliveryOrder extends Model
         'SJB_Bongkar',
         'Rute',
         'Tonase',
-        'Status',
+        'Total_Harga',
     ];
 
     public function rute() {

@@ -14,7 +14,8 @@ class Rute extends Model
         'Tujuan_Rute',
         'Gerbang',
         'Kilometer_Rute',
-        'Harga_Rute'
+        'Harga_Tonase',
+        'Uang_Jalan'
     ];
 
     public function rute() {

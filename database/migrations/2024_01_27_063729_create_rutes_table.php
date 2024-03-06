@@ -16,8 +16,9 @@ return new class extends Migration
             $table->string('Asal_Rute');
             $table->string('Tujuan_Rute');
             $table->string('Gerbang');
-            $table->integer('Kilometer_Rute');
-            $table->integer('Harga_Rute');
+            $table->double('Kilometer_Rute');
+            $table->bigInteger('Harga_Tonase');
+            $table->bigInteger('Uang_Jalan');
             $table->timestamps();
         });
     }

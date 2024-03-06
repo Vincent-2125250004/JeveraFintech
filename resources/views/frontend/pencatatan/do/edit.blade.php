@@ -14,7 +14,6 @@
                 </a>
             </div>
 
-
             <div class="relative overflow-x-auto">
                 <div class="bg-white dark:bg-gray-700 rounded shadow-lg p-4 px-4 md:p-8 mb-6">
                     <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3">
@@ -107,7 +106,7 @@
                                             @foreach ($rute as $rutes)
                                                 <option value="{{ $rutes->Asal_Rute }} - {{ $rutes->Tujuan_Rute }}"
                                                     @selected($do->Rute == $rutes->id)> {{ $rutes->id }} ::
-                                                    {{ $rutes->Asal_Rute }} - {{ $rutes->Tujuan_Rute }}</option>
+                                                    {{ $rutes->Asal_Rute }} - {{ $rutes->Tujuan_Rute }} {{ $rutes->Gerbang }}</option>
                                             @endforeach
                                         </select>
                                         @error('rute')

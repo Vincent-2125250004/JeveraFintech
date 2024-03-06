@@ -159,21 +159,21 @@
             <tbody>
                 <tr>
                     <td>{{ $pengeluaran->KeAkun->Nama_Akun }}</td>
-                    <td>IDR {{ number_format($pengeluaran->Nominal_Pengeluaran, 0, ',', '.') }}</td>
+                    <td>Rp.{{ number_format($pengeluaran->Nominal_Pengeluaran, 0, ',', '.') }}</td>
                     <td>-</td>
                 </tr>
                 <tr>
                     <td>{{ $pengeluaran->DariAkun->Nama_Akun }}</td>
                     <td>-</td>
-                    <td>IDR {{ number_format($pengeluaran->Nominal_Pengeluaran, 0, ',', '.') }}</td>
+                    <td>Rp.{{ number_format($pengeluaran->Nominal_Pengeluaran, 0, ',', '.') }}</td>
                 </tr>
 
             </tbody>
             <tfoot>
                 <tr>
                     <td>Total</td>
-                    <td>IDR {{ number_format($pengeluaran->Nominal_Pengeluaran, 0, ',', '.') }}</td>
-                    <td>IDR {{ number_format($pengeluaran->Nominal_Pengeluaran, 0, ',', '.') }}</td>
+                    <td>Rp.{{ number_format($pengeluaran->Nominal_Pengeluaran, 0, ',', '.') }}</td>
+                    <td>Rp.{{ number_format($pengeluaran->Nominal_Pengeluaran, 0, ',', '.') }}</td>
                 </tr>
             </tfoot>
         </table>

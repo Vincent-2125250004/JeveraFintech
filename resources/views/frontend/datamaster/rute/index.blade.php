@@ -80,7 +80,10 @@
                                 Kilometer
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Harga
+                                Harga/Ton
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Uang Jalan
                             </th>
                             <th scope="col" class="px-6 py-3">
                             </th>
@@ -111,7 +114,11 @@
                                 </td>
                                 <td scope="row"
                                     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    IDR {{ number_format($rutes->Harga_Rute, 0, ',', '.') }}
+                                    IDR {{ number_format($rutes->Harga_Tonase, 0, ',', '.') }}
+                                </td>
+                                <td scope="row"
+                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    IDR {{ number_format($rutes->Uang_Jalan, 0, ',', '.') }}
                                 </td>
                                 <td class="py-4 px-6 text-sm font-medium text-right whitespace-nowrap">
                                     <div class="flex space-x-2">

@@ -24,7 +24,7 @@ return new class extends Migration
             $table->integer('Rute');
             $table->foreign('Rute')->references('id')->on('rutes')->cascadeOnDelete()->cascadeOnUpdate();
             $table->double('Tonase');
-            $table->string('Status');
+            $table->bigInteger('Total_Harga');
             $table->timestamps();
         });
     }

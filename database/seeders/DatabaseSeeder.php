@@ -59,19 +59,48 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Rute::create([
-            'Asal_Rute' => 'MIP',
+            'Asal_Rute' => 'MME',
             'Tujuan_Rute' => 'PORT',
-            'Gerbang' => 'Selatan',
-            'Kilometer_Rute' => '100',
-            'Harga_Rute' => '1000000',
+            'Gerbang' => '-',
+            'Kilometer_Rute' => '140',
+            'Harga_Tonase' => '154000',
+            'Uang_Jalan' => '1850000'
+        ]);
+
+        Rute::create([
+            'Asal_Rute' => 'MME',
+            'Tujuan_Rute' => '36',
+            'Gerbang' => '-',
+            'Kilometer_Rute' => '104',
+            'Harga_Tonase' => '114400',
+            'Uang_Jalan' => '1500000'
+        ]);
+
+        Rute::create([
+            'Asal_Rute' => 'MME',
+            'Tujuan_Rute' => '107',
+            'Gerbang' => '-',
+            'Kilometer_Rute' => '33',
+            'Harga_Tonase' => '36300',
+            'Uang_Jalan' => '550000'
         ]);
 
         Rute::create([
             'Asal_Rute' => 'MIP',
             'Tujuan_Rute' => 'PORT',
             'Gerbang' => 'Utara',
-            'Kilometer_Rute' => '200',
-            'Harga_Rute' => '2000000',
+            'Kilometer_Rute' => '133.85',
+            'Harga_Tonase' => '163297',
+            'Uang_Jalan' => '1800000'
+        ]);
+
+        Rute::create([
+            'Asal_Rute' => 'MIP',
+            'Tujuan_Rute' => 'PORT',
+            'Gerbang' => 'Selatan',
+            'Kilometer_Rute' => '129.85',
+            'Harga_Tonase' => '158539',
+            'Uang_Jalan' => '1800000'
         ]);
 
         Mobil::create([
@@ -116,7 +145,7 @@ class DatabaseSeeder extends Seeder
             'SJB_Bongkar' => 'SJB-002',
             'Rute' => 1,
             'Tonase' => '80',
-            'Status' => 'Selesai',
+            'Total_Harga' => '12320000'
         ]);
 
         DeliveryOrder::create([
@@ -128,7 +157,7 @@ class DatabaseSeeder extends Seeder
             'SJB_Bongkar' => 'SJB-004',
             'Rute' => 2,
             'Tonase' => '90',
-            'Status' => 'Selesai',
+            'Total_Harga' => '10296000'
         ]);
 
 

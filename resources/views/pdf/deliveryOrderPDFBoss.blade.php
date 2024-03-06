@@ -110,6 +110,8 @@
                     <th>SJB Bongkar</th>
                     <th>Rute</th>
                     <th>Tonase</th>
+                    <th>Total Harga</th>
+                    <th>Uang Jalan</th>
 
                 </tr>
             </thead>
@@ -125,6 +127,8 @@
                         <td>{{ $dos->rute->Asal_Rute }} - {{ $dos->rute->Tujuan_Rute }} {{ $dos->rute->Gerbang }}
                         </td>
                         <td>{{ $dos->Tonase }}</td>
+                        <td>Rp.{{ number_format($dos->Total_Harga, 0, ',', '.') }}</td>
+                        <td>Rp.{{ number_format($dos->rute->Uang_Jalan, 0, ',', '.') }}</td>
                     </tr>
                 @endforeach
             </tbody>

@@ -36,6 +36,9 @@ class DeliveryOrderController extends Controller
      */
     public function store(DataDeliveryOrderStoreRequest $request)
     {
+        $rute = Rute::find($request->rute);
+        $totalHarga = $rute->Harga_Tonase * $request->tonase;
+
         DeliveryOrder::create([
             'NO_Do' => $request->no_do,
             'Tanggal_Do' => Carbon::parse($request->tanggal_do)->format('Y-m-d'),
@@ -45,7 +48,7 @@ class DeliveryOrderController extends Controller
             'SJB_Bongkar' => $request->sjb_bongkar,
             'Rute' => $request->rute,
             'Tonase' => $request->tonase,
-            'Status' => 'Selesai',
+            'Total_Harga' => $totalHarga,
         ]);
 
         return redirect()->route('pencatatan.do.index')->with('success', 'Data Delivery Order Berhasil ditambahkan');
@@ -74,6 +77,9 @@ class DeliveryOrderController extends Controller
      */
     public function update(DataDeliveryOrderStoreRequest $request, DeliveryOrder $do)
     {
+        $rute = Rute::find($request->rute);
+        $totalHarga = $rute->Harga_Tonase * $request->tonase;
+
         $do->update([
             'NO_Do' => $request->no_do,
             'Tanggal_Do' => Carbon::parse($request->tanggal_do)->format('Y-m-d'),
@@ -83,6 +89,7 @@ class DeliveryOrderController extends Controller
             'SJB_Bongkar' => $request->sjb_bongkar,
             'Rute' => $request->rute,
             'Tonase' => $request->tonase,
+            'Total_Harga' => $totalHarga,
         ]);
 
         return redirect()->route('pencatatan.do.index')->with('info', 'Data Delivery Order Berhasil diubah');

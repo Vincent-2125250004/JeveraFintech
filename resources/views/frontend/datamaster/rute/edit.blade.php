@@ -71,12 +71,21 @@
                                     </div>
 
                                     <div class="md:col-span-3">
-                                        <label for="harga_rute" class="text-black dark:text-white">Harga Rute</label>
-                                        <input type="number" name="harga_rute" id="harga_rute"
+                                        <label for="harga_tonase" class="text-black dark:text-white">Harga Per Tonase</label>
+                                        <input type="number" name="harga_tonase" id="harga_tonase"
                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-400 focus:border-primary-400 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-200 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                            value="{{ $rute->Harga_Rute }}" required="" placeholder="Rute Tujuan"
-                                            placeholder="" />
-                                        @error('harga_rute')
+                                            value="{{ $rute->Harga_Tonase }}" required="" placeholder="Harga" />
+                                        @error('harga_tonase')
+                                            <div class="text-sm text-red-400">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
+                                    <div class="md:col-span-3">
+                                        <label for="uang_jalan" class="text-black dark:text-white">Uang Jalan</label>
+                                        <input type="number" name="uang_jalan" id="uang_jalan"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-400 focus:border-primary-400 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-200 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                            value="{{ $rute->Uang_Jalan }}" required="" placeholder="Harga" />
+                                        @error('uang_jalan')
                                             <div class="text-sm text-red-400">{{ $message }}</div>
                                         @enderror
                                     </div>

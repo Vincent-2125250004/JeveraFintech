@@ -58,7 +58,7 @@
                     class="inline-flex items-center px-4 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-500 rounded-md font-semibold text-xs text-gray-700 dark:text-gray-300 uppercase tracking-widest shadow-sm hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 disabled:opacity-25 transition ease-in-out duration-150">
                     Tambah Delivery Order
                 </a>
-                <a href="{{ route('pencatatan.do.pdf') }}" target="_blank"
+                <a data-modal-target="crud-modal" data-modal-toggle="crud-modal"
                     class="inline-flex items-center mx-2 px-4 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-500 rounded-md font-semibold text-xs text-gray-700 dark:text-gray-300 uppercase tracking-widest shadow-sm hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 disabled:opacity-25 transition ease-in-out duration-150">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-5 h-5 fill-gray-600 mx-2">
                         <path
@@ -68,8 +68,7 @@
                 </a>
                 <a href="{{ route('pencatatan.do.excel') }}" target="_blank"
                     class="inline-flex items-center px-4 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-500 rounded-md font-semibold text-xs text-gray-700 dark:text-gray-300 uppercase tracking-widest shadow-sm hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 disabled:opacity-25 transition ease-in-out duration-150">
-                    <svg xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 384 512" class="w-5 h-5 fill-gray-600 mx-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="w-5 h-5 fill-gray-600 mx-2">
                         <path
                             d="M64 0C28.7 0 0 28.7 0 64V448c0 35.3 28.7 64 64 64H320c35.3 0 64-28.7 64-64V160H256c-17.7 0-32-14.3-32-32V0H64zM256 0V128H384L256 0zM155.7 250.2L192 302.1l36.3-51.9c7.6-10.9 22.6-13.5 33.4-5.9s13.5 22.6 5.9 33.4L221.3 344l46.4 66.2c7.6 10.9 5 25.8-5.9 33.4s-25.8 5-33.4-5.9L192 385.8l-36.3 51.9c-7.6 10.9-22.6 13.5-33.4 5.9s-13.5-22.6-5.9-33.4L162.7 344l-46.4-66.2c-7.6-10.9-5-25.8 5.9-33.4s25.8-5 33.4 5.9z" />
                     </svg>
@@ -104,9 +103,6 @@
                             </th>
                             <th scope="col" class="px-6 py-3">
                                 Tonase
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Status
                             </th>
                             <th scope="col" class="px-6 py-3">
                             </th>
@@ -147,11 +143,6 @@
                                     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                     {{ $dos->Tonase }}
                                 </td>
-                                <td scope="row"
-                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    {{ $dos->Status }}
-                                </td>
-
                                 <td class="py-4 px-6 text-sm font-medium text-right whitespace-nowrap">
                                     <div class="flex space-x-2">
                                         <a href="{{ route('pencatatan.do.edit', $dos->id) }}"
@@ -206,6 +197,7 @@
             $('#myTable_previous').addClass('text-black font-semibold dark:text-white me-4');
 
         });
+
         function confirmDelete(form) {
             var link = form.action;
 
@@ -227,4 +219,107 @@
             return false;
         }
     </script>
+
+    <div id="crud-modal" tabindex="-1" aria-hidden="true"
+        class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        <div class="relative p-4 w-full max-w-md max-h-full">
+            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                        Filter Delivery Order
+                    </h3>
+                    <button type="button"
+                        class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                        data-modal-toggle="crud-modal">
+                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 14 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                        </svg>
+                        <span class="sr-only">Close modal</span>
+                    </button>
+                </div>
+                <form action="{{ route('pencatatan.do.pdf') }}" class="p-4 md:p-5" method="POST" target="_blank" id="form_filter">
+                    @csrf
+                    <div class="grid gap-4 mb-4 grid-cols-2">
+                        <div class="md:col-span-2">
+                            <div class="relative">
+                                <label for="start_date"
+                                    class="text-sm font-semibold text-black dark:text-white">Tanggal
+                                    Awal</label>
+                                <input type="date" id="start_date" name="start_date"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-400 focus:border-primary-400 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-200 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                    placeholder="" />
+                            </div>
+                        </div>
+                        <div class="md:col-span-2">
+                            <div class="relative">
+                                <label for="end_date" class="text-sm font-semibold text-black dark:text-white">Tanggal
+                                    Akhir</label>
+                                <input type="date" id="end_date" name="end_date"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-400 focus:border-primary-400 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-200 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                    placeholder="" />
+                            </div>
+                        </div>
+                        <div class="md:col-span-2">
+                            <input id="semua_data" type="radio" value="1" name="semua_data"
+                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                            <label for="default-radio-1"
+                                class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Semua Data</label>
+                        </div>
+                        <div class="md:col-span-2">
+                            <input id="boss_all" type="radio" value="2" name="boss_all"
+                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                            <label for="default-radio-2"
+                                class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Boss ALL</label>
+                        </div>
+                        <div class="md:col-span-2">
+                            <input id="cari_tanggal" type="radio" value="3" name="cari_tanggal"
+                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                            <label for="default-radio-2"
+                                class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Cari Tanggal</label>
+                        </div>
+                    </div>
+                    <div class="md:col-span-6 text-right mt-10">
+                        <div class="inline-flex items-end">
+                            <button type="submit"
+                                class="inline-flex items-center px-4 py-2 bg-sky-500 dark:bg-sky-500 border border-gray-300 dark:border-gray-500 rounded-md font-semibold text-xs text-white dark:text-white uppercase tracking-widest shadow-sm hover:bg-emerald-600 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 disabled:opacity-25 transition ease-in-out duration-150"
+                                data-modal-hide="crud-modal">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const semuaDataRadio = document.getElementById('semua_data');
+            const bossRadio = document.getElementById('boss_all');
+            const tanggalInputStart = document.getElementById('start_date');
+            const tanggalInputEnd = document.getElementById('end_date');
+            const cariTanggalRadio = document.getElementById('cari_tanggal');
+            semuaDataRadio.addEventListener('change', function() {
+                tanggalInputStart.disabled = semuaDataRadio.checked;
+                tanggalInputEnd.disabled = semuaDataRadio.checked;
+                bossRadio.checked = false;
+                cariTanggalRadio.checked = false;
+            });
+            bossRadio.addEventListener('change', function() {
+                tanggalInputStart.disabled = !bossRadio.checked;
+                tanggalInputEnd.disabled = !bossRadio.checked;
+                semuaDataRadio.checked = false;
+                cariTanggalRadio.checked = false;
+            });
+            cariTanggalRadio.addEventListener('change',function () {
+                tanggalInputStart.disabled = !cariTanggalRadio.checked;
+                tanggalInputEnd.disabled = !cariTanggalRadio.checked;
+                semuaDataRadio.checked = false;
+                bossRadio.checked = false;
+            });
+
+        });
+    </script>
+
+
 </x-app-layout>

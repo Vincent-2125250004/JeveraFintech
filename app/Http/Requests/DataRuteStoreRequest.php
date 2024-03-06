@@ -26,7 +26,9 @@ class DataRuteStoreRequest extends FormRequest
             'tujuan_rute'=>['required'],
             'gerbang' =>['required'],
             'kilometer_rute'=>['required'],
-            'harga_rute'=>['required'],
+            'harga_tonase'=>['required'],
+            'uang_jalan'=>['required'], 
+
         ];
     }
 
@@ -43,6 +45,7 @@ class DataRuteStoreRequest extends FormRequest
             'gerbang.required' => 'Kolom Gerbang harus diisi.',
             'kilometer_rute.required' => 'Kolom Kilometer Rute harus diisi.',
             'harga_rute.required' => 'Kolom Harga Rute harus diisi.',
+            'uang_jalan.required' => 'Kolom Uang Jalan harus diisi.',
         ];
     }
 }
