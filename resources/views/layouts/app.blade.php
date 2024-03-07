@@ -23,11 +23,8 @@
             document.documentElement.classList.remove('dark')
         }
     </script>
-
-    <link rel="stylesheet" href="{{ asset('resources/css/app.css') }}">
-    
     <!-- Scripts -->
-    {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
+    @vite('resources/js/app.js')
 </head>
 
 <body class="font-sans antialiased">
@@ -50,5 +47,4 @@
     </div>
 
 </body>
-    <script src="{{ asset('resources/js/app.js') }}"></script>
 </html>
