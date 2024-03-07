@@ -83,3 +83,4 @@ Route::middleware('auth')->name('laporan.')->prefix('laporan')->group(function (
 
 
 require __DIR__ . '/auth.php';
+
