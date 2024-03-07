@@ -10,40 +10,32 @@
             <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-6">
                 <div class="md:col-span-2">
                     <div class="relative">
-                        <label for="search_account"
-                            class="text-sm font-semibold text-black dark:text-white">Search</label>
-                        <select id="search_account" name="search_account"
-                            class="js-example-basic-single bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-200 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-1">
-                            <option value="" disabled selected>Silahkan dipilih</option>
-                            @foreach ($akun as $akuns)
-                                <option value="{{ $akuns->id }}">
-                                    {{ $akuns->Nama_Akun }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
-                <div class="md:col-span-2">
-                    <div class="relative">
-                        <label for="start_date" class="text-sm font-semibold text-black dark:text-white">Tanggal
+                        <label for="min" class="text-sm font-semibold text-black dark:text-white">Tanggal
                             Awal</label>
-                        <input type="date" id="start_date"
+                        <input type="text" id="min"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-400 focus:border-primary-400 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-200 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="Cari Akun" />
+                            placeholder="Tanggal Awal" />
                     </div>
                 </div>
                 <div class="md:col-span-2">
                     <div class="relative">
-                        <label for="end_date" class="text-sm font-semibold text-black dark:text-white">Tanggal
+                        <label for="max" class="text-sm font-semibold text-black dark:text-white">Tanggal
                             Akhir</label>
-                        <input type="date" id="end_date"
+                        <input type="text" id="max"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-400 focus:border-primary-400 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-200 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="Cari Akun" />
+                            placeholder="Tanggal Akhir" />
                     </div>
                 </div>
             </div>
 
             <div class="relative overflow-x-auto">
+                <?php
+                $countParent = 0;
+                ?>
                 @foreach ($akun->sortBy('id') as $akuns)
+                    <?php
+                    $countParent++;
+                    ?>
                     @php
                         $value = App\Models\Pemasukan::where('Dari_Akun', $akuns->id)
                             ->orWhere('Ke_Akun', $akuns->id)
@@ -56,7 +48,8 @@
                             ->get();
                     @endphp
 
-                    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400"
+                        id="myTable-<?php echo $countParent; ?>">
                         <div
                             class="text-xl my-4 text-gray-900 font-semibold items-center bg-sky-200 dark:bg-sky-700 dark:text-white rounded-lg">
                             <h2 class="p-4 text-center">{{ $akuns->Nama_Akun }}</h2>
@@ -75,6 +68,9 @@
                                 </th>
                                 <th scope="col" class="px-6 py-3">
                                     Kredit
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Tanggal
                                 </th>
                             </tr>
                         </thead>
@@ -108,9 +104,12 @@
                                             IDR {{ number_format($values->Nominal_Pemasukan, 0, ',', '.') }}
                                         @endif
                                     </td>
+                                    <td scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        {{ $values->Tanggal_Pemasukan }}
+                                    </td>
                                 </tr>
                             @endforeach
-
                             @foreach ($valuePengeluaran as $values)
                                 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                     <td scope="row"
@@ -135,7 +134,6 @@
                                     </td>
                                 </tr>
                             @endforeach
-
                             @foreach ($valueAdjetiva as $values)
                                 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                     <td scope="row"
@@ -231,7 +229,6 @@
                             <tr
                                 class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 font-semibold text-gray-900 dark:text-white">
                                 <td colspan="2" class="px-6 py-3 text-base text-center">Closing Balance</td>
-                                </td>
                                 <td scope="col" class="px-6 py-3">
                                     @if ($totalDebit > $totalKredit)
                                         @php
@@ -257,36 +254,101 @@
                                 </td>
                             </tr>
                         </tfoot>
+                    </table>
                 @endforeach
             </div>
         </div>
     </div>
+    <style>
+        .dataTables_filter {
+            visibility: hidden;
+            display: none;
+        }
+        div.dt-datetime-title {
+            color: white;
+        }
+        select.dt-datetime-month {
+            color: black;
+        }
+        select.dt-datetime-year {
+            color: black;
+        }
+    </style>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/dataTables.tailwindcss.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js"></script>
+    <script src="https://cdn.datatables.net/datetime/1.5.2/js/dataTables.dateTime.min.js"></script>
     <script>
         $(document).ready(function() {
+            let countParent = <?php echo $countParent; ?>;
+            var countTable = 0;
             $('.js-example-basic-single').select2();
-        });
 
-        function confirmDelete(form) {
-            var link = form.action;
+            let jumlahTable = Array.apply(null, Array(countParent));
+            console.log(jumlahTable);
 
-            Swal.fire({
-                title: "Yakin ingin menghapus data?",
-                text: "Anda tidak bisa mengembalikan datanya lagi!",
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#3085d6",
-                cancelButtonColor: "#d33",
-                confirmButtonText: "Ya, Hapus!"
-            }).then((willDelete) => {
-                if (willDelete.isConfirmed) {
-                    form.submit();
-                } else {
-                    Swal.fire("Data Kamu Aman!", "", "info");
-                }
+            jumlahTable.forEach(function(element, index, array) {
+                countTable++;
+
+                let table = $('#myTable-' + countTable).DataTable({
+                    responsive: true,
+                    // searching : false
+                });
+
+                $('#myTable-'+countTable+'_wrapper').addClass('overflow-y-hidden p-1');
+                $('#myTable-'+countTable+'_length').addClass('text-black font-semibold dark:text-white mb-2');
+                $('#myTable-'+countTable+'_length select').addClass(
+                    'mb-2 text-black font-semibold dark:text-white dark:bg-gray-800 border border-gray-300 dark:border-gray-500 rounded-md px-6 py-1 ms-4'
+                );
+                $('#myTable-'+countTable+'_info').addClass('text-black font-semibold dark:text-white text-sm');
+                $('#myTable-'+countTable+'_paginate').addClass('text-black font-semibold dark:text-white mt-4');
+                $('#myTable-'+countTable+'_next').addClass('text-black font-semibold dark:text-white ms-4');
+                $('#myTable-'+countTable+'_previous').addClass('text-black font-semibold dark:text-white me-4');
+                $('#myTable-'+countTable+'max').addClass('text-black font-semibold mt-2 mb-2 dark:text-white dark:bg-gray-800 border border-gray-300 dark:border-gray-500 rounded-md px-2 py-1 ms-4');
+                table.column(4).visible(false);
+
             });
-            return false;
-        }
+
+
+            let dateIndex = 4;
+            let minDate, maxDate;
+
+            // Custom filtering function which will search data in column four between two values
+            DataTable.ext.search.push(function(settings, data, dataIndex) {
+                let min = minDate.val();
+                let max = maxDate.val();
+                let date = new Date(data[dateIndex]);
+
+                if (
+                    (min === null && max === null) ||
+                    (min === null && date <= max) ||
+                    (min <= date && max === null) ||
+                    (min <= date && date <= max)
+                ) {
+                    return true;
+                }
+                return false;
+            });
+
+            // Create date inputs
+            minDate = new DateTime('#min', {
+                format: 'YYYY MMMM Do'
+            });
+            maxDate = new DateTime('#max', {
+                format: 'YYYY MMMM Do'
+            });
+
+            // Refilter the table
+            document.querySelectorAll('#min, #max').forEach((el) => {
+                el.addEventListener('change', () => {
+                    // Loop through each DataTable instance and draw the table
+                    for (let i = 1; i <= countParent; i++) {
+                        $('#myTable-' + i).DataTable().draw();
+                    }
+                });
+            });
+        });
     </script>
 </x-app-layout>
