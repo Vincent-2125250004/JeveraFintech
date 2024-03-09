@@ -264,12 +264,15 @@
             visibility: hidden;
             display: none;
         }
+
         div.dt-datetime-title {
             color: white;
         }
+
         select.dt-datetime-month {
             color: black;
         }
+
         select.dt-datetime-year {
             color: black;
         }
@@ -294,19 +297,29 @@
 
                 let table = $('#myTable-' + countTable).DataTable({
                     responsive: true,
-                    // searching : false
+                    // searching : false,
+                    rowReorder: {
+                        selector: 'td:nth-child(2)'
+                    }
                 });
 
-                $('#myTable-'+countTable+'_wrapper').addClass('overflow-y-hidden p-1');
-                $('#myTable-'+countTable+'_length').addClass('text-black font-semibold dark:text-white mb-2');
-                $('#myTable-'+countTable+'_length select').addClass(
+                $('#myTable-' + countTable + '_wrapper').addClass('overflow-y-hidden p-1');
+                $('#myTable-' + countTable + '_length').addClass(
+                    'text-black font-semibold dark:text-white mb-2');
+                $('#myTable-' + countTable + '_length select').addClass(
                     'mb-2 text-black font-semibold dark:text-white dark:bg-gray-800 border border-gray-300 dark:border-gray-500 rounded-md px-6 py-1 ms-4'
                 );
-                $('#myTable-'+countTable+'_info').addClass('text-black font-semibold dark:text-white text-sm');
-                $('#myTable-'+countTable+'_paginate').addClass('text-black font-semibold dark:text-white mt-4');
-                $('#myTable-'+countTable+'_next').addClass('text-black font-semibold dark:text-white ms-4');
-                $('#myTable-'+countTable+'_previous').addClass('text-black font-semibold dark:text-white me-4');
-                $('#myTable-'+countTable+'max').addClass('text-black font-semibold mt-2 mb-2 dark:text-white dark:bg-gray-800 border border-gray-300 dark:border-gray-500 rounded-md px-2 py-1 ms-4');
+                $('#myTable-' + countTable + '_info').addClass(
+                    'text-black font-semibold dark:text-white text-sm');
+                $('#myTable-' + countTable + '_paginate').addClass(
+                    'text-black font-semibold dark:text-white mt-4');
+                $('#myTable-' + countTable + '_next').addClass(
+                    'text-black font-semibold dark:text-white ms-4');
+                $('#myTable-' + countTable + '_previous').addClass(
+                    'text-black font-semibold dark:text-white me-4');
+                $('#myTable-' + countTable + 'max').addClass(
+                    'text-black font-semibold mt-2 mb-2 dark:text-white dark:bg-gray-800 border border-gray-300 dark:border-gray-500 rounded-md px-2 py-1 ms-4'
+                    );
                 table.column(4).visible(false);
 
             });
