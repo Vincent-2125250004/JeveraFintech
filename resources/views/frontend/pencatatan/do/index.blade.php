@@ -76,7 +76,7 @@
                 </a>
             </div>
             <div class="relative overflow-x-auto">
-                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400" id="myTable">
+                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 display responsive wrap" width="100%" id="myTable">
                     <thead
                         class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-300 rounded-lg">
                         <tr>
@@ -137,7 +137,7 @@
                                 </td>
                                 <td scope="row"
                                     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    {{ $dos->rute->Asal_Rute }} - {{ $dos->rute->Tujuan_Rute }}
+                                    {{ $dos->rute->Asal_Rute }} - {{ $dos->rute->Tujuan_Rute }} - {{$dos->rute->Gerbang}} - {{$dos->rute->Kilometer_Rute}} KM
                                 </td>
                                 <td scope="row"
                                     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
@@ -175,13 +175,30 @@
             </div>
         </div>
     </div>
+
+    <style>
+        td.dataTables_empty {
+            color: #27272a;
+            font-weight: bold;
+            text-align: center;
+            background-color: #facc15;
+            padding: 20px;
+            font-size: 150%
+        }
+    </style>
+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.7/js/dataTables.tailwindcss.min.js"></script>
     <script>
         $(document).ready(function() {
-            let table = $('#myTable').DataTable();
+            let table = $('#myTable').DataTable({
+                responsive: true,
+                    "language" : {
+                        "emptyTable" : "Tidak ada data"
+                    }
+            });
             $('#myTable_wrapper').addClass('overflow-y-hidden p-1');
             $('#myTable_filter').addClass('text-black font-semibold dark:text-white');
             $('#myTable_filter input').addClass(

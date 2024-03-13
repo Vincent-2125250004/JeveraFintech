@@ -104,7 +104,7 @@
                                             class="bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-200 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-1">
                                             <option value="" disabled selected>Silahkan dipilih</option>
                                             @foreach ($rute as $rutes)
-                                                <option value="{{ $rutes->Asal_Rute }} - {{ $rutes->Tujuan_Rute }}"
+                                                <option value="{{ $rutes->id }}"
                                                     @selected($do->Rute == $rutes->id)> {{ $rutes->id }} ::
                                                     {{ $rutes->Asal_Rute }} - {{ $rutes->Tujuan_Rute }} {{ $rutes->Gerbang }}</option>
                                             @endforeach

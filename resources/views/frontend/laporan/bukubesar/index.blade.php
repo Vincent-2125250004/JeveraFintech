@@ -48,7 +48,7 @@
                             ->get();
                     @endphp
 
-                    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400"
+                    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 display responsive wrap" width="100%"
                         id="myTable-<?php echo $countParent; ?>">
                         <div
                             class="text-xl my-4 text-gray-900 font-semibold items-center bg-sky-200 dark:bg-sky-700 dark:text-white rounded-lg">
@@ -75,13 +75,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @if ($value->isEmpty() && $valuePengeluaran->isEmpty() && $valueAdjetiva->isEmpty())
-                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                    <td colspan="4"
-                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white text-center">
-                                        Data tidak ditemukan</td>
-                                </tr>
-                            @endif
+                            
                             @foreach ($value as $values)
                                 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                     <td scope="row"
@@ -132,6 +126,10 @@
                                             IDR {{ number_format($values->Nominal_Pengeluaran, 0, ',', '.') }}
                                         @endif
                                     </td>
+                                    <td scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        {{ $values->Tanggal_Pengeluaran }}
+                                    </td>
                                 </tr>
                             @endforeach
                             @foreach ($valueAdjetiva as $values)
@@ -156,13 +154,17 @@
                                             IDR {{ number_format($values->Nominal_Adjetiva, 0, ',', '.') }}
                                         @endif
                                     </td>
+                                    <td scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        {{ $values->Tanggal_Adjetiva }}
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
                         <tfoot>
                             <tr
                                 class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 font-semibold text-gray-900 dark:text-white">
-                                <td colspan="2" class="px-6 py-3 text-base text-center">Current Total</td>
+                                <td colspan="2" class="px-6 py-3 text-base text-center text-cyan-600 dark:text-cyan-400">Current Total</td>
 
                                 @php
                                     $totalDebit = 0;
@@ -219,17 +221,18 @@
                                     @endif
                                 @endforeach
 
-                                <td scope="col" class="px-6 py-3">IDR
+                                <td scope="col" class="px-6 py-3 text-cyan-600 dark:text-cyan-400">IDR
                                     {{ number_format($totalDebit, 0, ',', '.') }}
                                 </td>
-                                <td scope="col" class="px-6 py-3">IDR
+                                <td scope="col" class="px-6 py-3 text-cyan-600 dark:text-cyan-400">IDR
                                     {{ number_format($totalKredit, 0, ',', '.') }}
                                 </td>
+                                <td></td>
                             </tr>
                             <tr
                                 class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 font-semibold text-gray-900 dark:text-white">
-                                <td colspan="2" class="px-6 py-3 text-base text-center">Closing Balance</td>
-                                <td scope="col" class="px-6 py-3">
+                                <td colspan="2" class="px-6 py-3 text-base text-center text-emerald-600 dark:text-emerald-400">Closing Balance</td>
+                                <td scope="col" class="px-6 py-3 text-emerald-600 dark:text-emerald-400">
                                     @if ($totalDebit > $totalKredit)
                                         @php
                                             $closingBalance = $totalDebit - $totalKredit;
@@ -241,7 +244,7 @@
                                     @endif
 
                                 </td>
-                                <td scope="col" class="px-6 py-3">
+                                <td scope="col" class="px-6 py-3 text-emerald-600 dark:text-emerald-400">
                                     @if ($totalKredit > $totalDebit)
                                         @php
                                             $closingBalance = $totalKredit - $totalDebit;
@@ -252,6 +255,7 @@
                                         -
                                     @endif
                                 </td>
+                                <td></td>
                             </tr>
                         </tfoot>
                     </table>
@@ -264,7 +268,14 @@
             visibility: hidden;
             display: none;
         }
-
+        td.dataTables_empty {
+            color: #27272a;
+            font-weight: bold;
+            text-align: center;
+            background-color: #facc15;
+            padding: 20px;
+            font-size: 150%
+        }
         div.dt-datetime-title {
             color: white;
         }
@@ -283,6 +294,7 @@
     <script src="https://cdn.datatables.net/1.13.7/js/dataTables.tailwindcss.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js"></script>
     <script src="https://cdn.datatables.net/datetime/1.5.2/js/dataTables.dateTime.min.js"></script>
+    
     <script>
         $(document).ready(function() {
             let countParent = <?php echo $countParent; ?>;
@@ -297,18 +309,15 @@
 
                 let table = $('#myTable-' + countTable).DataTable({
                     responsive: true,
-                    // searching : false,
-                    rowReorder: {
-                        selector: 'td:nth-child(2)'
+                    "language" : {
+                        "emptyTable" : "Tidak ada data"
                     }
                 });
 
                 $('#myTable-' + countTable + '_wrapper').addClass('overflow-y-hidden p-1');
                 $('#myTable-' + countTable + '_length').addClass(
                     'text-black font-semibold dark:text-white mb-2');
-                $('#myTable-' + countTable + '_length select').addClass(
-                    'mb-2 text-black font-semibold dark:text-white dark:bg-gray-800 border border-gray-300 dark:border-gray-500 rounded-md px-6 py-1 ms-4'
-                );
+                $('#myTable-' + countTable + '_length select').addClass('mb-2 text-black font-semibold dark:text-white dark:bg-gray-800 border border-gray-300 dark:border-gray-500 rounded-md px-6 py-1 ms-4');
                 $('#myTable-' + countTable + '_info').addClass(
                     'text-black font-semibold dark:text-white text-sm');
                 $('#myTable-' + countTable + '_paginate').addClass(
@@ -320,6 +329,7 @@
                 $('#myTable-' + countTable + 'max').addClass(
                     'text-black font-semibold mt-2 mb-2 dark:text-white dark:bg-gray-800 border border-gray-300 dark:border-gray-500 rounded-md px-2 py-1 ms-4'
                 );
+                $()
                 table.column(4).visible(false);
 
             });
@@ -327,8 +337,6 @@
 
             let dateIndex = 4;
             let minDate, maxDate;
-
-            // Custom filtering function which will search data in column four between two values
             DataTable.ext.search.push(function(settings, data, dataIndex) {
                 let min = minDate.val();
                 let max = maxDate.val();
@@ -345,7 +353,6 @@
                 return false;
             });
 
-            // Create date inputs
             minDate = new DateTime('#min', {
                 format: 'YYYY MMMM Do'
             });
@@ -353,10 +360,8 @@
                 format: 'YYYY MMMM Do'
             });
 
-            // Refilter the table
             document.querySelectorAll('#min, #max').forEach((el) => {
                 el.addEventListener('change', () => {
-                    // Loop through each DataTable instance and draw the table
                     for (let i = 1; i <= countParent; i++) {
                         $('#myTable-' + i).DataTable().draw();
                     }
