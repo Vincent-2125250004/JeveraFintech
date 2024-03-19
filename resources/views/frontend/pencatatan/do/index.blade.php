@@ -60,7 +60,7 @@
                 </a>
                 <a data-modal-target="crud-modal" data-modal-toggle="crud-modal"
                     class="inline-flex items-center mx-2 px-4 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-500 rounded-md font-semibold text-xs text-gray-700 dark:text-gray-300 uppercase tracking-widest shadow-sm hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 disabled:opacity-25 transition ease-in-out duration-150">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-5 h-5 fill-gray-600 mx-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-5 h-5 fill-gray-600 dark:fill-white mx-2">
                         <path
                             d="M0 64C0 28.7 28.7 0 64 0L224 0l0 128c0 17.7 14.3 32 32 32l128 0 0 144-208 0c-35.3 0-64 28.7-64 64l0 144-48 0c-35.3 0-64-28.7-64-64L0 64zm384 64l-128 0L256 0 384 128zM176 352l32 0c30.9 0 56 25.1 56 56s-25.1 56-56 56l-16 0 0 32c0 8.8-7.2 16-16 16s-16-7.2-16-16l0-48 0-80c0-8.8 7.2-16 16-16zm32 80c13.3 0 24-10.7 24-24s-10.7-24-24-24l-16 0 0 48 16 0zm96-80l32 0c26.5 0 48 21.5 48 48l0 64c0 26.5-21.5 48-48 48l-32 0c-8.8 0-16-7.2-16-16l0-128c0-8.8 7.2-16 16-16zm32 128c8.8 0 16-7.2 16-16l0-64c0-8.8-7.2-16-16-16l-16 0 0 96 16 0zm80-112c0-8.8 7.2-16 16-16l48 0c8.8 0 16 7.2 16 16s-7.2 16-16 16l-32 0 0 32 32 0c8.8 0 16 7.2 16 16s-7.2 16-16 16l-32 0 0 48c0 8.8-7.2 16-16 16s-16-7.2-16-16l0-64 0-64z" />
                     </svg>
@@ -68,7 +68,7 @@
                 </a>
                 <a href="{{ route('pencatatan.do.excel') }}" target="_blank"
                     class="inline-flex items-center px-4 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-500 rounded-md font-semibold text-xs text-gray-700 dark:text-gray-300 uppercase tracking-widest shadow-sm hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 disabled:opacity-25 transition ease-in-out duration-150">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="w-5 h-5 fill-gray-600 mx-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="w-5 h-5 fill-gray-600 dark:fill-white mx-2">
                         <path
                             d="M64 0C28.7 0 0 28.7 0 64V448c0 35.3 28.7 64 64 64H320c35.3 0 64-28.7 64-64V160H256c-17.7 0-32-14.3-32-32V0H64zM256 0V128H384L256 0zM155.7 250.2L192 302.1l36.3-51.9c7.6-10.9 22.6-13.5 33.4-5.9s13.5 22.6 5.9 33.4L221.3 344l46.4 66.2c7.6 10.9 5 25.8-5.9 33.4s-25.8 5-33.4-5.9L192 385.8l-36.3 51.9c-7.6 10.9-22.6 13.5-33.4 5.9s-13.5-22.6-5.9-33.4L162.7 344l-46.4-66.2c-7.6-10.9-5-25.8 5.9-33.4s25.8-5 33.4 5.9z" />
                     </svg>
@@ -278,23 +278,24 @@
                                     placeholder="" />
                             </div>
                         </div>
+                    
                         <div class="md:col-span-2">
-                            <input id="semua_data" type="radio" value="1" name="semua_data"
+                            <input id="tonase_rute" type="radio" value="1" name="tonase_rute"
                                 class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                             <label for="default-radio-1"
-                                class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Semua Data</label>
+                                class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Tonase</label>
                         </div>
                         <div class="md:col-span-2">
-                            <input id="boss_all" type="radio" value="2" name="boss_all"
+                            <input id="harga_jumlah" type="radio" value="2" name="harga_jumlah"
                                 class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                             <label for="default-radio-2"
-                                class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Boss ALL</label>
+                                class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Harga + Jumlah Harga</label>
                         </div>
                         <div class="md:col-span-2">
-                            <input id="cari_tanggal" type="radio" value="3" name="cari_tanggal"
+                            <input id="harga_jumlah_uangjalan" type="radio" value="3" name="harga_jumlah_uangjalan"
                                 class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                             <label for="default-radio-2"
-                                class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Cari Tanggal</label>
+                                class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Harga + Jumlah Harga + Uang Jalan</label>
                         </div>
                     </div>
                     <div class="md:col-span-6 text-right mt-10">
@@ -311,28 +312,30 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const semuaDataRadio = document.getElementById('semua_data');
-            const bossRadio = document.getElementById('boss_all');
+            const tonaseRute = document.getElementById('tonase_rute');
+            const hargaJumlah = document.getElementById('harga_jumlah');
+            const hargaJumlahUangJalan = document.getElementById('harga_jumlah_uangjalan');
+
             const tanggalInputStart = document.getElementById('start_date');
             const tanggalInputEnd = document.getElementById('end_date');
-            const cariTanggalRadio = document.getElementById('cari_tanggal');
-            semuaDataRadio.addEventListener('change', function() {
-                tanggalInputStart.disabled = semuaDataRadio.checked;
-                tanggalInputEnd.disabled = semuaDataRadio.checked;
-                bossRadio.checked = false;
-                cariTanggalRadio.checked = false;
+
+            tonaseRute.addEventListener('change', function() {
+                tanggalInputStart.disabled = tonaseRute.checked;
+                tanggalInputEnd.disabled = tonaseRute.checked;
+                hargaJumlah.checked = false;
+                hargaJumlahUangJalan.checked = false;
             });
-            bossRadio.addEventListener('change', function() {
-                tanggalInputStart.disabled = !bossRadio.checked;
-                tanggalInputEnd.disabled = !bossRadio.checked;
-                semuaDataRadio.checked = false;
-                cariTanggalRadio.checked = false;
+            hargaJumlah.addEventListener('change', function() {
+                tanggalInputStart.disabled = !hargaJumlah.checked;
+                tanggalInputEnd.disabled = !hargaJumlah.checked;
+                tonaseRute.checked = false;
+                hargaJumlahUangJalan.checked = false;
             });
-            cariTanggalRadio.addEventListener('change',function () {
-                tanggalInputStart.disabled = !cariTanggalRadio.checked;
-                tanggalInputEnd.disabled = !cariTanggalRadio.checked;
-                semuaDataRadio.checked = false;
-                bossRadio.checked = false;
+            hargaJumlahUangJalan.addEventListener('change',function () {
+                tanggalInputStart.disabled = !hargaJumlahUangJalan.checked;
+                tanggalInputEnd.disabled = !hargaJumlahUangJalan.checked;
+                tonaseRute.checked = false;
+                hargaJumlah.checked = false;
             });
 
         });

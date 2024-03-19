@@ -70,10 +70,11 @@
                             Pengeluaran</label>
                         <input type="number" name="nominal_pengeluaran" id="nominal_pengeluaran"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-400 focus:border-primary-400 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-200 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="Nominal Transaksi" required="">
+                            placeholder="Nominal Transaksi" required="" oninput="formatRupiah(this)">
                         @error('nominal_pengeluaran')
                             <div class="text-sm text-red-400">{{ $message }}</div>
                         @enderror
+                        <small id="formatted_nominal" class="text-gray-500 dark:text-gray-300">Format: IDR</small>
                     </div>
                     <div class="w-full">
                         <label for="tanggal_pengeluaran"
@@ -108,6 +109,15 @@
             $(document).ready(function() {
                 $('.js-example-basic-single').select2();
             });
+
+            function formatRupiah(input) {
+                var number = parseInt(input.value.replace(/[\D]/g, ''), 10);
+                var formatted = new Intl.NumberFormat('id-ID', {
+                    style: 'currency',
+                    currency: 'IDR'
+                }).format(number);
+                document.getElementById('formatted_nominal').textContent = 'Format: ' + formatted;
+            }
         </script>
 
 

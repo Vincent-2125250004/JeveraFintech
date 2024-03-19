@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Journal Voucher Pengeluaran</title>
-    <!-- Menggunakan Bootstrap dari CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
     <style>
@@ -159,21 +158,21 @@
             <tbody>
                 <tr>
                     <td>{{ $pengeluaran->KeAkun->Nama_Akun }}</td>
-                    <td>Rp.{{ number_format($pengeluaran->Nominal_Pengeluaran, 0, ',', '.') }}</td>
+                    <td>Rp{{ number_format($pengeluaran->Nominal_Pengeluaran, 0, ',', '.') }}</td>
                     <td>-</td>
                 </tr>
                 <tr>
                     <td>{{ $pengeluaran->DariAkun->Nama_Akun }}</td>
                     <td>-</td>
-                    <td>Rp.{{ number_format($pengeluaran->Nominal_Pengeluaran, 0, ',', '.') }}</td>
+                    <td>Rp{{ number_format($pengeluaran->Nominal_Pengeluaran, 0, ',', '.') }}</td>
                 </tr>
 
             </tbody>
             <tfoot>
                 <tr>
                     <td>Total</td>
-                    <td>Rp.{{ number_format($pengeluaran->Nominal_Pengeluaran, 0, ',', '.') }}</td>
-                    <td>Rp.{{ number_format($pengeluaran->Nominal_Pengeluaran, 0, ',', '.') }}</td>
+                    <td>Rp{{ number_format($pengeluaran->Nominal_Pengeluaran, 0, ',', '.') }}</td>
+                    <td>Rp{{ number_format($pengeluaran->Nominal_Pengeluaran, 0, ',', '.') }}</td>
                 </tr>
             </tfoot>
         </table>

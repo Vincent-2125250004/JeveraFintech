@@ -17,4 +17,6 @@ class ExcelController extends Controller
     public function export_excelMobil() {
         return Excel::download(new MobilExport, 'Mobil.xlsx');
     }
+
+    
 }

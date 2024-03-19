@@ -17,7 +17,7 @@ class DeliveryOrderExport implements FromCollection, WithStyles, WithHeadings, S
     public function collection()
     {
 
-        $data = DeliveryOrder::orderBy('id', 'asc')->get()->map(function ($item) {
+        $data = DeliveryOrder::orderBy('id',         'asc')->get()->map(function ($item) {
             $item->Rute = $item->rute->Asal_Rute . ' - ' . $item->rute->Tujuan_Rute;
             $item->Total_Harga = "Rp. " . number_format($item->Total_Harga, 0, ',', '.');
             $item->Uang_Jalan = "Rp. " . number_format($item->rute->Uang_Jalan, 0, ',', '.');

@@ -2,13 +2,12 @@
     <x-slot name="header">
         <h2 class="font-semibold text-md text-gray-800 leading-tight dark:text-white">
             {{ __('Pencatatan/Pemasukan/Data Pemasukan') }}
-        </h2>
+        </h2>~
     </x-slot>
 
     <div class="py-12">
         <div class="mx-20 mx-auto sm:px-6 lg:px-8">
             <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
             @if (session()->has('success') || session()->has('danger') || session()->has('warning') || session()->has('info'))
                 <script>
                     function showToast(icon, message) {
@@ -53,7 +52,6 @@
                     @endif
                 </script>
             @endif
-
             <div class="flex justify-end m-2 p-2">
                 <a href="{{ route('pencatatan.pemasukan.create') }}"
                     class="inline-flex items-center px-4 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-500 rounded-md font-semibold text-xs text-gray-700 dark:text-gray-300 uppercase tracking-widest shadow-sm hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 disabled:opacity-25 transition ease-in-out duration-150">
@@ -61,7 +59,7 @@
                 </a>
             </div>
             <div class="relative">
-                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400" id="myTable">
+                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 display responsive wrap" width="100%" id="myTable">
                     <thead
                         class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-300 rounded-lg">
                         <tr>
@@ -80,7 +78,6 @@
                             <th scope="col" class="px-6 py-3">
                                 Tanggal Pemasukan
                             </th>
-
                             <th scope="col" class="px-6 py-3">
                                 Sisa Saldo
                             </th>
@@ -102,7 +99,7 @@
                                 <td scope="row"
                                     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                     @if ($pemasukans->saldo)
-                                        Rp.{{ number_format($pemasukans->Nominal_Pemasukan, 0, ',', '.') }}
+                                        Rp{{ number_format($pemasukans->Nominal_Pemasukan, 0, ',', '.') }}
                                     @else
                                         No Sisa Saldo Found
                                     @endif
@@ -115,11 +112,10 @@
                                     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                     {{ $pemasukans->Tanggal_Pemasukan }}
                                 </td>
-
                                 <td scope="row"
                                     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                     @if ($pemasukans->saldo)
-                                        Rp.{{ number_format($pemasukans->saldo->Sisa_Saldo, 0, ',', '.') }}
+                                        Rp{{ number_format($pemasukans->saldo->Sisa_Saldo, 0, ',', '.') }}
                                     @else
                                         No Sisa Saldo Found
                                     @endif
@@ -169,7 +165,9 @@
     <script src="https://cdn.datatables.net/1.13.7/js/dataTables.tailwindcss.min.js"></script>
     <script>
         $(document).ready(function() {
-            let table = $('#myTable').DataTable();
+            let table = $('#myTable').DataTable({
+                responsive : true,
+            });
             $('#myTable_wrapper').addClass('overflow-y-hidden p-1');
             $('#myTable_filter').addClass('text-black font-semibold dark:text-white');
             $('#myTable_filter input').addClass(

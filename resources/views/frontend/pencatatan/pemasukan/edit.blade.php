@@ -80,13 +80,17 @@
                         <label for="nominal_pemasukan"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nominal
                             Pemasukan</label>
-                        <input type="number" name="nominal_pemasukan" id="nominal_pemasukan"
+                        <input type="text" name="nominal_pemasukan" id="nominal_pemasukan"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-400 focus:border-primary-400 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-200 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="Nominal Transaksi" required="" value="{{ $pemasukan->Nominal_Pemasukan }}" disabled>
+                            placeholder="Nominal Transaksi" required="" value="{{ $pemasukan->Nominal_Pemasukan }}"
+                            disabled>
                         @error('nominal_pemasukan')
                             <div class="text-sm text-red-400">{{ $message }}</div>
                         @enderror
+                        <small id="formatted_nominal" class="text-gray-500 dark:text-gray-300">Format: IDR
+                            {{ number_format($pemasukan->Nominal_Pemasukan, 0, ',', '.') }}</small>
                     </div>
+
                     <div class="w-full">
                         <label for="tanggal_pemasukan"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tanggal
@@ -120,6 +124,7 @@
             $(document).ready(function() {
                 $('.js-example-basic-single').select2();
             });
+
         </script>
 
 </x-app-layout>

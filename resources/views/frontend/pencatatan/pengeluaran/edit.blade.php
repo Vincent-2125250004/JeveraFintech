@@ -80,14 +80,18 @@
                         <label for="nominal_pengeluaran"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nominal
                             Pengeluaran</label>
-                        <input type="number" name="nominal_pengeluaran" id="nominal_pengeluaran"
+                        <input type="text" name="nominal_pengeluaran" id="nominal_pengeluaran"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-400 focus:border-primary-400 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-200 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="Nominal Transaksi" required="" disabled
-                            value="{{ $pengeluaran->Nominal_Pengeluaran }}">
+                            placeholder="Nominal Transaksi" required="" value="{{ $pengeluaran->Nominal_Pengeluaran }}"
+                            disabled>
                         @error('nominal_pengeluaran')
                             <div class="text-sm text-red-400">{{ $message }}</div>
                         @enderror
+                        <small id="formatted_nominal" class="text-gray-500 dark:text-gray-300">Format: IDR
+                            {{ number_format($pengeluaran->Nominal_Pengeluaran, 0, ',', '.') }}</small>
                     </div>
+
+
                     <div class="w-full">
                         <label for="tanggal_pengeluaran"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tanggal

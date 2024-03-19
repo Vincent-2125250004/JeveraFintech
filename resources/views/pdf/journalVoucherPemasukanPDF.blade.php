@@ -158,21 +158,21 @@
             <tbody>
                 <tr>
                     <td>{{ $pemasukan->KeAkun->Nama_Akun }}</td>
-                    <td>Rp.{{ number_format($pemasukan->Nominal_Pemasukan, 0, ',', '.') }}</td>
+                    <td>Rp{{ number_format($pemasukan->Nominal_Pemasukan, 0, ',', '.') }}</td>
                     <td>-</td>
                 </tr>
                 <tr>
                     <td>{{ $pemasukan->DariAkun->Nama_Akun }}</td>
                     <td>-</td>
-                    <td>Rp.{{ number_format($pemasukan->Nominal_Pemasukan, 0, ',', '.') }}</td>
+                    <td>Rp{{ number_format($pemasukan->Nominal_Pemasukan, 0, ',', '.') }}</td>
                 </tr>
 
             </tbody>
             <tfoot>
                 <tr>
                     <td>Total</td>
-                    <td>Rp.{{ number_format($pemasukan->Nominal_Pemasukan, 0, ',', '.') }}</td>
-                    <td>Rp.{{ number_format($pemasukan->Nominal_Pemasukan, 0, ',', '.') }}</td>
+                    <td>Rp{{ number_format($pemasukan->Nominal_Pemasukan, 0, ',', '.') }}</td>
+                    <td>Rp{{ number_format($pemasukan->Nominal_Pemasukan, 0, ',', '.') }}</td>
                 </tr>
             </tfoot>
         </table>

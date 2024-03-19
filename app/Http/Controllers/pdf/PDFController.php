@@ -36,13 +36,13 @@ class PDFController extends Controller
 
     public function generatePDFDeliveryOrder(Request $request)
     {
-        $semua_data = $request->semua_data;
-        $boss_all = $request->boss_all;
-        $cari_tanggal = $request->cari_tanggal;
+        $tonase_rute = $request->tonase_rute;
+        $harga_jumlah = $request->harga_jumlah;
+        $harga_jumlah_uangjalan = $request->harga_jumlah_uangjalan;
         $start_date = Carbon::parse($request->start_date)->format('Y-m-d');
         $end_date = Carbon::parse($request->end_date)->format('Y-m-d');
 
-        if ($semua_data == '1') {
+        if ($tonase_rute == '1') {
             $do = DeliveryOrder::get();
             $data = [
                 'title' => 'Data Delivery Order CV.Jevera',
@@ -53,10 +53,10 @@ class PDFController extends Controller
                 'do' => $do
             ];
 
-            $pdf = Pdf::loadView('pdf.deliveryOrderPDF', $data);
+            $pdf = Pdf::loadView('pdf.doTonasePDF', $data);
             $pdf->setPaper('a4', 'landscape');
 
-        } else if ($start_date != null && $end_date != null && $boss_all == '2') {
+        } else if ($start_date != null && $end_date != null && $harga_jumlah == '2') {
             $do = DeliveryOrder::whereDate('Tanggal_Do', '>=', $start_date)->whereDate('Tanggal_Do', '<=', $end_date)->get();
             $data = [
                 'title' => 'Data Delivery Order CV.Jevera',
@@ -67,10 +67,10 @@ class PDFController extends Controller
                 'do' => $do
             ];
 
-            $pdf = Pdf::loadView('pdf.deliveryOrderPDFBoss', $data);
+            $pdf = Pdf::loadView('pdf.doHargaJumlahPDF', $data);
             $pdf->setPaper('a4', 'landscape');
 
-        } else if ($start_date != null && $end_date != null && $cari_tanggal == '3') {
+        } else if ($start_date != null && $end_date != null && $harga_jumlah_uangjalan == '3') {
             $do = DeliveryOrder::whereDate('Tanggal_Do', '>=', $start_date)->whereDate('Tanggal_Do', '<=', $end_date)->get();
             $data = [
                 'title' => 'Data Delivery Order CV.Jevera',
@@ -81,23 +81,8 @@ class PDFController extends Controller
                 'do' => $do
             ];
 
-            $pdf = Pdf::loadView('pdf.deliveryOrderPDF', $data);
+            $pdf = Pdf::loadView('pdf.doHargaJumlahUangJalanPDF', $data);
             $pdf->setPaper('a4', 'landscape');
-
-        } else {
-            $do = DeliveryOrder::get();
-            $data = [
-                'title' => 'Data Delivery Order CV.Jevera',
-                'date' => date('Y-m-d'),
-                'image' => public_path('logo/JVRBLUEKOP.png'),
-                'alamat' => 'Jl. Rawa Jaya RT 012, RW 004, Kelurahan Pahlawan, Kecamatan Kemuning, Kota Palembang, Sumatera Selatan, Indonesia',
-                'email' => 'cvjevera@gmail.com',
-                'do' => $do
-            ];
-
-            $pdf = Pdf::loadView('pdf.deliveryOrderPDF', $data);
-            $pdf->setPaper('a4', 'landscape');
-
 
         }
         return $pdf->stream('DataSeluruhDeliveryOrder.pdf');

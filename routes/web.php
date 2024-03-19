@@ -4,6 +4,7 @@ use App\Http\Controllers\admin\AdjetivaController;
 use App\Http\Controllers\admin\DataKontakController;
 use App\Http\Controllers\admin\DataMobilController;
 use App\Http\Controllers\admin\DataRuteController;
+use App\Http\Controllers\admin\LaporanController;
 use App\Http\Controllers\admin\PengeluaranController;
 use App\Http\Controllers\admin\PemasukanController;
 use App\Http\Controllers\ProfileController;
@@ -79,6 +80,9 @@ Route::middleware('auth')->name('pencatatan.')->prefix('pencatatan')->group(func
 //Pelaporan 
 Route::middleware('auth')->name('laporan.')->prefix('laporan')->group(function () {
     Route::resource('/bukubesar', App\Http\Controllers\admin\Laporan::class);
+
+    //Excel
+    Route::get('export_excelLaporan', [LaporanController::class, 'Export'])->name('bukubesar.excel');
 });
 
 

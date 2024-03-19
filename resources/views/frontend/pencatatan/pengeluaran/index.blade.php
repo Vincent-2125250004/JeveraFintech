@@ -60,7 +60,7 @@
                 </a>
             </div>
             <div class="relative overflow-x-auto">
-                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400" id="myTable">
+                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 display responsive wrap" width="100%" id="myTable">
                     <thead
                         class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-300 rounded-lg">
                         <tr>
@@ -99,7 +99,7 @@
                                 </td>
                                 <td scope="row"
                                     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    Rp.{{ number_format($pengeluarans->Nominal_Pengeluaran, 0, ',', '.') }}
+                                    Rp{{ number_format($pengeluarans->Nominal_Pengeluaran, 0, ',', '.') }}
                                 </td>
                                 <td scope="row"
                                     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
@@ -112,7 +112,7 @@
                                 <td scope="row"
                                     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                     @if ($pengeluarans->saldo)
-                                        Rp.{{ number_format($pengeluarans->saldo->Sisa_Saldo, 0, ',', '.') }}
+                                        Rp{{ number_format($pengeluarans->saldo->Sisa_Saldo, 0, ',', '.') }}
                                     @else
                                         No Sisa Saldo Found
                                     @endif
@@ -165,7 +165,9 @@
     <script src="https://cdn.datatables.net/1.13.7/js/dataTables.tailwindcss.min.js"></script>
     <script>
         $(document).ready(function() {
-            let table = $('#myTable').DataTable();
+            let table = $('#myTable').DataTable({
+                responsive:true,
+            });
             $('#myTable_wrapper').addClass('overflow-y-hidden p-1');
             $('#myTable_filter').addClass('text-black font-semibold dark:text-white');
             $('#myTable_filter input').addClass(
