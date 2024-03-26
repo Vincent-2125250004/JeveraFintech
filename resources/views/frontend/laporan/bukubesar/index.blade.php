@@ -28,7 +28,7 @@
                 </div>
                 <div class="md:col-span-2 mx-2">
                     <div class="flex justify-end m-2 p-2">
-                        <a href="{{ route('laporan.bukubesar.excel') }}" target="_blank"
+                        <a data-modal-target="crud-modal" data-modal-toggle="crud-modal"
                             class="inline-flex items-center px-4 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-500 rounded-md font-semibold text-xs text-gray-700 dark:text-gray-300 uppercase tracking-widest shadow-sm hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 disabled:opacity-25 transition ease-in-out duration-150">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"
                                 class="w-5 h-5 fill-gray-600 dark:fill-white mx-2">
@@ -59,11 +59,12 @@
                         $valueAdjetiva = App\Models\Adjetiva::where('Dari_Akun', $akuns->id)
                             ->orWhere('Ke_Akun', $akuns->id)
                             ->get();
-                    @endphp
+                    @endphp 
 
                     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 display responsive wrap"
                         width="100%" id="myTable-<?php echo $countParent; ?>">
-                        <div class="text-xl my-4 text-gray-900 font-semibold items-center bg-sky-200 dark:bg-sky-700 dark:text-white rounded-lg">
+                        <div
+                            class="text-xl my-4 text-gray-900 font-semibold items-center bg-sky-200 dark:bg-sky-700 dark:text-white rounded-lg">
                             <h2 class="p-4 text-center">{{ $akuns->Nama_Akun }}</h2>
                         </div>
                         <thead
@@ -274,6 +275,74 @@
             </div>
         </div>
     </div>
+
+
+    <div id="crud-modal" tabindex="-1" aria-hidden="true"
+        class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        <div class="relative p-4 w-full max-w-md max-h-full">
+            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                        Export Excel
+                    </h3>
+                    <button type="button"
+                        class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                        data-modal-toggle="crud-modal">
+                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 14 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                        </svg>
+                        <span class="sr-only">Close modal</span>
+                    </button>
+                </div>
+                <form action="{{ route('laporan.bukubesar.excel') }}" class="p-4 md:p-5" method="POST"
+                    target="_blank" id="form_filter">
+                    @csrf
+                    <div class="grid gap-4 mb-4 grid-cols-2">
+                        <div class="md:col-span-2">
+                            <input id="pilih_akun" type="radio" value="1" name="pilih_akun"
+                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                            <label for="default-radio-1"
+                                class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Pilih Akun</label>
+                        </div>
+                        <div class="md:col-span-2">
+                            <div class="w-full">
+                                <select id="selected_akun" name="selected_akun"
+                                    class="js-example-basic-single bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-200 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-1">
+                                    <option value="" disabled selected>Silahkan dipilih</option>
+                                    @foreach ($akun as $akuns)
+                                        <option value="{{ $akuns->id }}">
+                                            {{ $akuns->Nama_Akun }}</option>
+                                    @endforeach
+                                </select>
+                                @error('selected_akun')
+                                    <div class="text-sm text-red-400">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="md:col-span-2">
+                            <input id="semua_akun" type="radio" value="2" name="semua_akun"
+                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                            <label for="default-radio-1"
+                                class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Semua Akun</label>
+                        </div>
+
+                    </div>
+                    <div class="md:col-span-6 text-right mt-10">
+                        <div class="inline-flex items-end">
+                            <button type="submit"
+                                class="inline-flex items-center px-4 py-2 bg-sky-500 dark:bg-sky-500 border border-gray-300 dark:border-gray-500 rounded-md font-semibold text-xs text-white dark:text-white uppercase tracking-widest shadow-sm hover:bg-emerald-600 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 disabled:opacity-25 transition ease-in-out duration-150"
+                                data-modal-hide="crud-modal">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
     <style>
         .dataTables_filter {
             visibility: hidden;
@@ -382,6 +451,28 @@
                     }
                 });
             });
+
+            $(document).ready(function() {
+                const pilihAkun = document.getElementById('pilih_akun');
+                const semuaAkun = document.getElementById('semua_akun');
+                const select2Akun = document.getElementById('selected_akun');
+
+                select2Akun.disabled = true;
+
+                pilihAkun.addEventListener('change', function() {
+                    select2Akun.disabled = !pilihAkun.checked;
+                    semuaAkun.checked = false;
+                });
+
+                semuaAkun.addEventListener('change', function() {
+                    select2Akun.disabled = semuaAkun.checked;
+                    pilihAkun.checked = false;
+                    select2Akun.value = '';
+                    $(select2Akun).trigger('change');
+                });
+            });
         });
     </script>
+
+
 </x-app-layout>

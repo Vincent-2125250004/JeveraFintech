@@ -82,7 +82,7 @@ Route::middleware('auth')->name('laporan.')->prefix('laporan')->group(function (
     Route::resource('/bukubesar', App\Http\Controllers\admin\Laporan::class);
 
     //Excel
-    Route::get('export_excelLaporan', [LaporanController::class, 'Export'])->name('bukubesar.excel');
+    Route::post('export_excelLaporan', [LaporanController::class, 'Export'])->name('bukubesar.excel');
 });
 
 

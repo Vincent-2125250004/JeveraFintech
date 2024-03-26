@@ -1,6 +1,6 @@
 <?php
 header("Content-type: application/vnd-ms-excel");
-header("Content-Disposition: attachment; filename=Laporan BukuBesar.xls");
+header("Content-Disposition: attachment; filename=$filename");
 ?>
 
 <div class="relative overflow-x-auto mx-2">
@@ -64,13 +64,13 @@ header("Content-Disposition: attachment; filename=Laporan BukuBesar.xls");
                         <td scope="row"
                             class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             @if ($values->Ke_Akun == $akuns->id)
-                                Rp{{ number_format($values->Nominal_Pemasukan, 0, ',', '.') }}
+                                {{ $values->Nominal_Pemasukan }}
                             @endif
                         </td>
                         <td scope="row"
                             class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             @if ($values->Dari_Akun == $akuns->id)
-                                Rp{{ number_format($values->Nominal_Pemasukan, 0, ',', '.') }}
+                                {{ $values->Nominal_Pemasukan}}
                             @endif
                         </td>
                         <td scope="row"
@@ -92,13 +92,13 @@ header("Content-Disposition: attachment; filename=Laporan BukuBesar.xls");
                         <td scope="row"
                             class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             @if ($values->Ke_Akun == $akuns->id)
-                                Rp{{ number_format($values->Nominal_Pengeluaran, 0, ',', '.') }}
+                                {{$values->Nominal_Pengeluaran}}
                             @endif
                         </td>
                         <td scope="row"
                             class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             @if ($values->Dari_Akun == $akuns->id)
-                                Rp{{ number_format($values->Nominal_Pengeluaran, 0, ',', '.') }}
+                                {{$values->Nominal_Pengeluaran}}
                             @endif
                         </td>
                         <td scope="row"
@@ -120,13 +120,13 @@ header("Content-Disposition: attachment; filename=Laporan BukuBesar.xls");
                         <td scope="row"
                             class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             @if ($values->Ke_Akun == $akuns->id)
-                                Rp{{ number_format($values->Nominal_Adjetiva, 0, ',', '.') }}
+                                {{$values->Nominal_Adjetiva}}
                             @endif
                         </td>
                         <td scope="row"
                             class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             @if ($values->Dari_Akun == $akuns->id)
-                                Rp{{ number_format($values->Nominal_Adjetiva, 0, ',', '.') }}
+                                {{$values->Nominal_Adjetiva}}
                             @endif
                         </td>
                         <td scope="row"
@@ -199,10 +199,10 @@ header("Content-Disposition: attachment; filename=Laporan BukuBesar.xls");
                     @endforeach
 
                     <td scope="col" class="px-6 py-3 text-cyan-600 dark:text-cyan-400">
-                        Rp{{ number_format($totalDebit, 0, ',', '.') }}
+                        {{$totalDebit}}
                     </td>
                     <td scope="col" class="px-6 py-3 text-cyan-600 dark:text-cyan-400">
-                        Rp{{ number_format($totalKredit, 0, ',', '.') }}
+                        {{$totalKredit}}
                     </td>
                     <td></td>
                 </tr>
@@ -216,7 +216,7 @@ header("Content-Disposition: attachment; filename=Laporan BukuBesar.xls");
                             @php
                                 $closingBalance = $totalDebit - $totalKredit;
                             @endphp
-                            Rp{{ number_format($closingBalance, 0, ',', '.') }}
+                            {{$closingBalance}}
                         @endif
 
                     </td>
@@ -225,7 +225,7 @@ header("Content-Disposition: attachment; filename=Laporan BukuBesar.xls");
                             @php
                                 $closingBalance = $totalKredit - $totalDebit;
                             @endphp
-                            Rp{{ number_format($closingBalance, 0, ',', '.') }}
+                            {{$closingBalance}}
                         @endif
                         @if ($totalDebit == $totalKredit)
                             -
